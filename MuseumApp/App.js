@@ -38,7 +38,7 @@ const DisplayAnImage = () => {
 function SefyHello({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Hey Sef</Text>
+      <Text>ברוכים הבאים לאוסף מינזה בלומנטל</Text>
       <Button 
         title='Bye Sef'
         onPress={() => navigation.navigate('Welcome')}> </Button> 
