@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import { Audio } from 'expo-av';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +19,9 @@ const styles = StyleSheet.create({
     height: 58,
   },
 });
+
+
+
 
 const DisplayAnImage = () => {
   return (
@@ -36,6 +40,25 @@ const DisplayAnImage = () => {
 
 
 function SefyHello({navigation}) {
+  const [sound, setSound] = React.useState();
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+       require('./app/assets/WhatsApp_Ptt.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync(); }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync(); }
+      : undefined;
+  }, [sound]);
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>ברוכים הבאים לאוסף מינזה בלומנטל</Text>
@@ -43,13 +66,17 @@ function SefyHello({navigation}) {
         title='Bye Sef'
         onPress={() => navigation.navigate('Welcome')}> </Button> 
       <DisplayAnImage></DisplayAnImage>    
-    </View>
+    </View>,
+    <View style={styles.container}>
+    <Button title="Play Sound" onPress={playSound} />
+  </View>
   );
 }
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  
   return (
     <NavigationContainer>
       <Stack.Navigator>
