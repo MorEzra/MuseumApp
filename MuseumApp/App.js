@@ -28,11 +28,11 @@ const DisplayAnImage = () => {
     <View style={styles.container}>
       <Image
         style={styles.tinyLogo}
-        source={require('./app/assets/Sefi.png')}
+        source={require('./app/assets/images/Sefi.png')}
       />
       <Image
         style={styles.tinyLogo}
-        source={require('./app/assets/felizia.png')}
+        source={require('./app/assets/images/felizia.png')}
       />
     </View>
   );
@@ -44,7 +44,7 @@ function SefyHello({navigation}) {
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
-       require('./app/assets/WhatsApp_Ptt.mp3')
+       require('./app/assets/audio/WhatsApp_Ptt.mp3')
     );
     setSound(sound);
 
