@@ -3,11 +3,14 @@ import { AppRegistry, StyleSheet, Text, Button, View, Image} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
-import WelcomeScreen from './app/screens/WelcomeScreen';
 import { Audio } from 'expo-av';
+
+import WelcomeScreen from './app/screens/welcome_screen';
+import MultipleChoice from './app/components/multiple_choice';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingTop: 50,
   },
   tinyLogo: {
@@ -44,7 +47,7 @@ function SefyHello({navigation}) {
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
-       require('./app/assets/audio/WhatsApp_Ptt.mp3')
+       require('./app/assets/audio/pictures_at_an_exhibition_mussorgsky.mp3')
     );
     setSound(sound);
 
@@ -65,11 +68,19 @@ function SefyHello({navigation}) {
       <Button 
         title='Bye Sef'
         onPress={() => navigation.navigate('Welcome')}> </Button> 
-      <DisplayAnImage></DisplayAnImage>    
-    </View>,
-    <View style={styles.container}>
-    <Button title="Play Sound" onPress={playSound} />
-  </View>
+      <DisplayAnImage />
+      <View style={styles.container}>
+      <Button title="Play Sound" onPress={playSound} style={{flex: 1}} /> 
+      {/* Todo - Convert this to a nice player they can move forward and back with, stop and start. */}
+      </View>
+      <View style={styles.container}>
+        <MultipleChoice
+          picture = "1"
+        />
+      </View>
+
+    
+    </View>
   );
 }
 
