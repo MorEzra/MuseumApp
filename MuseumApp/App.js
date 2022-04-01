@@ -7,6 +7,7 @@ import { Audio } from 'expo-av';
 
 import WelcomeScreen from './app/screens/welcome_screen';
 import MultipleChoice from './app/components/multiple_choice';
+import f from './app/screens/temp_screens';
 
 const styles = StyleSheet.create({
   container: {
@@ -79,10 +80,14 @@ function SefyHello({navigation}) {
         />
       </View>
 
-    
+      <Button 
+          title="to temp screen"
+          onPress={() => navigation.navigate('F')}>
+        </Button>
     </View>
   );
 }
+
 
 const Stack = createNativeStackNavigator();
 
@@ -100,6 +105,10 @@ function App() {
          name="SefyHello"
          component={SefyHello}
          options={{ title: 'whatwhat', headerBackVisible: false }}
+        />
+        <Stack.Screen
+        name="temp"
+        component={f}        
         />
       </Stack.Navigator>
     </NavigationContainer>
