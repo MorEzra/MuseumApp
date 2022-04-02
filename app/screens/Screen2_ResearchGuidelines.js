@@ -30,5 +30,12 @@ export default function ResearchGuidelines({navigation}) {
       alignItems: 'center',
       justifyContent: 'center',    
     },    
+
+    header: {
+      textDecorationLine:'underline',
+      fontSize:20,
+      fontWeight:"bold",
+      color: "lightblue",  
+    },
   });
   

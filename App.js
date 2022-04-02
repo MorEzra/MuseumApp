@@ -8,8 +8,10 @@ import { Audio } from 'expo-av';
 import WelcomeScreen from './app/screens/Screen1_WelcomeScreen';
 import ResearchGuidelines from './app/screens/Screen2_ResearchGuidelines';
 import Questionnaire from './app/screens/Screen3_Questionnaire';
+import ThanksForParticipating from './app/screens/Screen8_ThanksForParticipating';
 
 import MultipleChoice from './app/components/multiple_choice';
+import SummaryQuestionnaire from './app/screens/Screen7_SummaryQuestionnaireScreen';
 
 
 const styles = StyleSheet.create({
@@ -102,16 +104,27 @@ function App() {
         <Stack.Screen
          name="WelcomeScreen"
          component= {WelcomeScreen}
-         options={{ title: 'Welcome', headerBackVisible: false }}
+         options={{ title: 'Welcome' }}
+        // headerBackVisible: false
         />
         <Stack.Screen
          name="ResearchGuidelines"
          component={ResearchGuidelines}
-         options={{ title: 'Guidelines', headerBackVisible: false }}
+         options={{ title: 'Guidelines'}}
         />
         <Stack.Screen
         name="Questionnaire"
         component={Questionnaire}        
+        />
+        <Stack.Screen
+         name="SummaryQuestionnaire"
+         component= {SummaryQuestionnaire}
+         options={{ title: 'Summary Questionnaire'}}
+        />
+        <Stack.Screen
+         name="ThanksForParticipating"
+         component= {ThanksForParticipating}
+         options={{ title: 'Thanks!'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

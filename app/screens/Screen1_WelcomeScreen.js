@@ -1,8 +1,6 @@
-import React, {useState}  from 'react';
+import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
-import ResearchGuidelines from './Screen2_ResearchGuidelines';
 
 export default function WelcomeScreen({navigation}) {
   return (      
@@ -26,7 +24,6 @@ export default function WelcomeScreen({navigation}) {
           title="המשך"
           onPress={() => navigation.navigate("ResearchGuidelines")}>
       </Button>
-
       <StatusBar style="auto" />
     </View>
   );
