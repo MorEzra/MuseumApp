@@ -6,8 +6,8 @@ import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 import { Audio } from 'expo-av';
 
 import WelcomeScreen from './app/screens/Screen1_WelcomeScreen';
-import ResearchGuidelines from './app/screens/Screen2_ResearchGuidelines';
-import Questionnaire from './app/screens/Screen3_Questionnaire';
+import ResearchGuidelines from './app/screens/Screen3_ResearchGuidelines';
+import Questionnaire from './app/screens/Screen2_Questionnaire';
 import ThanksForParticipating from './app/screens/Screen8_ThanksForParticipating';
 
 import MultipleChoice from './app/components/multiple_choice';
@@ -108,14 +108,14 @@ function App() {
         // headerBackVisible: false
         />
         <Stack.Screen
-         name="ResearchGuidelines"
-         component={ResearchGuidelines}
-         options={{ title: 'Guidelines'}}
-        />
-        <Stack.Screen
         name="Questionnaire"
         component={Questionnaire}        
         />
+        <Stack.Screen
+         name="ResearchGuidelines"
+         component={ResearchGuidelines}
+         options={{ title: 'Guidelines'}}
+        />        
         <Stack.Screen
          name="SummaryQuestionnaire"
          component= {SummaryQuestionnaire}

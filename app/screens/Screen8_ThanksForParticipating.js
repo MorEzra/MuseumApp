@@ -8,7 +8,7 @@ export default function ThanksForParticipating({navigation}) {
   return (      
     <View style={styles.container}>     
       <Text style = {styles.header}>תודה על השתתפותך!</Text>
-      <Text>אנא החזירו את האאיפד לכניסה, שם תקבלו את שובר המתנה</Text>
+      <Text>אנא החזירו את האייפד לכניסה, שם תקבלו את שובר המתנה</Text>
       <StatusBar style="auto" />
     </View>
   );
