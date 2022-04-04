@@ -14,7 +14,7 @@ export default function ResearchGuidelines({navigation}) {
         </View>
         <Button 
           title="הבנתי, אפשר להתחיל"
-          onPress={() => navigation.navigate("SummaryQuestionnaire")}>
+          onPress={() => navigation.navigate("FirstArtPiece")}>
         </Button>
 
         <StatusBar style="auto" />

@@ -25,7 +25,8 @@
     "react-native-screens": "~3.10.1",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-web": "0.17.1",
-    "scroll-view": "^0.1.0"
+    "scroll-view": "^0.1.0",
+    "touchable-opacity-scale": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
