@@ -9,6 +9,7 @@ import WelcomeScreen from './app/screens/Screen1_WelcomeScreen';
 import Questionnaire from './app/screens/Screen2_Questionnaire';
 import ResearchGuidelines from './app/screens/Screen3_ResearchGuidelines';
 import FirstArtPiece from './app/screens/Screen4_FirstArtPiece';
+import CameraScreen from './app/screens/CameraScreen';
 import FirstArtPieceChoices from './app/screens/Screen5_FirstArtPieceChoices';
 import ThanksForParticipating from './app/screens/Screen8_ThanksForParticipating';
 
@@ -122,6 +123,11 @@ function App() {
         name="FirstArtPiece"
         component={FirstArtPiece}        
         options={{ title: 'FirstArtPiece'}}
+        />
+         <Stack.Screen
+        name="CameraScreen"
+        component={CameraScreen}        
+        options={{ title: 'CameraScreen'}}
         />
         <Stack.Screen
         name="FirstArtPieceChoices"

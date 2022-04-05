@@ -16,13 +16,22 @@ export default function FirstArtPiece({navigation}) {
     <View style={styles.container}>
      
       <Text style = {styles.header}>יצירה 1</Text>
+      {/* ------------------------------------------------ instructions ------------------------------------------------ */}
       <Text style={styles.text}>הוראות הגעה:</Text>
       <Text>------------------------------------------------הוראות------------------------------------------------</Text>
+
+      {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
+      <Button 
+          title="open camera"
+          onPress={() => navigation.navigate("CameraScreen")}>
+      </Button>
       <Image
         source={require("../assets/images/camera.png")}
         style={{ width: 100, height: 100 }} 
       />
+
+      {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
       <TouchableOpacity onPress={() => audioHandler()}>
         <Image
@@ -30,6 +39,8 @@ export default function FirstArtPiece({navigation}) {
                 style={{ width: 100, height: 100 }} 
         />
       </TouchableOpacity>
+
+      {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
         source={require("../assets/images/felizia.png")}
         style={{ width: 400, height: 400 }} 
