@@ -32,12 +32,6 @@ const styles = StyleSheet.create({
     },
   });
 
-function getTextFromCsv({picture}) { 
-    return ( 
-        csv().fromFile(csvFilePath).then((jsonObj)) =>{console.log(jsonObj)};
-   )
-}
-
 function MultipleChoice({picture}) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
