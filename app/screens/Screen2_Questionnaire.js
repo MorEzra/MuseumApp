@@ -3,16 +3,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 
-
+class QuestionnaireData {
+  constructor(name="", age=0, address="", gender=0, museumVisitsFrequency=0, lastMuseumVisit=0, telAvivMuseumVisit=0, thisExhibitionVisit=0) {
+    this.name = name;
+    this.address = address;
+    this.age = age;
+    this.gender = gender;
+    this.museumVisitsFrequency = museumVisitsFrequency;
+    this.lastMuseumVisit = lastMuseumVisit;
+    this.telAvivMuseumVisit = telAvivMuseumVisit;
+    this.thisExhibitionVisit = thisExhibitionVisit;
+  }
+}
+export let questionnaireData = new QuestionnaireData();  
 export default function Questionnaire({navigation}) {  
-    let [name, setName] = useState("");
-    let [age, setAge] = useState("");
-    let [gender, setGender] = useState("");
-    let [visitsFrequency, setVisitsFrequency] = useState("");
-    let [museumVisitsFrequency, setMuseumVisitsFrequency] = useState("");
-    let [lastMuseumVisit, setLastMuseumVisit] = useState("");
-    let [telAvivMuseumVisit, setTelAvivMuseumVisit] = useState("");
-    let [thisExhibitionVisit, setThisExhibitionVisit] = useState("");
+    let [name, setName]                                   = useState("");
+    let [address, setAddress]                             = useState("");
+    let [age, setAge]                                     = useState(0);
+    let [gender, setGender]                               = useState(0);
+    let [museumVisitsFrequency, setMuseumVisitsFrequency] = useState(0);
+    let [lastMuseumVisit, setLastMuseumVisit]             = useState(0);
+    let [telAvivMuseumVisit, setTelAvivMuseumVisit]       = useState(0);
+    let [thisExhibitionVisit, setThisExhibitionVisit]     = useState(0);    
 
     let genderArray = [
       {label: "זכר", value:0},      
@@ -42,21 +54,29 @@ export default function Questionnaire({navigation}) {
     let thisExhibitionVisitArray = [
       {label:"כן", value:0},
       {label:"לא", value:1}
-    ]
+    ]    
 
+    questionnaireData.name                  = name;
+    questionnaireData.age                   = age;
+    questionnaireData.address               = address;
+    questionnaireData.gender                = genderArray[gender].label;
+    questionnaireData.museumVisitsFrequency = museumVisitsFrequencyArray[museumVisitsFrequency];
+    questionnaireData.lastMuseumVisit       = lastMuseumVisitArray[lastMuseumVisit];
+    questionnaireData.telAvivMuseumVisit    = telAvivMuseumVisitArray[telAvivMuseumVisit];
+    questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
+    
     return (      
       <View style={styles.container}>
         <ScrollView>
           <View>
             <Text style = {styles.header} >שאלון פרטים אישיים</Text>
           </View>           
-
-          {/*------------------------------------------------------- first name -------------------------------------------------------*/}
+          {/*------------------------------------------------------- first name -------------------------------------------------------*/}          
           <View>
             <Text style={styles.text}>שם מלא</Text>        
             <TextInput
               style={styles.textInput}    
-              onChangeText={(firstName) => setName(firstName)}
+              onChangeText={(value) => setName(value)}
             />
           </View>
           {/*------------------------------------------------------- age -------------------------------------------------------*/}
@@ -64,7 +84,7 @@ export default function Questionnaire({navigation}) {
           <TextInput
             style = {styles.textInput}
             keyboardType="numeric"
-            onChangeText={(value) => setName(value)}
+            onChangeText={(value) => setAge(value)}
             
           />
           {/*------------------------------------------------------- gender -------------------------------------------------------*/}
@@ -75,13 +95,13 @@ export default function Questionnaire({navigation}) {
               initial={-1}
               onPress={(value) => setGender(value)}
               buttonSize = {5}
-              //formHorizontal={true}       
             />
           </View>
           {/*------------------------------------------------------- address -------------------------------------------------------*/}
           <Text style={styles.text}>כתובת</Text>
           <TextInput
             style = {styles.textInput}
+            onChangeText={(value) => setAddress(value)}
           />
           {/*------------------------------------------------------- occupation -------------------------------------------------------*/}
           <Text style={styles.text}>עיסוק</Text>
@@ -92,12 +112,11 @@ export default function Questionnaire({navigation}) {
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
           <Text style={styles.text}>מהי תדירות הגעתך למוזיאונים</Text>
           <View>
-            <RadioForm
+            <RadioForm              
               radio_props={museumVisitsFrequencyArray}
               initial={-1}
               onPress={(value) => setMuseumVisitsFrequency(value)}
               buttonSize = {5}
-              //formHorizontal={true}       
             />
           </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
@@ -108,7 +127,6 @@ export default function Questionnaire({navigation}) {
               initial={-1}
               onPress={(value) => setLastMuseumVisit(value)}
               buttonSize = {5}
-              //formHorizontal={true}       
             />
           </View>
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
@@ -119,7 +137,6 @@ export default function Questionnaire({navigation}) {
               initial={-1}
               onPress={(value) => setTelAvivMuseumVisit(value)}
               buttonSize = {5}              
-              //formHorizontal={true}       
             />
           </View>
 
@@ -131,17 +148,16 @@ export default function Questionnaire({navigation}) {
               initial={-1}
               onPress={(value) => setThisExhibitionVisit(value)}
               buttonSize = {5}
-              //formHorizontal={true}      
             />
-          </View>
-
+          </View>         
+          
           <Button 
             title="המשך"
             onPress={() => navigation.navigate("ResearchGuidelines")}>
-          </Button>
-
+          </Button>         
+          
           <StatusBar style="auto" />
-        </ScrollView>
+        </ScrollView>        
       </View>
       
     );

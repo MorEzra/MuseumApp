@@ -2,23 +2,24 @@ import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 
-export default function FirstArtPiece({navigation}) {
-    const [attribute, setAttribute] = useState([
-        {name:"attribute 1", key:1},
-        {name:"attribute 2", key:2},
-        {name:"attribute 3", key:3}               
-    ]);
 
-    function audioHandler() {
-        console.log("play audio");
-    }
+export default function ArtPieces({navigation}) {
+  let instructionsTexts = ["------------------------------------------------הוראות1------------------------------------------------",
+                           "------------------------------------------------הוראות2------------------------------------------------",
+                           "------------------------------------------------הוראות3------------------------------------------------",
+                           "------------------------------------------------הוראות4------------------------------------------------",
+  ] 
+  let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
+  
+  let [artPiecesCounter, setCounter] = useState(0);  
+  let active = false; // passive vs active group. should be random - set to true for debugging purposes
   return (      
     <View style={styles.container}>
      
-      <Text style = {styles.header}>יצירה 1</Text>
+      <Text style = {styles.header}>יצירה {artPiecesCounter + 1}</Text>
       {/* ------------------------------------------------ instructions ------------------------------------------------ */}
       <Text style={styles.text}>הוראות הגעה:</Text>
-      <Text>------------------------------------------------הוראות------------------------------------------------</Text>
+      <Text>{instructionsTexts[artPiecesCounter]}</Text>
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
@@ -26,14 +27,15 @@ export default function FirstArtPiece({navigation}) {
           title="open camera"
           onPress={() => navigation.navigate("CameraScreen")}>
       </Button>
-      <Image
-        source={require("../assets/images/camera.png")}
-        style={{ width: 100, height: 100 }} 
-      />
-
+      <TouchableOpacity>
+        <Image
+          source={require("../assets/images/camera.png")}
+          style={{ width: 100, height: 100 }} 
+        />
+      </TouchableOpacity>
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
-      <TouchableOpacity onPress={() => audioHandler()}>
+      <TouchableOpacity>
         <Image
                 source={require("../assets/images/speaker.png")}
                 style={{ width: 100, height: 100 }} 
@@ -42,13 +44,23 @@ export default function FirstArtPiece({navigation}) {
 
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
-        source={require("../assets/images/felizia.png")}
+        source={require("../assets/images/" + artPiecesNames[artPiecesCounter])}
         style={{ width: 400, height: 400 }} 
       />
             
       <Button 
           title="המשך"
-          onPress={() => navigation.navigate("FirstArtPieceChoices")}>
+          onPress={() => {
+            // this if statement belongs in ArtPieceChoices. here due to a bug in counter increment in ArPiecesChoices            
+            if (artPiecesCounter == artPiecesNames.length - 1) 
+              navigation.navigate("SummaryQuestionnaire");
+            else {              
+              setCounter(artPiecesCounter+1);            
+              if (active) {
+                navigation.navigate("ArtPiecesChoices");            
+              }
+            }
+          }}>
       </Button>
 
       <StatusBar style="auto" />
