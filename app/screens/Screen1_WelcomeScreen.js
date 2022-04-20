@@ -2,7 +2,10 @@ import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+
+export let welcomeScreenTotalTime;
 export default function WelcomeScreen({navigation}) {
+  let startingTime = performance.now();
   return (      
     <View style={styles.container}>
      
@@ -24,9 +27,14 @@ export default function WelcomeScreen({navigation}) {
 
       </Text>
 
-      <Button 
+      <Button           
           title="המשך"
-          onPress={() => navigation.navigate("Questionnaire")}>
+          onPress={() => {
+            let finishingTime = performance.now();
+            welcomeScreenTotalTime = (finishingTime - startingTime);
+            navigation.navigate("Questionnaire")
+           }
+          }>
       </Button>
 
       <StatusBar style="auto" />
@@ -47,7 +55,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
 
   });

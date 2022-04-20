@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Pressable, Image} from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image} from 'react-native';
 
 
 class BinaryChoicesData {
@@ -11,9 +11,12 @@ class BinaryChoicesData {
 
 let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"];
 export let binaryChoicesData = new BinaryChoicesData(artPiecesNames);
+export let binaryChoicesTotalTimeArray = new Array(artPiecesNames.length).fill(0);
 
 export default function BinaryChoices({navigation}) {    
-    let [artPiecesCounter, setCounter] = useState(0);  
+  let startingTime = performance.now();
+  
+  let [artPiecesCounter, setCounter] = useState(0);  
 
   return (      
     <View style={styles.container}>
@@ -24,10 +27,14 @@ export default function BinaryChoices({navigation}) {
         style={{ width: 400, height: 400 }}         
       />
 
-      <View style = {styles.buttons}>        
+      <View style = {styles.buttons}>
         <Pressable
             style = {styles.dislike}
             onPress={() => {
+                let finishingTime = performance.now();
+                binaryChoicesTotalTimeArray[artPiecesCounter] = (finishingTime - startingTime) / 1000;
+                finishingTime = performance.now();
+
                 binaryChoicesData.likings[artPiecesCounter] = 0;
                 if (artPiecesCounter == artPiecesNames.length - 1) 
                   navigation.navigate("ThanksForParticipating");
@@ -43,17 +50,20 @@ export default function BinaryChoices({navigation}) {
         <Pressable
             style = {styles.like}
             onPress={() => {
-                binaryChoicesData.likings[artPiecesCounter] = 1;
-                if (artPiecesCounter == artPiecesNames.length - 1) 
-                  navigation.navigate("ThanksForParticipating");
-                else {
-                  setCounter(artPiecesCounter+1);            
-               }
+              let finishingTime = performance.now();
+              binaryChoicesTotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);
+              finishingTime = performance.now();
+
+              binaryChoicesData.likings[artPiecesCounter] = 1;
+              if (artPiecesCounter == artPiecesNames.length - 1) 
+                navigation.navigate("ThanksForParticipating");
+              else {
+                setCounter(artPiecesCounter+1);            
+              }
             }
         }>
             <Text style={{color:"white", fontWeight:"bold"}}>אהבתי</Text>            
-        </Pressable>       
-
+        </Pressable>             
       </View>             
       <StatusBar style="auto" />
     </View>
@@ -73,7 +83,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
 
     buttons: {

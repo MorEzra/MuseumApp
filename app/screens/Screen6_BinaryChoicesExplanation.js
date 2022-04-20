@@ -2,8 +2,10 @@ import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 
+export let binaryChoicesExplanationTotalTime;
 
 export default function BinaryChoicesExplanation({navigation}) {  
+  let startingTime = performance.now();
   return (      
     <View style={styles.container}>
      
@@ -13,7 +15,12 @@ export default function BinaryChoicesExplanation({navigation}) {
       </Text>
       <Button 
           title="המשך"
-          onPress={() => navigation.navigate("BinaryChoices")}>
+          onPress={() => {
+            let finishingTime = performance.now();
+            binaryChoicesExplanationTotalTime = finishingTime - startingTime;
+            navigation.navigate("BinaryChoices")
+          }
+        }>
       </Button>          
       <StatusBar style="auto" />
     </View>
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
 
     preview: {

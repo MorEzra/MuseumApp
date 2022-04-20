@@ -15,8 +15,12 @@ class QuestionnaireData {
     this.thisExhibitionVisit = thisExhibitionVisit;
   }
 }
-export let questionnaireData = new QuestionnaireData();  
+export let questionnaireData = new QuestionnaireData();
+export let questionnaireTotalTime;
+
 export default function Questionnaire({navigation}) {  
+    let startingTime = performance.now();
+
     let [name, setName]                                   = useState("");
     let [address, setAddress]                             = useState("");
     let [age, setAge]                                     = useState(0);
@@ -153,7 +157,13 @@ export default function Questionnaire({navigation}) {
           
           <Button 
             title="המשך"
-            onPress={() => navigation.navigate("ResearchGuidelines")}>
+            onPress={() => 
+              {
+                let finishingTime = performance.now();
+                questionnaireTotalTime = finishingTime - startingTime;
+                navigation.navigate("ResearchGuidelines")
+              }
+            }>
           </Button>         
           
           <StatusBar style="auto" />
@@ -173,15 +183,15 @@ export default function Questionnaire({navigation}) {
   
     textInput: {
       width: 270,
-      borderColor: "lightblue",
-      borderWidth: 2,
+      borderColor: "black",
+      borderWidth: 1,
     },
   
     header: {
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",      
+      color: "dodgerblue",      
     },
   
     text: {

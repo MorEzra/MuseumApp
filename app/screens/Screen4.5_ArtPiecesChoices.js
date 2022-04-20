@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
     
     attributes: {

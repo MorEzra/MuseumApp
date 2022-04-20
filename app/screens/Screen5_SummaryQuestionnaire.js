@@ -15,8 +15,12 @@ class SummaryQuestionnaireData {
         this.tourType = tourType;
     }
 }
+
 export let summaryQuestionnaireData = new SummaryQuestionnaireData();
+export let summaryQuestionnaireTotalTime;
+
 export default function SummaryQuestionnaire({navigation}) {    
+    let startingTime = performance.now();
     let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
     
     let [im1Liking, setIm1Liking] = useState(0);
@@ -25,6 +29,11 @@ export default function SummaryQuestionnaire({navigation}) {
     let [im4Liking, setIm4Liking] = useState(0);
     let [im5Liking, setIm5Liking] = useState(0);
 
+    summaryQuestionnaireData.im1Liking = im1Liking;    
+    summaryQuestionnaireData.im2Liking = im2Liking;    
+    summaryQuestionnaireData.im3Liking = im3Liking;    
+    summaryQuestionnaireData.im4Liking = im4Liking;    
+    summaryQuestionnaireData.im5Liking = im5Liking;     
     
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
@@ -32,19 +41,7 @@ export default function SummaryQuestionnaire({navigation}) {
         {label: "ניטרלי", value:3},
         {label: "אהבתי", value:4},
         {label: "אהבתי מאוד", value:5},
-      ];
-
-    
-
-    
-    summaryQuestionnaireData.im1Liking = im1Liking;    
-    summaryQuestionnaireData.im2Liking = im2Liking;    
-    summaryQuestionnaireData.im3Liking = im3Liking;    
-    summaryQuestionnaireData.im4Liking = im4Liking;    
-    summaryQuestionnaireData.im5Liking = im5Liking;    
-    /*summaryQuestionnaireData.experience = experience;
-    summaryQuestionnaireData.additionalInfo = additionalInfo;
-    summaryQuestionnaireData.tourType = tourType;*/
+      ];              
 
     return (      
       <View style={styles.container}>   
@@ -52,13 +49,14 @@ export default function SummaryQuestionnaire({navigation}) {
             <Text style = {styles.header}>שאלון סיכום ניסוי</Text>
             <Text style = {styles.text}> אנא דרגו את מידת ההנאה מכל אחת מהיצירות שראיתם במהלך הסיור (כאשר 5 זהו הציון הגבוה)</Text>
             
-            <View>            
+            <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
                 <Image
                     source={require(`../assets/images/${artPiecesNames[0]}`)}
-                    style={{ width: 100, height: 100 }}    
+                    style={styles.pieces}    
                 />
                 <RadioForm
+                    style = {styles.radiobutton}                   
                     radio_props={likingArray}
                     initial={-1}
                     onPress={(value) => setIm1Liking(value)}
@@ -70,9 +68,10 @@ export default function SummaryQuestionnaire({navigation}) {
                 <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
                 <Image
                     source={require(`../assets/images/${artPiecesNames[1]}`)}
-                    style={{ width: 100, height: 100 }}    
+                    style={styles.pieces}    
                 />
                 <RadioForm
+                    style = {styles.radiobutton}                   
                     radio_props={likingArray}
                     initial={-1}
                     onPress={(value) => setIm2Liking(value)}
@@ -80,13 +79,14 @@ export default function SummaryQuestionnaire({navigation}) {
                 />
             </View>
 
-            <View>
+            <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
                 <Image
                     source={require(`../assets/images/${artPiecesNames[2]}`)}
-                    style={{ width: 100, height: 100 }}    
+                    style={styles.pieces}    
                 />
                 <RadioForm
+                    style = {styles.radiobutton}                   
                     radio_props={likingArray}
                     initial={-1}
                     onPress={(value) => setIm3Liking(value)}
@@ -98,9 +98,10 @@ export default function SummaryQuestionnaire({navigation}) {
                 <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
                 <Image
                     source={require(`../assets/images/${artPiecesNames[3]}`)}
-                    style={{ width: 100, height: 100 }}    
+                    style={styles.pieces}    
                 />
                 <RadioForm
+                    style = {styles.radiobutton}                   
                     radio_props={likingArray}
                     initial={-1}
                     onPress={(value) => setIm4Liking(value)}
@@ -108,13 +109,14 @@ export default function SummaryQuestionnaire({navigation}) {
                 />
             </View>
 
-            <View>
+            <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
                 <Image
                     source={require(`../assets/images/${artPiecesNames[3]}`)}
-                    style={{ width: 100, height: 100 }}    
+                    style={styles.pieces}    
                 />
                 <RadioForm
+                    style = {styles.radiobutton}                   
                     radio_props={likingArray}
                     initial={-1}
                     onPress={(value) => setIm5Liking(value)}
@@ -127,7 +129,12 @@ export default function SummaryQuestionnaire({navigation}) {
             
             <Button 
             title="המשך"
-            onPress={() => navigation.navigate("SummaryQuestionnaireAdditional")}>
+            onPress={() => {
+                let finishingTime = performance.now();
+                summaryQuestionnaireTotalTime = finishingTime - startingTime;
+                navigation.navigate("SummaryQuestionnaireAdditional")
+                }
+            }>
             </Button>
         </ScrollView>    
         <StatusBar style="auto" />
@@ -148,10 +155,20 @@ export default function SummaryQuestionnaire({navigation}) {
         textDecorationLine:'underline',
         fontSize:20,
         fontWeight:"bold",
-        color: "lightblue",  
+        color: "dodgerblue",  
       },
     
     text: {
         fontWeight:"bold"
+    },
+
+    pieces: {
+        width:150,
+        height:150,
+        alignSelf:"flex-end"
+    },
+    radiobutton: {
+        alignSelf:"flex-end"        
     }
+
   });

@@ -23,10 +23,10 @@ export default function ArtPieces({navigation}) {
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
-      <Button 
+      {/*<Button 
           title="open camera"
           onPress={() => navigation.navigate("CameraScreen")}>
-      </Button>
+      </Button>*/}
       <TouchableOpacity>
         <Image
           source={require("../assets/images/camera.png")}
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
 
     text: {
