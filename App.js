@@ -7,13 +7,14 @@ import { Audio } from 'expo-av';
 import WelcomeScreen from                  './app/screens/Screen1_WelcomeScreen';
 import Questionnaire from                  './app/screens/Screen2_Questionnaire';
 import ResearchGuidelines from             './app/screens/Screen3_ResearchGuidelines';
-import ArtPieces from                      './app/screens/Screen4_ArtPieces';
-import ArtPiecesChoices from               './app/screens/Screen4.5_ArtPiecesChoices';
-import SummaryQuestionnaire from           './app/screens/Screen5_SummaryQuestionnaire';
-import SummaryQuestionnaireAdditional from './app/screens/Screen5.5_SummaryQuestionnaireAdditional';
-import BinaryChoicesExplanation from       './app/screens/Screen6_BinaryChoicesExplanation';
-import BinaryChoices from                  './app/screens/Screen7_BinaryChoices';
-import ThanksForParticipating from         './app/screens/Screen8_ThanksForParticipating';
+import ArrivalInstructions from            './app/screens/Screen4_ArrivalInstructions';
+import ArtPieces from                      './app/screens/Screen5_ArtPieces';
+import SummaryQuestionnaire from           './app/screens/Screen6_SummaryQuestionnaire';
+import SummaryQuestionnaireAdditional from './app/screens/Screen6.5_SummaryQuestionnaireAdditional';
+import BinaryChoicesExplanation from       './app/screens/Screen7_BinaryChoicesExplanation';
+import BinaryChoices from                  './app/screens/Screen8_BinaryChoices';
+import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices';
+import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import MultipleChoice from                 './app/components/multiple_choice';
 import CameraScreen from                   './app/screens/CameraScreen';
 
@@ -123,6 +124,12 @@ function App() {
         />
 
         <Stack.Screen
+        name="ArrivalInstructions"
+        component={ArrivalInstructions}        
+        options={{ title: "הוראות הגעה"}}
+        />
+
+        <Stack.Screen
         name="ArtPieces"
         component={ArtPieces}        
         options={{ title: "יצירות"}}
@@ -131,13 +138,7 @@ function App() {
         <Stack.Screen
         name="CameraScreen"
         component={CameraScreen}        
-        />
-
-        <Stack.Screen
-        name="ArtPiecesChoices"
-        component={ArtPiecesChoices}        
-        options={{ title: 'בחרו את היצירה הבאה'}}
-        />
+        />    
         
         <Stack.Screen
          name="SummaryQuestionnaire"
@@ -163,6 +164,12 @@ function App() {
         options={{ title: 'סמנו אהבתי / לא אהבתי'}}
         />
         
+        <Stack.Screen
+        name="BinaryChoices2"
+        component={BinaryChoices2}
+        options={{ title: 'לחצו על התמונה שאתם מעדיפים'}}
+        />
+
         <Stack.Screen
          name="ThanksForParticipating"
          component= {ThanksForParticipating}

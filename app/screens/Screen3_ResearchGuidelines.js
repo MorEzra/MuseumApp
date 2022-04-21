@@ -19,8 +19,8 @@ export default function ResearchGuidelines({navigation}) {
           title="הבנתי, אפשר להתחיל"
           onPress={() => {
             let finishingTime = performance.now();
-            researchGuidelinesTotalTime = finishingTime - startingTime;
-            navigation.navigate("ArtPieces")
+            researchGuidelinesTotalTime = finishingTime - startingTime;            
+            navigation.navigate("ArrivalInstructions")
             }
           }>
         </Button>
