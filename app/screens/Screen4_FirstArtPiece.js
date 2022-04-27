@@ -3,8 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 
 import AudioPlayer from '../components/AudioPlayer';
-import CameraButton from '../components/CameraButton';
-
 
 export default function FirstArtPiece({navigation}) {
     const [attribute, setAttribute] = useState([
@@ -22,12 +20,14 @@ export default function FirstArtPiece({navigation}) {
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
-      
+      <Button 
+          title="open camera"
+          onPress={() => navigation.navigate("CameraScreen")}>
+      </Button>
 
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
       <AudioPlayer />
-      <CameraButton />
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
         source={require("../assets/images/felizia.png")}
