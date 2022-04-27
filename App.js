@@ -12,6 +12,8 @@ import FirstArtPiece from './app/screens/Screen4_FirstArtPiece';
 import CameraScreen from './app/screens/CameraScreen';
 import FirstArtPieceChoices from './app/screens/Screen5_FirstArtPieceChoices';
 import ThanksForParticipating from './app/screens/Screen8_ThanksForParticipating';
+import PlayerScreen from './app/screens/PlayerScreen';
+
 
 import MultipleChoice from './app/components/multiple_choice';
 import SummaryQuestionnaire from './app/screens/Screen7_SummaryQuestionnaireScreen';
@@ -106,8 +108,9 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen
          name="WelcomeScreen"
-         component= {WelcomeScreen}
+         component= {PlayerScreen}
          options={{ title: 'Welcome' }}
+         initialParams={{item: 42}}
         // headerBackVisible: false
         />
         <Stack.Screen
