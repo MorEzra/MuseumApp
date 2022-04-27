@@ -12,7 +12,7 @@ export default function FirstArtPiece({navigation}) {
         {name:"attribute 2", key:2},
         {name:"attribute 3", key:3}               
     ]);
-
+    const heyWhat = () => console.log("hey");
   return (
     <View style={styles.container} >
       <Text style = {styles.header}>יצירה 1</Text>
@@ -24,7 +24,7 @@ export default function FirstArtPiece({navigation}) {
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
       <Button 
           title="open camera"
-          onPress={() => navigation.navigate("CameraScreen")}>
+          onPress={heyWhat}>
       </Button>
       <Image
         source={require("../assets/images/camera.png")}

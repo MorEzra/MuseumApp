@@ -5,25 +5,27 @@ import { Audio } from 'expo-av';
   
 const AudioPlayer = (props) =>{  
 	const [sound, setSound] = React.useState();	  
+	const [count, setCount] = useState(0);
+  	const onPress = () => setCount(prevCount => prevCount + 1);
 
 	async function playSound() {
-		console.log('Loading Sound');
-		const { sound } = await Audio.Sound.createAsync(
-			require('../assets/audio/Alarm01.wav')
-		);
-		setSound(sound);
-
-		console.log('Playing Sound');
-		await sound.playAsync(); 
+		if(sound) {
+			setCount('Playing Sound');
+			await sound.playAsync()
+		} else {
+			setCount('Loading Sound');
+			const { sound } = await Audio.Sound.createAsync(
+				require('../assets/audio/Alarm01.wav')
+			);
+			setSound(sound);
+			setCount('Playing Sound');
+			
+			await sound.playAsync()
+		}
 	}
 	async function pauseSound() {
 		console.log('Pausing');
 		sound.pauseAsync();
-	}
-	
-	async function replaySound() {
-		console.log('Pausing');
-		sound.playAsync();
 	}
 
 	React.useEffect(() => {
@@ -36,6 +38,7 @@ const AudioPlayer = (props) =>{
 
 	return (
 		<View style={{ marginTop: 50 }}>
+			<Text>Count: {count}</Text>
 			<TouchableOpacity onPress={() => {playSound()}}>
 				<Image
 					source={require("../assets/images/speaker.png")}
@@ -43,12 +46,6 @@ const AudioPlayer = (props) =>{
 				/>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => {pauseSound()}}>
-				<Image
-					source={require("../assets/images/speaker.png")}
-					style={{ width: 50, height: 50 }} 
-				/>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => {replaySound()}}>
 				<Image
 					source={require("../assets/images/speaker.png")}
 					style={{ width: 50, height: 50 }} 
