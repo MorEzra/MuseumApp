@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 
 import AudioPlayer from '../components/AudioPlayer';
-
+import CameraButton from '../components/CameraButton';
 
 
 export default function FirstArtPiece({navigation}) {
@@ -12,7 +12,7 @@ export default function FirstArtPiece({navigation}) {
         {name:"attribute 2", key:2},
         {name:"attribute 3", key:3}               
     ]);
-    const heyWhat = () => console.log("hey");
+    
   return (
     <View style={styles.container} >
       <Text style = {styles.header}>יצירה 1</Text>
@@ -22,14 +22,7 @@ export default function FirstArtPiece({navigation}) {
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
-      <Button 
-          title="open camera"
-          onPress={heyWhat}>
-      </Button>
-      <Image
-        source={require("../assets/images/camera.png")}
-        style={{ width: 100, height: 100 }} 
-      />
+      <CameraButton />
 
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
