@@ -16,6 +16,15 @@ const AudioPlayer = (props) =>{
 		console.log('Playing Sound');
 		await sound.playAsync(); 
 	}
+	async function pauseSound() {
+		console.log('Pausing');
+		sound.pauseAsync();
+	}
+	
+	async function replaySound() {
+		console.log('Pausing');
+		sound.playAsync();
+	}
 
 	React.useEffect(() => {
 		return sound
@@ -31,6 +40,18 @@ const AudioPlayer = (props) =>{
 				<Image
 					source={require("../assets/images/speaker.png")}
 					style={{ width: 100, height: 100 }} 
+				/>
+			</TouchableOpacity>
+			<TouchableOpacity onPress={() => {pauseSound()}}>
+				<Image
+					source={require("../assets/images/speaker.png")}
+					style={{ width: 50, height: 50 }} 
+				/>
+			</TouchableOpacity>
+			<TouchableOpacity onPress={() => {replaySound()}}>
+				<Image
+					source={require("../assets/images/speaker.png")}
+					style={{ width: 50, height: 50 }} 
 				/>
 			</TouchableOpacity>
 		</View>
