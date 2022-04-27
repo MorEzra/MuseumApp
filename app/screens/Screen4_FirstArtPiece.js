@@ -2,6 +2,10 @@ import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 
+import AudioPlayer from '../components/AudioPlayer';
+
+
+
 export default function FirstArtPiece({navigation}) {
     const [attribute, setAttribute] = useState([
         {name:"attribute 1", key:1},
@@ -9,12 +13,8 @@ export default function FirstArtPiece({navigation}) {
         {name:"attribute 3", key:3}               
     ]);
 
-    function audioHandler() {
-        console.log("play audio");
-    }
-  return (      
-    <View style={styles.container}>
-     
+  return (
+    <View style={styles.container} >
       <Text style = {styles.header}>יצירה 1</Text>
       {/* ------------------------------------------------ instructions ------------------------------------------------ */}
       <Text style={styles.text}>הוראות הגעה:</Text>
@@ -33,13 +33,7 @@ export default function FirstArtPiece({navigation}) {
 
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
-      <TouchableOpacity onPress={() => audioHandler()}>
-        <Image
-                source={require("../assets/images/speaker.png")}
-                style={{ width: 100, height: 100 }} 
-        />
-      </TouchableOpacity>
-
+      <AudioPlayer />
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
         source={require("../assets/images/felizia.png")}
@@ -52,7 +46,8 @@ export default function FirstArtPiece({navigation}) {
       </Button>
 
       <StatusBar style="auto" />
-    </View>
+    </View>    
+    
   );
 }
 
