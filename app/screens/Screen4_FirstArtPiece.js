@@ -4,15 +4,13 @@ import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-na
 
 import AudioPlayer from '../components/AudioPlayer';
 
-
-
 export default function FirstArtPiece({navigation}) {
     const [attribute, setAttribute] = useState([
         {name:"attribute 1", key:1},
         {name:"attribute 2", key:2},
         {name:"attribute 3", key:3}               
     ]);
-    const heyWhat = () => console.log("hey");
+    
   return (
     <View style={styles.container} >
       <Text style = {styles.header}>יצירה 1</Text>
@@ -24,12 +22,8 @@ export default function FirstArtPiece({navigation}) {
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
       <Button 
           title="open camera"
-          onPress={heyWhat}>
+          onPress={() => navigation.navigate("CameraScreen")}>
       </Button>
-      <Image
-        source={require("../assets/images/camera.png")}
-        style={{ width: 100, height: 100 }} 
-      />
 
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>

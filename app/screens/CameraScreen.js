@@ -1,22 +1,21 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
-//import { RNCamera } from 'react-native-camera';
-import { useCamera } from 'react-native-camera-hooks';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
+
+import CameraButton from '../components/CameraButton';
 
 
-export default function CameraScreen({navigation}) {
-  //[picture, takePicture] = useCamera(null);
-  return (      
-    <View style={styles.container}>
-     
-      <Text style = {styles.header}>camera screen</Text>      
-      <Button 
-          title="המשך"
-          onPress={() => navigation.navigate("FirstArtPiece")}>
-      </Button>          
+export default function CaneraScreen({navigation}) {
+    
+  return (
+    <View style={styles.container} >
+      <Text style = {styles.header}>נא לצלם</Text>
+      {/* ------------------------------------------------ camera ------------------------------------------------ */}
+      <CameraButton />
+
       <StatusBar style="auto" />
-    </View>
+    </View>    
+    
   );
 }
 
@@ -36,11 +35,16 @@ const styles = StyleSheet.create({
       color: "lightblue",            
     },
 
-    preview: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-end',    
-      },
+    text: {
+        fontWeight:'bold',
+        fontSize:15,
+        textDecorationLine: 'underline',
+    },
 
+    attributes: {
+        backgroundColor:"orange",
+        fontSize:20,
+        marginTop:20,
+    },
   });
   
