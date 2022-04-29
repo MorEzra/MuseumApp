@@ -1,18 +1,20 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
-export default function FirstArtPieceChoices({navigation}) {
-    const [attribute, setAttribute] = useState([
+var x = 0;
+export default function ArtPiecesChoices({navigation}) {
+  const [attribute, setAttribute] = useState([
         {name:"attribute 1", key:1},
         {name:"attribute 2", key:2},
         {name:"attribute 3", key:3}               
-    ]);
+  ]);
+
+  let [counter, setCounter] = useState(0);  
     
   return (      
     <View style={styles.container}>   
       <Text style={styles.header}>איזה מאפיינים תרצה שיהיו ליצירה הבאה?</Text>      
-      
+      <Text>{counter}</Text>
       {attribute.map(
           (item) => { return (
                 <View key={item.key}>
@@ -24,7 +26,10 @@ export default function FirstArtPieceChoices({navigation}) {
 
       <Button 
           title="המשך"
-          onPress={() => navigation.navigate("SummaryQuestionnaire")}>
+          onPress={() => {            
+            setCounter(counter+1)
+            navigation.navigate("ArtPieces");
+            }}>
       </Button>
       <StatusBar style="auto" />
     </View>
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",            
+      color: "dodgerblue",            
     },
     
     attributes: {

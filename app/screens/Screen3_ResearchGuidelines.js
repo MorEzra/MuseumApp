@@ -2,7 +2,10 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+export let researchGuidelinesTotalTime;
+
 export default function ResearchGuidelines({navigation}) {  
+    let startingTime = performance.now();
     return (      
       <View style={styles.container}>                
         <Text style = {styles.header} >שלבי הניסוי</Text>
@@ -14,7 +17,12 @@ export default function ResearchGuidelines({navigation}) {
         </View>
         <Button 
           title="הבנתי, אפשר להתחיל"
-          onPress={() => navigation.navigate("FirstArtPiece")}>
+          onPress={() => {
+            let finishingTime = performance.now();
+            researchGuidelinesTotalTime = finishingTime - startingTime;
+            navigation.navigate("ArtPieces")
+            }
+          }>
         </Button>
 
         <StatusBar style="auto" />
@@ -34,7 +42,7 @@ export default function ResearchGuidelines({navigation}) {
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "lightblue",  
+      color: "dodgerblue",  
     },
 
   });
