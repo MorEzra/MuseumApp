@@ -10,8 +10,15 @@ export default function ArtPieces({navigation}) {
                            "------------------------------------------------הוראות3------------------------------------------------",
                            "------------------------------------------------הוראות4------------------------------------------------",
   ] 
-  let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
-  
+
+  let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]   
+  let artPieces = [
+    require("../assets/images/pic1.png"),
+    require("../assets/images/pic2.png"),
+    require("../assets/images/pic3.jpg"),
+    require("../assets/images/pic4.jpg")
+  ]
+
   let [artPiecesCounter, setCounter] = useState(0);  
   let active = false; // passive vs active group. should be random - set to true for debugging purposes
   return (      
@@ -40,7 +47,7 @@ export default function ArtPieces({navigation}) {
 
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
-        source={require("../assets/images/" + artPiecesNames[artPiecesCounter])}
+        source={artPieces[artPiecesCounter]}
         style={{ width: 400, height: 400 }} 
       />
             
