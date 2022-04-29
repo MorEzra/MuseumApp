@@ -5,8 +5,6 @@ import { Audio } from 'expo-av';
   
 const AudioPlayer = (props) =>{  
 	const [sound, setSound] = React.useState();	  
-	const [count, setCount] = useState(0);
-  	const onPress = () => setCount(prevCount => prevCount + 1);
 
 	async function playSound() {
 		if(sound) {
@@ -38,7 +36,6 @@ const AudioPlayer = (props) =>{
 
 	return (
 		<View style={{ marginTop: 50 }}>
-			<Text>Count: {count}</Text>
 			<TouchableOpacity onPress={() => {playSound()}}>
 				<Image
 					source={require("../assets/images/speaker.png")}
