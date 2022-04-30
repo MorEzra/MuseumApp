@@ -8,15 +8,15 @@ const AudioPlayer = (props) =>{
 
 	async function playSound() {
 		if(sound) {
-			setCount('Playing Sound');
+			console.log('Playing Sound');
 			await sound.playAsync()
 		} else {
-			setCount('Loading Sound');
+			console.log('Loading Sound');
 			const { sound } = await Audio.Sound.createAsync(
 				require('../assets/audio/Alarm01.wav')
 			);
 			setSound(sound);
-			setCount('Playing Sound');
+			console.log('Playing Sound');
 			
 			await sound.playAsync()
 		}
