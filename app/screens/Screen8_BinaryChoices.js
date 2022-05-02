@@ -10,6 +10,12 @@ class BinaryChoicesData {
 }
 
 let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"];
+let artPieces = [
+  require("../assets/images/pic1.png"),
+  require("../assets/images/pic2.png"),
+  require("../assets/images/pic3.jpg"),
+  require("../assets/images/pic4.jpg")
+]
 export let binaryChoicesData = new BinaryChoicesData(artPiecesNames);
 export let binaryChoicesTotalTimeArray = new Array(artPiecesNames.length).fill(0);
 
@@ -23,7 +29,7 @@ export default function BinaryChoices({navigation}) {
       <Text style = {styles.header}>אנא סמנו "אהבתי" או "לא אהבתי"</Text>      
       
       <Image        
-        source={require("../assets/images/" + artPiecesNames[artPiecesCounter])}
+        source={artPieces[artPiecesCounter]}
         style={{ width: 400, height: 400 }}         
       />
 

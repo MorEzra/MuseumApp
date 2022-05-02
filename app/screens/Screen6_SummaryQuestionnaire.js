@@ -52,7 +52,7 @@ export default function SummaryQuestionnaire({navigation}) {
             <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
                 <Image
-                    source={require(`../assets/images/${artPiecesNames[0]}`)}
+                    source={require(`../assets/images/pic1.png`)}
                     style={styles.pieces}    
                 />
                 <RadioForm
@@ -67,7 +67,7 @@ export default function SummaryQuestionnaire({navigation}) {
             <View>
                 <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
                 <Image
-                    source={require(`../assets/images/${artPiecesNames[1]}`)}
+                    source={require(`../assets/images/pic2.png`)}
                     style={styles.pieces}    
                 />
                 <RadioForm
@@ -82,7 +82,7 @@ export default function SummaryQuestionnaire({navigation}) {
             <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
                 <Image
-                    source={require(`../assets/images/${artPiecesNames[2]}`)}
+                    source={require('../assets/images/pic3.jpg')}
                     style={styles.pieces}    
                 />
                 <RadioForm
@@ -97,7 +97,7 @@ export default function SummaryQuestionnaire({navigation}) {
             <View>
                 <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
                 <Image
-                    source={require(`../assets/images/${artPiecesNames[3]}`)}
+                    source={require(`../assets/images/pic4.jpg`)}
                     style={styles.pieces}    
                 />
                 <RadioForm
@@ -112,7 +112,7 @@ export default function SummaryQuestionnaire({navigation}) {
             <View style={{backgroundColor:"aliceblue"}}>            
                 <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
                 <Image
-                    source={require(`../assets/images/${artPiecesNames[3]}`)}
+                    source={require(`../assets/images/pic4.jpg`)}
                     style={styles.pieces}    
                 />
                 <RadioForm
