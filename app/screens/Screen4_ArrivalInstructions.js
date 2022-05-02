@@ -27,6 +27,7 @@ export default function ArrivalInstructions({navigation}) {
         <Image
           source={require("../assets/images/camera.png")}
           style={{ width: 100, height: 100 }} 
+          onPress={() => navigation.navigate("CameraScreen")}
         />
       </TouchableOpacity>         
 
