@@ -49,79 +49,100 @@ export default function SummaryQuestionnaire({navigation}) {
             <Text style = {styles.header}>שאלון סיכום ניסוי</Text>
             <Text style = {styles.text}> אנא דרגו את מידת ההנאה מכל אחת מהיצירות שראיתם במהלך הסיור (כאשר 5 זהו הציון הגבוה)</Text>
             
-            <View style={{backgroundColor:"aliceblue"}}>            
-                <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
-                <Image
-                    source={require(`../assets/images/pic1.png`)}
-                    style={styles.pieces}    
-                />
-                <RadioForm
-                    style = {styles.radiobutton}                   
-                    radio_props={likingArray}
-                    initial={-1}
-                    onPress={(value) => setIm1Liking(value)}
-                    buttonSize = {5}
-                />
+            <View style={styles.oddViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
+                </View>     
+                <View style= {styles.oddView}>
+                    
+                    <Image
+                        source={require(`../assets/images/pic1.png`)}
+                        style={styles.pieces}    
+                    />
+                    <RadioForm
+                        style = {styles.radiobutton}                   
+                        radio_props={likingArray}
+                        initial={-1}
+                        onPress={(value) => setIm1Liking(value)}
+                        buttonSize = {5}
+                    />
+                </View>
             </View>
             
-            <View>
-                <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
-                <Image
-                    source={require(`../assets/images/pic2.png`)}
-                    style={styles.pieces}    
-                />
-                <RadioForm
-                    style = {styles.radiobutton}                   
-                    radio_props={likingArray}
-                    initial={-1}
-                    onPress={(value) => setIm2Liking(value)}
-                    buttonSize = {5}
-                />
+            <View style={styles.evenViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/pic2.png`)}
+                        style={styles.pieces}    
+                    />
+                    <RadioForm
+                        style = {styles.radiobutton}                   
+                        radio_props={likingArray}
+                        initial={-1}
+                        onPress={(value) => setIm2Liking(value)}
+                        buttonSize = {5}
+                    />
+                </View>
             </View>
 
-            <View style={{backgroundColor:"aliceblue"}}>            
-                <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
-                <Image
-                    source={require('../assets/images/pic3.jpg')}
-                    style={styles.pieces}    
-                />
-                <RadioForm
-                    style = {styles.radiobutton}                   
-                    radio_props={likingArray}
-                    initial={-1}
-                    onPress={(value) => setIm3Liking(value)}
-                    buttonSize = {5}
-                />
+            <View style={styles.oddViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
+                </View>     
+                <View style= {styles.oddView}>
+                    <Image
+                        source={require('../assets/images/pic3.jpg')}
+                        style={styles.pieces}    
+                    />
+                    <RadioForm
+                        style = {styles.radiobutton}                   
+                        radio_props={likingArray}
+                        initial={-1}
+                        onPress={(value) => setIm3Liking(value)}
+                        buttonSize = {5}
+                    />
+                </View>
             </View>
 
-            <View>
-                <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
-                <Image
-                    source={require(`../assets/images/pic4.jpg`)}
-                    style={styles.pieces}    
-                />
-                <RadioForm
-                    style = {styles.radiobutton}                   
-                    radio_props={likingArray}
-                    initial={-1}
-                    onPress={(value) => setIm4Liking(value)}
-                    buttonSize = {5}
-                />
+            <View style={styles.evenViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/pic4.jpg`)}
+                        style={styles.pieces}    
+                    />
+                    <RadioForm
+                        style = {styles.radiobutton}                   
+                        radio_props={likingArray}
+                        initial={-1}
+                        onPress={(value) => setIm4Liking(value)}
+                        buttonSize = {5}
+                    />
+                </View>
             </View>
 
-            <View style={{backgroundColor:"aliceblue"}}>            
-                <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
-                <Image
-                    source={require(`../assets/images/pic4.jpg`)}
-                    style={styles.pieces}    
-                />
-                <RadioForm
-                    style = {styles.radiobutton}                   
-                    radio_props={likingArray}
-                    initial={-1}
-                    onPress={(value) => setIm5Liking(value)}
-                    buttonSize = {5}
-                />
+            <View style={styles.oddViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/pic4.jpg`)}
+                        style={styles.pieces}    
+                    />
+                    <RadioForm
+                        style = {styles.radiobutton}                   
+                        radio_props={likingArray}
+                        initial={-1}
+                        onPress={(value) => setIm5Liking(value)}
+                        buttonSize = {5}
+                    />
+                </View>
             </View>
 
             
@@ -156,19 +177,62 @@ export default function SummaryQuestionnaire({navigation}) {
         fontSize:20,
         fontWeight:"bold",
         color: "dodgerblue",  
+        marginBottom:15
       },
     
     text: {
-        fontWeight:"bold"
+        fontWeight:"bold",
+        fontSize:17,
+        marginBottom:15
+        
     },
 
     pieces: {
         width:150,
         height:150,
-        alignSelf:"flex-end"
+        marginLeft:15        
     },
     radiobutton: {
-        alignSelf:"flex-end"        
-    }
+        
+    },
 
+    block: {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        marginBottom:15
+    },
+
+
+    oddViewWrapper: {
+        borderColor:"black",
+        borderRadius:10,
+        borderWidth:2,
+        backgroundColor:"aliceblue",    
+        marginBottom:10  
+    },
+
+    evenViewWrapper: {
+        borderColor:"black",
+        borderRadius:10,
+        borderWidth:2,
+        backgroundColor:"#fff",
+        marginBottom:10  
+    },
+
+    oddView: {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        backgroundColor:"aliceblue",      
+        marginBottom:10,    
+      },
+  
+      evenView: {
+        flexDirection:"row",
+        justifyContent:"space-between",
+        backgroundColor:"#fff",      
+        marginBottom:10,
+        borderRadius:10,
+        borderWidth:2
+      },
+    
   });

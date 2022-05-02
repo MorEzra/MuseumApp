@@ -35,17 +35,17 @@ const AudioPlayer = (props) =>{
 	}, [sound]);
 
 	return (
-		<View style={{ marginTop: 50 }}>
+		<View style={styles.audio}>
 			<TouchableOpacity onPress={() => {playSound()}}>
 				<Image
-					source={require("../assets/images/speaker.png")}
-					style={{ width: 100, height: 100 }} 
+					source={require("../assets/images/play.png")}
+					style={styles.audioButtons} 
 				/>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => {pauseSound()}}>
 				<Image
-					source={require("../assets/images/speaker.png")}
-					style={{ width: 50, height: 50 }} 
+					source={require("../assets/images/pause.png")}
+					style={styles.audioButtons} 
 				/>
 			</TouchableOpacity>
 		</View>
@@ -65,7 +65,15 @@ const styles = StyleSheet.create({
       fontWeight:"bold",
       color: "lightblue",            
     },
+	audio: {
+		flexDirection: "row",
+		justifyContent: 'center',    
+	},
 
+	audioButtons: {
+		width:80, 
+		height:80,
+	}
   });
 
 export default AudioPlayer

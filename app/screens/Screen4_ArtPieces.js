@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity} from 'react-native';
 
 import AudioPlayer from '../components/AudioPlayer';
 
@@ -23,50 +23,54 @@ export default function ArtPieces({navigation}) {
   let active = false; // passive vs active group. should be random - set to true for debugging purposes
   return (      
     <View style={styles.container}>
-     
-      <Text style = {styles.header}>יצירה {artPiecesCounter + 1}</Text>
-      {/* ------------------------------------------------ instructions ------------------------------------------------ */}
-      <Text style={styles.text}>הוראות הגעה:</Text>
-      <Text>{instructionsTexts[artPiecesCounter]}</Text>
+      <ScrollView>
+        <Text style = {styles.header}>יצירה {artPiecesCounter + 1}</Text>
+        {/* ------------------------------------------------ instructions ------------------------------------------------ */}
+        <Text style={styles.text}>הוראות הגעה:</Text>
+        <Text>{instructionsTexts[artPiecesCounter]}</Text>
 
-      {/* ------------------------------------------------ camera ------------------------------------------------ */}
-      <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
-      <Button 
-          title="open camera"
-          onPress={() => navigation.navigate("CameraScreen")}>
-      </Button>
-      <TouchableOpacity>
-        <Image
-          source={require("../assets/images/camera.png")}
-          style={{ width: 100, height: 100 }} 
+        {/* ------------------------------------------------ camera ------------------------------------------------ */}
+        <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>
+        <Button 
+            title="open camera"
+            onPress={() => navigation.navigate("CameraScreen")}>
+        </Button>
+        <TouchableOpacity>
+          <Image
+            source={require("../assets/images/camera.png")}
+            style={{ width: 100, height: 100 }} 
+          />
+        </TouchableOpacity>
+        {/* ------------------------------------------------ audio ------------------------------------------------ */}
+        
+        
+
+        {/* ------------------------------------------------ art piece ------------------------------------------------ */}
+        <Image        
+          source={artPieces[artPiecesCounter]}
+          style={{ width: 400, height: 400}} 
         />
-      </TouchableOpacity>
-      {/* ------------------------------------------------ audio ------------------------------------------------ */}
-      <Text>מעולה! כעת, ניתן לשמוע הסבר</Text>
-      <AudioPlayer />
 
-      {/* ------------------------------------------------ art piece ------------------------------------------------ */}
-      <Image        
-        source={artPieces[artPiecesCounter]}
-        style={{ width: 400, height: 400 }} 
-      />
-            
-      <Button 
-          title="המשך"
-          onPress={() => {
-            // this if statement belongs in ArtPieceChoices. here due to a bug in counter increment in ArPiecesChoices            
-            if (artPiecesCounter == artPiecesNames.length - 1) 
-              navigation.navigate("SummaryQuestionnaire");
-            else {              
-              setCounter(artPiecesCounter+1);            
-              if (active) {
-                navigation.navigate("ArtPiecesChoices");            
+        {/* ------------------------------------------------ audio ------------------------------------------------ */}
+        <AudioPlayer />      
+        
+        <Button 
+            title="המשך"
+            onPress={() => {
+              // this if statement belongs in ArtPieceChoices. here due to a bug in counter increment in ArPiecesChoices            
+              if (artPiecesCounter == artPiecesNames.length - 1) 
+                navigation.navigate("SummaryQuestionnaire");
+              else {              
+                setCounter(artPiecesCounter+1);            
+                if (active) {
+                  navigation.navigate("ArtPiecesChoices");            
+                }
               }
-            }
-          }}>
-      </Button>
+            }}>
+        </Button>
 
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
+      </ScrollView>
     </View>    
     
   );

@@ -52,7 +52,7 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
     <View style={styles.container}>
         <View>
             <Text style = {styles.header}>המשך שאלון סיכום ניסוי</Text>
-            <View style={{backgroundColor:"aliceblue"}}>            
+            <View style={styles.oddView}>            
                 <Text style = {styles.text}>דרגו את חוויתכם מהסיור</Text>
                 <RadioForm
                     style = {styles.radiobutton}                   
@@ -63,7 +63,7 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
                 />
             </View>
 
-            <View>
+            <View style={styles.evenView}>            
                 <Text style = {styles.text}>האם הייתם רוצים לקבל מידע נוסף במהלך הסיור</Text>
                 <RadioForm
                     style = {styles.radiobutton}                   
@@ -74,7 +74,7 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
                 />
             </View>
                 
-            <View style={{backgroundColor:"aliceblue"}}>            
+            <View style={styles.oddView}>            
                 <Text style = {styles.text}>כיצד הייתם רוצים שהסיור יתנהל?</Text>
                 <RadioForm
                     style = {styles.radiobutton}                   
@@ -113,7 +113,8 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "dodgerblue",            
+      color: "dodgerblue",  
+      marginBottom:10          
     },
 
     text: {
@@ -122,6 +123,21 @@ const styles = StyleSheet.create({
 
     radiobutton: {
         alignSelf:"flex-end"        
-    }
+    },
+
+    oddView: {
+        backgroundColor:"aliceblue",      
+        marginBottom:10,
+        borderColor:"black",
+        borderRadius:10,
+        borderWidth:2
+      },
+  
+      evenView: {
+        backgroundColor:"#fff",      
+        marginBottom:10,
+        borderRadius:10,
+        borderWidth:2
+      },
   });
   

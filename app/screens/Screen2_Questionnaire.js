@@ -71,29 +71,31 @@ export default function Questionnaire({navigation}) {
     
     return (      
       <View style={styles.container}>
-        <ScrollView>
-          <View>
+        <ScrollView >
+          <View style={{marginBottom:10}}>
             <Text style = {styles.header} >שאלון פרטים אישיים</Text>
           </View>           
           {/*------------------------------------------------------- first name -------------------------------------------------------*/}          
-          <View>
+          <View style={styles.oddView}>
             <Text style={styles.text}>שם מלא</Text>        
             <TextInput
               style={styles.textInput}    
               onChangeText={(value) => setName(value)}
             />
-          </View>
+          
           {/*------------------------------------------------------- age -------------------------------------------------------*/}
-          <Text style={styles.text}>גיל</Text>
-          <TextInput
-            style = {styles.textInput}
-            keyboardType="numeric"
-            onChangeText={(value) => setAge(value)}
-            
-          />
+            <Text style={styles.text}>גיל</Text>
+            <TextInput
+              style = {styles.textInput}
+              keyboardType="numeric"
+              onChangeText={(value) => setAge(value)}
+              
+            />
+          </View>
           {/*------------------------------------------------------- gender -------------------------------------------------------*/}
-          <Text style={styles.text}>מגדר</Text>
-          <View>
+          
+          <View style={styles.evenView}>
+            <Text style={styles.text}>מגדר</Text>
             <RadioForm
               radio_props={genderArray}
               initial={-1}
@@ -102,20 +104,23 @@ export default function Questionnaire({navigation}) {
             />
           </View>
           {/*------------------------------------------------------- address -------------------------------------------------------*/}
-          <Text style={styles.text}>כתובת</Text>
-          <TextInput
-            style = {styles.textInput}
-            onChangeText={(value) => setAddress(value)}
-          />
-          {/*------------------------------------------------------- occupation -------------------------------------------------------*/}
-          <Text style={styles.text}>עיסוק</Text>
-    
-          <TextInput
-            style = {styles.textInput}
-          />
+          <View style={styles.oddView}>
+            <Text style={styles.text}>כתובת</Text>
+            <TextInput
+              style = {styles.textInput}
+              onChangeText={(value) => setAddress(value)}
+            />
+            {/*------------------------------------------------------- occupation -------------------------------------------------------*/}
+            <Text style={styles.text}>עיסוק</Text>
+      
+            <TextInput
+              style = {styles.textInput}
+            />
+          </View>
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
-          <Text style={styles.text}>מהי תדירות הגעתך למוזיאונים</Text>
-          <View>
+          
+          <View style={styles.evenView}>
+            <Text style={styles.text}>מהי תדירות הגעתך למוזיאונים</Text>
             <RadioForm              
               radio_props={museumVisitsFrequencyArray}
               initial={-1}
@@ -124,8 +129,9 @@ export default function Questionnaire({navigation}) {
             />
           </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
-          <Text style={styles.text}>מתי פעם אחרונה ביקרת במוזיאון</Text>
-          <View>
+          
+          <View style={styles.oddView}>
+            <Text style={styles.text}>מתי פעם אחרונה ביקרת במוזיאון</Text>
             <RadioForm
               radio_props={lastMuseumVisitArray}
               initial={-1}
@@ -134,8 +140,9 @@ export default function Questionnaire({navigation}) {
             />
           </View>
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
-          <Text style={styles.text}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
-          <View>
+          
+          <View style={styles.evenView}>
+            <Text style={styles.text}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
             <RadioForm
               radio_props={telAvivMuseumVisitArray}
               initial={-1}
@@ -145,8 +152,9 @@ export default function Questionnaire({navigation}) {
           </View>
 
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
-          <Text style={styles.text}>האם ביקרת בתערוכה זו בעבר?</Text>
-          <View>
+          
+          <View style={styles.oddView}>
+            <Text style={styles.text}>האם ביקרת בתערוכה זו בעבר?</Text>
             <RadioForm
               radio_props={thisExhibitionVisitArray}
               initial={-1}
@@ -185,6 +193,9 @@ export default function Questionnaire({navigation}) {
       width: 270,
       borderColor: "black",
       borderWidth: 1,
+      marginBottom:10,
+      marginRight:2,
+      marginLeft:7,
     },
   
     header: {
@@ -196,6 +207,21 @@ export default function Questionnaire({navigation}) {
   
     text: {
       fontWeight:"bold",      
-    }
+    },
+
+    oddView: {
+      backgroundColor:"aliceblue",      
+      marginBottom:10,
+      borderColor:"black",
+      borderRadius:10,
+      borderWidth:2
+    },
+
+    evenView: {
+      backgroundColor:"#fff",      
+      marginBottom:10,
+      borderRadius:10,
+      borderWidth:2
+    },
   });
   
