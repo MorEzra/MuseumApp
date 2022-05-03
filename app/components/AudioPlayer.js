@@ -5,25 +5,28 @@ import { Audio } from 'expo-av';
   
 const AudioPlayer = (props) =>{  
 	const [sound, setSound] = React.useState();	  
-
+	const [status, setStatus] = React.useState(false);	  
 	async function playSound() {
 		if(sound) {
-			console.log('Playing Sound');
-			await sound.playAsync()
+			if(status) {
+				console.log('Pausing');
+				sound.pauseAsync();
+				setStatus(false);
+			} else {
+				console.log('Playing Sound');
+				setStatus(true);
+				await sound.playAsync()
+			}
 		} else {
 			console.log('Loading Sound');
-			const { sound } = await Audio.Sound.createAsync(
+			const { sound : sound} = await Audio.Sound.createAsync(
 				require('../assets/audio/Alarm01.wav')
 			);
-			setSound(sound);
-			console.log('Playing Sound');
 			
+			setSound(sound);
+			setStatus(true);
 			await sound.playAsync()
 		}
-	}
-	async function pauseSound() {
-		console.log('Pausing');
-		sound.pauseAsync();
 	}
 
 	React.useEffect(() => {
@@ -38,13 +41,7 @@ const AudioPlayer = (props) =>{
 		<View style={styles.audio}>
 			<TouchableOpacity onPress={() => {playSound()}}>
 				<Image
-					source={require("../assets/images/play.png")}
-					style={styles.audioButtons} 
-				/>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => {pauseSound()}}>
-				<Image
-					source={require("../assets/images/pause.png")}
+					source={require("../assets/images/playpause_button.png")}
 					style={styles.audioButtons} 
 				/>
 			</TouchableOpacity>
