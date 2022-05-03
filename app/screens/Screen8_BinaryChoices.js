@@ -38,12 +38,11 @@ export default function BinaryChoices({navigation}) {
             style = {styles.dislike}
             onPress={() => {
                 let finishingTime = performance.now();
-                binaryChoicesTotalTimeArray[artPiecesCounter] = (finishingTime - startingTime) / 1000;
-                finishingTime = performance.now();
+                binaryChoicesTotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);                            
 
                 binaryChoicesData.likings[artPiecesCounter] = 0;
                 if (artPiecesCounter == artPiecesNames.length - 1) 
-                  navigation.navigate("ThanksForParticipating");
+                  navigation.navigate("BinaryChoices2");
                 else {
                   setCounter(artPiecesCounter+1);            
                 }
@@ -57,12 +56,11 @@ export default function BinaryChoices({navigation}) {
             style = {styles.like}
             onPress={() => {
               let finishingTime = performance.now();
-              binaryChoicesTotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);
-              finishingTime = performance.now();
+              binaryChoicesTotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);              
 
               binaryChoicesData.likings[artPiecesCounter] = 1;
               if (artPiecesCounter == artPiecesNames.length - 1) 
-                navigation.navigate("ThanksForParticipating");
+                navigation.navigate("BinaryChoices2");
               else {
                 setCounter(artPiecesCounter+1);            
               }

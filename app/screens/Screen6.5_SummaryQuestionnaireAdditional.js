@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
-import { summaryQuestionnaireTotalTime } from './Screen5_SummaryQuestionnaire';
+
 
 
 class SummaryQuestionnaireAdditionalData {
