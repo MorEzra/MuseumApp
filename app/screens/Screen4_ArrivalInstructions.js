@@ -23,11 +23,12 @@ export default function ArrivalInstructions({navigation}) {
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>    
-      <TouchableOpacity>
+      <TouchableOpacity
+      onPress={() => navigation.navigate("CameraScreen")}
+      >
         <Image
           source={require("../assets/images/camera.png")}
-          style={{ width: 100, height: 100 }} 
-          onPress={() => navigation.navigate("CameraScreen")}
+          style={{ width: 100, height: 100 }}
         />
       </TouchableOpacity>         
 

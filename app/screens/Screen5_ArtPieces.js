@@ -1,7 +1,9 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Pressable} from 'react-native';
+
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
+import AudioPlayer from '../components/AudioPlayer';
 
 class ArtPiece {
   constructor(name, attributes, chosenAttributeIndex) {
@@ -21,7 +23,7 @@ export default function ArtPieces({navigation}) {
   artPieces.push(new ArtPiece("pic3.jpg", ["attribute100", "attribute200", "attribute300"], 2))
   artPieces.push(new ArtPiece("pic4.jpg", ["attribute1000", "attribute2000", "attribute3000"], 0))
 
-  let active = true;
+  let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
@@ -53,12 +55,7 @@ export default function ArtPieces({navigation}) {
       <Text style = {styles.header}>-שם יצירה מספר {artPiecesCounterReference}-</Text>     
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       
-      <TouchableOpacity>
-        <Image
-                source={require("../assets/images/speaker.png")}
-                style={{ width: 100, height: 100 }} 
-        />
-      </TouchableOpacity>
+      <AudioPlayer />
 
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
