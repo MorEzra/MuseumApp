@@ -11,15 +11,30 @@ export default function ArrivalInstructions({navigation}) {
   ] 
   
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
-  let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
+  let artPiecesNames = ["פרדריקה מריה בר של גוסטב קלימט (1916)",
+                        "קייס ואן דונגן, נסיכת בבל (1916)",
+                        "סירה בנמל בנטוורפן של ז'ורז' בראק",
+                        "תולעי אדמה של ג'קסון פולוק",
+                       ];
+  let imagesNames = ["pic1.png", "pic2.jpg", "pic3.jpg", "pic4.jpg"]
   artPiecesCounterReference = artPiecesCounter;
   return (      
     <View style={styles.container}>
      
-      <Text style = {styles.header}>יצירה {artPiecesCounter + 1}</Text>
+      <Text style = {styles.header}>{artPiecesNames[artPiecesCounter]}</Text>
+      
+
+
+      {/* ------------------------------------------------ art piece ------------------------------------------------ */}
+      <Image        
+        source={require("../assets/images/" + imagesNames[artPiecesCounterReference])}
+        style={{ width: 200, height: 200, marginBottom:10}} 
+      />
+
       {/* ------------------------------------------------ instructions ------------------------------------------------ */}
       <Text style={styles.text}>הוראות הגעה:</Text>
       <Text>{instructionsTexts[artPiecesCounter]}</Text>
+
 
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>    
@@ -61,6 +76,7 @@ const styles = StyleSheet.create({
       fontSize:20,
       fontWeight:"bold",
       color: "dodgerblue",            
+      marginBottom:15,
     },
 
     text: {

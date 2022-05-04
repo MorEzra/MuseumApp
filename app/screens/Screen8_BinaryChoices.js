@@ -9,10 +9,10 @@ class BinaryChoicesData {
     }
 }
 
-let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"];
+let artPiecesNames = ["pic1.png", "pic2.jpg","pic3.jpg", "pic4.jpg"];
 let artPieces = [
   require("../assets/images/pic1.png"),
-  require("../assets/images/pic2.png"),
+  require("../assets/images/pic2.jpg"),
   require("../assets/images/pic3.jpg"),
   require("../assets/images/pic4.jpg")
 ]
@@ -30,7 +30,7 @@ export default function BinaryChoices({navigation}) {
       
       <Image        
         source={artPieces[artPiecesCounter]}
-        style={{ width: 400, height: 400 }}         
+        style={{ width: 400, height: 400, marginBottom:5}}         
       />
 
       <View style = {styles.buttons}>
@@ -87,11 +87,12 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "dodgerblue",            
+      color: "dodgerblue",    
+      marginBottom:15        
     },
 
     buttons: {
-        flexDirection: "row",
+        flexDirection: "row",        
     },
     like: {
         alignItems: 'center',
@@ -101,8 +102,9 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         elevation: 3,
         backgroundColor: "lightgreen",
-        width:200,
-        fontWeight:"bold"
+        width:198,
+        fontWeight:"bold",
+        borderWidth:2,     
     },
 
     dislike: {
@@ -113,8 +115,9 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         elevation: 3,
         backgroundColor: "red",
-        width:200,
-        
+        width:198,
+        borderWidth:2,     
+        marginRight:4
     },
   });
   

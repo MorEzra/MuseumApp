@@ -21,8 +21,14 @@ export let summaryQuestionnaireTotalTime;
 
 export default function SummaryQuestionnaire({navigation}) {    
     let startingTime = performance.now();
-    let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
+    let imagesNames = ["pic1.png", "pic2.jpg","pic3.jpg", "pic4.jpg"]    
     
+    let artPiecesNames = ["פרדריקה מריה בר של גוסטב קלימט (1916)",
+                        "קייס ואן דונגן, נסיכת בבל (1916)",
+                        "סירה בנמל בנטוורפן של ז'ורז' בראק",
+                        "תולעי אדמה של ג'קסון פולוק",
+                        "אלברטו ג'אקומטי אישה ונציאנית (1956-1957)"];
+
     let [im1Liking, setIm1Liking] = useState(0);
     let [im2Liking, setIm2Liking] = useState(0);
     let [im3Liking, setIm3Liking] = useState(0);
@@ -51,7 +57,7 @@ export default function SummaryQuestionnaire({navigation}) {
             
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
+                    <Text style = {styles.text}>{artPiecesNames[0]}</Text>
                 </View>     
                 <View style= {styles.oddView}>
                     
@@ -71,11 +77,11 @@ export default function SummaryQuestionnaire({navigation}) {
             
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
+                    <Text style = {styles.text}>{artPiecesNames[1]}</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pic2.png`)}
+                        source={require(`../assets/images/pic2.jpg`)}
                         style={styles.pieces}    
                     />
                     <RadioForm
@@ -90,7 +96,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
+                    <Text style = {styles.text}>{artPiecesNames[2]}</Text>
                 </View>     
                 <View style= {styles.oddView}>
                     <Image
@@ -109,7 +115,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                    <Text style = {styles.text}>{artPiecesNames[3]}</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
@@ -128,11 +134,11 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
+                    <Text style = {styles.text}>{artPiecesNames[4]}</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pic4.jpg`)}
+                        source={require(`../assets/images/pic5.jpg`)}
                         style={styles.pieces}    
                     />
                     <RadioForm

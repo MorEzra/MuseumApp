@@ -10,8 +10,8 @@ class BinaryChoices2Data {
     }
 }
 
-let artPiecesNames1 = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]      
-let artPiecesNames2 = ["pic2.png", "pic1.png","pic4.jpg", "pic3.jpg"]      
+let artPiecesNames1 = ["pic1.png", "pic2.jpg","pic3.jpg", "pic4.jpg"]      
+let artPiecesNames2 = ["pic2.jpg", "pic3.jpg","pic4.jpg", "pic1.png"]      
 
 export let binaryChoices2Data = new BinaryChoices2Data(artPiecesNames1.length);
 export let binaryChoices2TotalTimeArray = new Array(artPiecesNames1.length).fill(0);
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "dodgerblue",            
+      color: "dodgerblue",  
+      marginBottom:15          
     },
 
     imagesView: {

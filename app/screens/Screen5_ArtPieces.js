@@ -1,13 +1,14 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Pressable} from 'react-native';
 
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
 
 class ArtPiece {
-  constructor(name, attributes, chosenAttributeIndex) {
+  constructor(name, imageName, attributes, chosenAttributeIndex) {
     this.name = name;
+    this.imageName = imageName;
     this.attributes = attributes;
     this.chosenAttributeIndex = chosenAttributeIndex;
     
@@ -16,12 +17,13 @@ class ArtPiece {
 
 
 export default function ArtPieces({navigation}) { 
-  /*TODO: plug in real attributes later... */
+  
   let artPieces = [];
-  artPieces.push(new ArtPiece("pic1.png", ["attribute1", "attribute2", "attribute3"], 0))
-  artPieces.push(new ArtPiece("pic2.png", ["attribute10", "attribute20", "attribute30"], 1))
-  artPieces.push(new ArtPiece("pic3.jpg", ["attribute100", "attribute200", "attribute300"], 2))
-  artPieces.push(new ArtPiece("pic4.jpg", ["attribute1000", "attribute2000", "attribute3000"], 0))
+  artPieces.push(new ArtPiece("פרדריקה מריה בר של גוסטב קלימט (1916)", "pic1.png", ["attribute *", "attribute **", "attribute ***"], 0))
+  artPieces.push(new ArtPiece("קייס ואן דונגן, נסיכת בבל (1904)",      "pic2.jpg", ["attribute *", "attribute **", "attribute ***"], 1))
+  artPieces.push(new ArtPiece("סירה בנמל באנטרוורפן של ז'ורז' בראק"   ,"pic3.jpg", ["attribute *", "attribute **", "attribute ***"], 2))
+  //artPieces.push(new ArtPiece("פרדריקה מריה בר של גוסטב קלימט (1916)", "pic1.png", ["attribute *", "attribute **", "attribute ***"], 0))    
+
 
   let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
@@ -52,17 +54,19 @@ export default function ArtPieces({navigation}) {
   let [chosenAttribute, setChosenAttribute] = useState(false);
   return (      
     <View style={styles.container}>            
-      <Text style = {styles.header}>-שם יצירה מספר {artPiecesCounterReference}-</Text>     
+      <Text style = {styles.header}>{artPieces[artPiecesCounterReference - 1].name}</Text>
+
+      {/* ------------------------------------------------ art piece ------------------------------------------------ */}
+      <Image        
+        source={require("../assets/images/" + artPieces[artPiecesCounterReference-1].imageName)}
+        style={{ width: 400, height: 400, marginBottom:10}} 
+      />
+            
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       
       <AudioPlayer />
 
-      {/* ------------------------------------------------ art piece ------------------------------------------------ */}
-      <Image        
-        source={require("../assets/images/" + artPieces[artPiecesCounterReference-1].name)}
-        style={{ width: 400, height: 400, marginBottom:10 }} 
-      />
-            
+
       {/* ------------------------------------------------ choices ------------------------------------------------ */}
       <Text style={styles.text}>איזה מאפיין תרצו שיהיה ליצירה הבאה?</Text>  
       
@@ -147,7 +151,8 @@ const styles = StyleSheet.create({
       textDecorationLine:'underline',
       fontSize:20,
       fontWeight:"bold",
-      color: "dodgerblue",            
+      color: "dodgerblue",   
+      marginBottom:15,         
     },
 
     text: {
