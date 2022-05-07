@@ -2,6 +2,7 @@ import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
+import { RadioButton } from 'react-native-paper';
 
 class QuestionnaireData {
   constructor(name="", age=0, address="", gender=0, museumVisitsFrequency=0, lastMuseumVisit=0, telAvivMuseumVisit=0, thisExhibitionVisit=0) {
@@ -24,40 +25,45 @@ export default function Questionnaire({navigation}) {
     let [name, setName]                                   = useState("");
     let [address, setAddress]                             = useState("");
     let [age, setAge]                                     = useState(0);
-    let [gender, setGender]                               = useState(0);
-    let [museumVisitsFrequency, setMuseumVisitsFrequency] = useState(0);
-    let [lastMuseumVisit, setLastMuseumVisit]             = useState(0);
-    let [telAvivMuseumVisit, setTelAvivMuseumVisit]       = useState(0);
-    let [thisExhibitionVisit, setThisExhibitionVisit]     = useState(0);    
+    let [gender, setGender]                               = useState(3);
+    let [museumVisitsFrequency, setMuseumVisitsFrequency] = useState(9);
+    let [lastMuseumVisit, setLastMuseumVisit]             = useState(9);
+    let [telAvivMuseumVisit, setTelAvivMuseumVisit]       = useState(9);
+    let [thisExhibitionVisit, setThisExhibitionVisit]     = useState(9);    
 
     let genderArray = [
       {label: "זכר", value:0},      
       {label: "נקבה", value:1},
-      {label: "אחר", value:2}           
+      {label: "אחר", value:2},
+      {label: "טרם_מולא", value:3}
     ]
 
     let museumVisitsFrequencyArray = [
       {label: "מספר פעמים בחודש", value:0},      
       {label: "מספר פעמים בשנה", value:1},
       {label: "מספר פעמים בודדות", value:2},
-      {label: "לא מבקר", value:3}
+      {label: "לא מבקר", value:3},
+      {label: "טרם מולא", value:9}
     ]
 
     let lastMuseumVisitArray = [
       {label: "בחודש האחרון", value:0},      
       {label: "בשנה האחרונה", value:1},
       {label: "לפני מס' שנים", value:2},
-      {label: "לא ביקרתי", value:3}
+      {label: "לא ביקרתי", value:3},
+      {label: "טרם מולא", value:9}
     ]
 
     let telAvivMuseumVisitArray = [
       {label:"כן", value:0},
-      {label:"לא", value:1}
+      {label:"לא", value:1},
+      {label: "טרם מולא", value:9}
     ]
 
     let thisExhibitionVisitArray = [
       {label:"כן", value:0},
-      {label:"לא", value:1}
+      {label:"לא", value:1},
+      {label: "טרם מולא", value:9}
     ]    
 
     questionnaireData.name                  = name;
@@ -69,7 +75,7 @@ export default function Questionnaire({navigation}) {
     questionnaireData.telAvivMuseumVisit    = telAvivMuseumVisitArray[telAvivMuseumVisit];
     questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
     
-    return (      
+    return ( 
       <View style={styles.container}>
         <ScrollView >
           <View style={{marginBottom:10}}>
@@ -96,13 +102,14 @@ export default function Questionnaire({navigation}) {
           
           <View style={styles.evenView}>
             <Text style={styles.text}>מגדר</Text>
-            <RadioForm
-              radio_props={genderArray}
-              initial={-1}
-              onPress={(value) => setGender(value)}
-              buttonSize = {5}
-            />
-          </View>
+            <RadioButton.Group
+            onValueChange={(value) => {setGender(value)}}>
+                <RadioButton.Item status={ gender === 0 ? 'checked' : 'unchecked' } label={genderArray[0]['label']} value={genderArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ gender === 1 ? 'checked' : 'unchecked' } label={genderArray[1]['label']} value={genderArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ gender === 2 ? 'checked' : 'unchecked' } label={genderArray[2]['label']} value={genderArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
+              </RadioButton.Group>
+              </View>
+          
           {/*------------------------------------------------------- address -------------------------------------------------------*/}
           <View style={styles.oddView}>
             <Text style={styles.text}>כתובת</Text>
@@ -121,48 +128,48 @@ export default function Questionnaire({navigation}) {
           
           <View style={styles.evenView}>
             <Text style={styles.text}>מהי תדירות הגעתך למוזיאונים</Text>
-            <RadioForm              
-              radio_props={museumVisitsFrequencyArray}
-              initial={-1}
-              onPress={(value) => setMuseumVisitsFrequency(value)}
-              buttonSize = {5}
-            />
-          </View>
+            <RadioButton.Group
+            onValueChange={(value) => {setMuseumVisitsFrequency(value)}}>
+                <RadioButton.Item status={ museumVisitsFrequency === 0 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[0]['label']} value={museumVisitsFrequencyArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ museumVisitsFrequency === 1 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[1]['label']} value={museumVisitsFrequencyArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ museumVisitsFrequency === 2 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[2]['label']} value={museumVisitsFrequencyArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ museumVisitsFrequency === 3 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[3]['label']} value={museumVisitsFrequencyArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
+              </RadioButton.Group>
+              </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
           
-          <View style={styles.oddView}>
+          <View style={styles.evenView}>
             <Text style={styles.text}>מתי פעם אחרונה ביקרת במוזיאון</Text>
-            <RadioForm
-              radio_props={lastMuseumVisitArray}
-              initial={-1}
-              onPress={(value) => setLastMuseumVisit(value)}
-              buttonSize = {5}
-            />
-          </View>
+            <RadioButton.Group
+            onValueChange={(value) => {setLastMuseumVisit(value)}}>
+                <RadioButton.Item status={ lastMuseumVisit === 0 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[0]['label']} value={lastMuseumVisitArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ lastMuseumVisit === 1 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[1]['label']} value={lastMuseumVisitArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ lastMuseumVisit === 2 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[2]['label']} value={lastMuseumVisitArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ lastMuseumVisit === 3 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[3]['label']} value={lastMuseumVisitArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
+              </RadioButton.Group>
+              </View>
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
           
           <View style={styles.evenView}>
             <Text style={styles.text}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
-            <RadioForm
-              radio_props={telAvivMuseumVisitArray}
-              initial={-1}
-              onPress={(value) => setTelAvivMuseumVisit(value)}
-              buttonSize = {5}              
-            />
-          </View>
+            <RadioButton.Group
+            onValueChange={(value) => {setTelAvivMuseumVisit(value)}}>
+                <RadioButton.Item status={ telAvivMuseumVisit === 0 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[0]['label']} value={telAvivMuseumVisitArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ telAvivMuseumVisit === 1 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[1]['label']} value={telAvivMuseumVisitArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
+              </RadioButton.Group>
+            </View>
 
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
-          
-          <View style={styles.oddView}>
+
+          <View style={styles.evenView}>
             <Text style={styles.text}>האם ביקרת בתערוכה זו בעבר?</Text>
-            <RadioForm
-              radio_props={thisExhibitionVisitArray}
-              initial={-1}
-              onPress={(value) => setThisExhibitionVisit(value)}
-              buttonSize = {5}
-            />
-          </View>         
-          
+            <RadioButton.Group
+            onValueChange={(value) => {setThisExhibitionVisit(value)}}>
+                <RadioButton.Item status={ thisExhibitionVisit === 0 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[0]['label']} value={thisExhibitionVisitArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
+                <RadioButton.Item status={ thisExhibitionVisit === 1 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[1]['label']} value={thisExhibitionVisitArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
+              </RadioButton.Group>
+            </View>
+
           <Button 
             title="המשך"
             onPress={() => 
@@ -176,9 +183,7 @@ export default function Questionnaire({navigation}) {
           
           <StatusBar style="auto" />
         </ScrollView>        
-      </View>
-      
-    );
+      </View>);
   }
   
   const styles = StyleSheet.create({
