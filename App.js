@@ -31,7 +31,7 @@ function App() {
 
         <Stack.Screen
         name="Questionnaire"
-        component={Questionnaire}        
+        component={SummaryQuestionnaire}        
         options={{ title: "שאלון פרטים אישיים" }}
         />
 
