@@ -11,7 +11,9 @@ class BinaryChoices2Data {
 }
 
 let artPiecesNames1 = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]      
+let artPieces1 = [require("../assets/images/pic1.png"), require("../assets/images/pic2.png"), require("../assets/images/pic3.jpg"), require("../assets/images/pic4.jpg")]      
 let artPiecesNames2 = ["pic2.png", "pic1.png","pic4.jpg", "pic3.jpg"]      
+let artPieces2 = [require("../assets/images/pic2.png"), require("../assets/images/pic1.png"), require("../assets/images/pic4.jpg"), require("../assets/images/pic3.jpg")]      
 
 export let binaryChoices2Data = new BinaryChoices2Data(artPiecesNames1.length);
 export let binaryChoices2TotalTimeArray = new Array(artPiecesNames1.length).fill(0);
@@ -41,7 +43,7 @@ export default function BinaryChoices2({navigation}) {
                 }
             }>
             <Image
-            source={require("../assets/images/" + artPiecesNames1[artPiecesCounter])}
+            source={artPieces1[artPiecesCounter]}
             style={styles.pieces} 
             />
         </TouchableOpacity>       
@@ -60,7 +62,7 @@ export default function BinaryChoices2({navigation}) {
                 }
             }>
             <Image
-            source={require("../assets/images/" + artPiecesNames2[artPiecesCounter])}
+            source={artPieces2[artPiecesCounter]}
             style={styles.pieces} 
             />
         </TouchableOpacity>       

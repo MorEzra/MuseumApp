@@ -6,10 +6,11 @@ import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
 
 class ArtPiece {
-  constructor(name, attributes, chosenAttributeIndex) {
+  constructor(name, attributes, chosenAttributeIndex, piece) {
     this.name = name;
     this.attributes = attributes;
     this.chosenAttributeIndex = chosenAttributeIndex;
+    this.piece = piece;
     
   }
 }
@@ -18,10 +19,10 @@ class ArtPiece {
 export default function ArtPieces({navigation}) { 
   /*TODO: plug in real attributes later... */
   let artPieces = [];
-  artPieces.push(new ArtPiece("pic1.png", ["attribute1", "attribute2", "attribute3"], 0))
-  artPieces.push(new ArtPiece("pic2.png", ["attribute10", "attribute20", "attribute30"], 1))
-  artPieces.push(new ArtPiece("pic3.jpg", ["attribute100", "attribute200", "attribute300"], 2))
-  artPieces.push(new ArtPiece("pic4.jpg", ["attribute1000", "attribute2000", "attribute3000"], 0))
+  artPieces.push(new ArtPiece("pic1.png", ["attribute1", "attribute2", "attribute3"], 0, require("../assets/images/pic4.jpg")))
+  artPieces.push(new ArtPiece("pic2.png", ["attribute10", "attribute20", "attribute30"], 1, require("../assets/images/pic4.jpg")))
+  artPieces.push(new ArtPiece("pic3.jpg", ["attribute100", "attribute200", "attribute300"], 2, require("../assets/images/pic4.jpg")))
+  artPieces.push(new ArtPiece("pic4.jpg", ["attribute1000", "attribute2000", "attribute3000"], 0, require("../assets/images/pic4.jpg")))
 
   let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
@@ -59,7 +60,7 @@ export default function ArtPieces({navigation}) {
 
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
-        source={require("../assets/images/" + artPieces[artPiecesCounterReference-1].name)}
+        source={artPieces[artPiecesCounterReference-1].piece}
         style={{ width: 400, height: 400, marginBottom:10 }} 
       />
             

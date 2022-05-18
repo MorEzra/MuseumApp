@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import { Camera } from 'expo-camera';
 
 const CameraButton = (props) =>{  
@@ -43,19 +43,9 @@ const CameraButton = (props) =>{
 
 	return (<View style={styles.container}>
 		<Camera style={styles.camera} type={type} ref={cameraRef}>
-		  <View style={styles.buttonContainer}>
-			<TouchableOpacity
-			  style={styles.button}
-			  onPress={() => {
-				setType(
-				  type === Camera.Constants.Type.back
-					? Camera.Constants.Type.front
-					: Camera.Constants.Type.back
-				);
-			  }}>
-			  <Text style={styles.text}> Flip </Text>
-			</TouchableOpacity>
-			<TouchableOpacity
+		</Camera>
+		<View style={styles.buttonContainer}>
+			<Button
                 style={[styles.button]}
                 onPress={async () => {
                   console.log('in take pic');
@@ -65,30 +55,35 @@ const CameraButton = (props) =>{
                     setImage(r.uri);
                   }
                   console.log('response', JSON.stringify(r));
-                }}>
-                <Text style={styles.text}>PICTURE</Text>
-			</TouchableOpacity>
+                }}
+				title={"TAKE PICTURE"}
+				>
+			</Button>
 		  </View>
-		</Camera>
 	  </View>);
 };
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#fff',
       justifyContent: 'space-evenly',
-	  width: 500,
-	  height: 360  
+	  flex: 1
     },
 	camera: {
 		flex: 1,
-		justifyContent: 'space-evenly'
+		justifyContent: 'space-evenly',
+		width: 700
 	  },
 	  buttonContainer: {
 		width: 200,
-	  	height: 100,
-		paddingTop: 50,
+	  	height: 50,
+		paddingTop: 5,
 		backgroundColor: 'transparent',
+		borderColor: 'black',
+		borderWidth: 1,
 		flexDirection: 'row',
+		alignSelf: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
 		margin: 20,
 	  },
 	  button: {
@@ -97,7 +92,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	  },
 	  text: {
-		fontSize: 18,
+		fontSize: 50,
 		color: 'white',
 	  },
     header: {

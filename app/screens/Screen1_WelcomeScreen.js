@@ -11,11 +11,11 @@ export default function WelcomeScreen({navigation}) {
      
       <Text style = {styles.header}>ניסוי העדפות במוזיאון תל אביב</Text>
 
-      <Text>
+      <Text style={styles.text}>
       תודה על השתתפותך בסיור שהינו חלק ממחקר מטעם אוניברסיטת תל אביב.{"\n"}
 
 במהלך הניסוי תתבקש לעבור בין יצירות שונות מאוסף המוזיאון ולשמוע הסברים מוקלטים אודותן מאת ד"ר ספי הנדלר מוועדת התערוכות של המוזיאון.
-{"\n"} לפני ולאחר הסיור תתבקש לענות על מספר שאלות.{"\n"}
+{"\n"}לפני ולאחר הסיור תתבקש לענות על מספר שאלות.{"\n"}
 
 משך הניסוי כ-20 דקות ובתמורה להשתתפותך תזכה בשובר.{"\n"}
 
@@ -53,10 +53,19 @@ const styles = StyleSheet.create({
   
     header: {
       textDecorationLine:'underline',
-      fontSize:20,
+      fontSize:50,
       fontWeight:"bold",
       color: "dodgerblue",            
     },
+    text: {
+      paddingTop: 20,
+      paddingBottom: 20,
+      margin: 20,
+      paddingRight: 10,
+      paddingLeft: 10,
+      fontSize: 30,
+      textAlign: "right"
+    }
 
   });
   

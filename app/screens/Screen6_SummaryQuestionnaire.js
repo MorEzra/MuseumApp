@@ -64,11 +64,11 @@ export default function SummaryQuestionnaire({navigation}) {
                     <View style={styles.oddView}>
                                 <RadioButton.Group
                                 onValueChange={(value) => {setIm1Liking(value)}}>
-                                    <RadioButton.Item status={ im1Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im1Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im1Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im1Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im1Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={{ alignSelf: 'flex-end' }} />
+                                    <RadioButton.Item status={ im1Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im1Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im1Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im1Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im1Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
                                 </RadioButton.Group>
                         </View>
                     
@@ -87,11 +87,11 @@ export default function SummaryQuestionnaire({navigation}) {
                     <View style={styles.evenView}>
                                 <RadioButton.Group
                                 onValueChange={(value) => {setIm2Liking(value)}}>
-                                    <RadioButton.Item status={ im2Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im2Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im2Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im2Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im2Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={{ alignSelf: 'flex-end' }} />
+                                    <RadioButton.Item status={ im2Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im2Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im2Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im2Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im2Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
                                 </RadioButton.Group>
                         </View>
                 </View>
@@ -109,11 +109,11 @@ export default function SummaryQuestionnaire({navigation}) {
                     <View style={styles.oddView}>
                                 <RadioButton.Group
                                 onValueChange={(value) => {setIm3Liking(value)}}>
-                                    <RadioButton.Item status={ im3Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im3Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im3Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im3Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im3Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={{ alignSelf: 'flex-end' }} />
+                                    <RadioButton.Item status={ im3Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im3Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im3Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im3Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im3Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
                                 </RadioButton.Group>
                         </View>
                 </View>
@@ -131,11 +131,11 @@ export default function SummaryQuestionnaire({navigation}) {
                     <View style={styles.evenView}>
                                 <RadioButton.Group
                                 onValueChange={(value) => {setIm4Liking(value)}}>
-                                    <RadioButton.Item status={ im4Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im4Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im4Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im4Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im4Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={{ alignSelf: 'flex-end' }} />
+                                    <RadioButton.Item status={ im4Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im4Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im4Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im4Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im4Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
                                 </RadioButton.Group>
                         </View>
                 </View>
@@ -153,11 +153,11 @@ export default function SummaryQuestionnaire({navigation}) {
                     <View style={styles.oddView}>
                                 <RadioButton.Group
                                 onValueChange={(value) => {setIm5Liking(value)}}>
-                                    <RadioButton.Item status={ im5Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im5Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im5Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im5Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={{ alignSelf: 'flex-end' }} />
-                                    <RadioButton.Item status={ im5Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={{ alignSelf: 'flex-end' }} />
+                                    <RadioButton.Item status={ im5Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im5Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im5Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im5Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im5Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
                                 </RadioButton.Group>
                         </View>
                 </View>
@@ -187,7 +187,8 @@ export default function SummaryQuestionnaire({navigation}) {
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',    
+      justifyContent: 'center', 
+      paddingBottom: 80   
     },    
 
     header: {
@@ -206,8 +207,9 @@ export default function SummaryQuestionnaire({navigation}) {
     },
 
     pieces: {
-        width:150,
-        height:150,
+        alignSelf: "center",
+        width:250,
+        height:250,
         marginLeft:15        
     },
     radiobutton: {
@@ -251,5 +253,8 @@ export default function SummaryQuestionnaire({navigation}) {
         marginBottom:10,
         borderRadius:10,
       },
-    
+    radioItem: {
+        direction:"rtl",
+        alignSelf: 'flex-end'
+    }
   });
