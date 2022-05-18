@@ -2,8 +2,8 @@ import React , {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image} from 'react-native';
 
-import { artPieces } from './ArtPiece';
-import ArtPiece from './ArtPiece';
+import { artPieces } from '../components/ArtPiece';
+import ArtPiece from '../components/ArtPiece';
 
 export let artPiecesCounterReference = 0;
 export default function ArrivalInstructions({navigation}) {  
@@ -14,7 +14,6 @@ export default function ArrivalInstructions({navigation}) {
   ] 
   
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
-  // let artPiecesNames = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"]    
   let artPiecesNames = artPieces.map(({name}) => name);
 
   artPiecesCounterReference = artPiecesCounter;

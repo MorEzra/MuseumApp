@@ -1,8 +1,8 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Pressable} from 'react-native';
-import ArtPiece from './ArtPiece';
-import { artPieces } from './ArtPiece';
+import ArtPiece from '../components/ArtPiece';
+import { artPieces } from '../components/ArtPiece';
 
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';

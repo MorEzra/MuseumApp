@@ -28,12 +28,18 @@ export default function SummaryQuestionnaire({navigation}) {
     let [im3Liking, setIm3Liking] = useState(0);
     let [im4Liking, setIm4Liking] = useState(0);
     let [im5Liking, setIm5Liking] = useState(0);
+    let [im6Liking, setIm6Liking] = useState(0);
+    let [im7Liking, setIm7Liking] = useState(0);
+    let [im8Liking, setIm8Liking] = useState(0);
 
     summaryQuestionnaireData.im1Liking = im1Liking;    
     summaryQuestionnaireData.im2Liking = im2Liking;    
     summaryQuestionnaireData.im3Liking = im3Liking;    
     summaryQuestionnaireData.im4Liking = im4Liking;    
     summaryQuestionnaireData.im5Liking = im5Liking;     
+    summaryQuestionnaireData.im6Liking = im6Liking;     
+    summaryQuestionnaireData.im7Liking = im7Liking;     
+    summaryQuestionnaireData.im8Liking = im8Liking;     
     
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
@@ -163,7 +169,71 @@ export default function SummaryQuestionnaire({navigation}) {
                 </View>
             </View>
 
-            
+            <View style={styles.evenViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/deChirico_6.png`)}
+                        style={styles.pieces}    
+                    />
+                    <View style={styles.evenView}>
+                                <RadioButton.Group
+                                onValueChange={(value) => {setIm6Liking(value)}}>
+                                    <RadioButton.Item status={ im6Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im6Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im6Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im6Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im6Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
+                                </RadioButton.Group>
+                        </View>
+                </View>
+            </View>  
+
+            <View style={styles.oddViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/janco_7.png`)}
+                        style={styles.pieces}    
+                    />
+                    <View style={styles.oddView}>
+                                <RadioButton.Group
+                                onValueChange={(value) => {setIm7Liking(value)}}>
+                                    <RadioButton.Item status={ im7Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im7Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im7Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im7Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im7Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
+                                </RadioButton.Group>
+                        </View>
+                </View>
+            </View>
+
+            <View style={styles.evenViewWrapper}>       
+                <View style={{alignItems:"center"}}>
+                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                </View>     
+                <View style= {styles.block}>
+                    <Image
+                        source={require(`../assets/images/_8.png`)}
+                        style={styles.pieces}    
+                    />
+                    <View style={styles.evenView}>
+                                <RadioButton.Group
+                                onValueChange={(value) => {setIm8Liking(value)}}>
+                                    <RadioButton.Item status={ im8Liking === 1 ? 'checked' : 'unchecked' } label={likingArray[0]['label']} value={likingArray[0]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im8Liking === 2 ? 'checked' : 'unchecked' } label={likingArray[1]['label']} value={likingArray[1]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im8Liking === 3 ? 'checked' : 'unchecked' } label={likingArray[2]['label']} value={likingArray[2]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im8Liking === 4 ? 'checked' : 'unchecked' } label={likingArray[3]['label']} value={likingArray[3]['value']} style={styles.radioItem} />
+                                    <RadioButton.Item status={ im8Liking === 5 ? 'checked' : 'unchecked' } label={likingArray[4]['label']} value={likingArray[4]['value']} style={styles.radioItem} />
+                                </RadioButton.Group>
+                        </View>
+                </View>
+            </View>          
             
             
             <Button 

@@ -20,7 +20,7 @@ const AudioPlayer = (props) =>{
 		} else {
 			console.log('Loading Sound');
 			const { sound : sound} = await Audio.Sound.createAsync(
-				require('../assets/audio/Alarm01.wav')
+				require('../assets/audio/pictures_at_an_exhibition_mussorgsky.mp3')
 			);
 			
 			setSound(sound);
