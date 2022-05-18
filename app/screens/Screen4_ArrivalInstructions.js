@@ -21,10 +21,18 @@ export default function ArrivalInstructions({navigation}) {
     <View style={styles.container}>
      
       <Text style = {styles.header}>יצירה מספר {artPiecesCounter + 1}: {artPiecesNames[artPiecesCounter]} </Text>
+
+      {/* ------------------------------------------------ piece ------------------------------------------------ */}
+      <Image
+          source={artPieces[Math.min(artPiecesCounter, artPieces.length - 1)].piece}
+          style={{ width: 300, height: 300 }}
+      />
+
       {/* ------------------------------------------------ instructions ------------------------------------------------ */}
       <Text style={styles.text}>הוראות הגעה:</Text>
       <Text>{instructionsTexts[artPiecesCounter]}</Text>
 
+      
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <Text>בהגיעך אל התמונה, אנא צלם אותה</Text>    
       <TouchableOpacity
@@ -40,7 +48,7 @@ export default function ArrivalInstructions({navigation}) {
       <Button 
           title="הגעתי"        
           onPress={() =>  {
-              artPiecesCounterReference = artPiecesCounterReference;  
+              //artPiecesCounterReference = artPiecesCounterReference;  
               setArtPiecesCounter(artPiecesCounter+1);              
               navigation.navigate("ArtPieces")
             }

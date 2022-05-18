@@ -11,7 +11,7 @@ import AudioPlayer from '../components/AudioPlayer';
 export default function ArtPieces({navigation}) { 
   /*TODO: plug in real attributes later... */
   let artPiecesNames = artPieces.map(({name}) => name);
-  let active = true;
+  let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
@@ -41,16 +41,17 @@ export default function ArtPieces({navigation}) {
   return (      
     <View style={styles.container}>            
       <Text style = {styles.header}>יצירה מספר {artPiecesCounterReference}: {artPiecesNames[artPiecesCounterReference - 1]}</Text>     
-      {/* ------------------------------------------------ audio ------------------------------------------------ */}
       
-      <AudioPlayer />
 
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
         source={artPieces[artPiecesCounterReference-1].piece}
         style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:10 }} 
       />
-            
+      {/* ------------------------------------------------ audio ------------------------------------------------ */}
+      
+      <AudioPlayer />
+      
       {/* ------------------------------------------------ choices ------------------------------------------------ */}
       <Text style={styles.text}>איזה מאפיין תרצו שיהיה ליצירה הבאה?</Text>  
       
@@ -103,7 +104,7 @@ export default function ArtPieces({navigation}) {
           <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[2]}</Text>            
       </Pressable>        
 
-      </View>
+      </View>     
       <Button 
           title={buttonName}
           onPress={() => {

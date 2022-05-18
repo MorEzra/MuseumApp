@@ -10,10 +10,10 @@ class BinaryChoices2Data {
     }
 }
 
-let artPiecesNames1 = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"]      
-let artPieces1 = [require("../assets/images/klimt_1.png"), require("../assets/images/vanDongen_2.png"), require("../assets/images/braque_3.jpg"), require("../assets/images/pollock_4.jpg")]      
-let artPiecesNames2 = ["vanDongen_2.png", "klimt_1.png","pollock_4.jpg", "braque_3.jpg"]      
-let artPieces2 = [require("../assets/images/vanDongen_2.png"), require("../assets/images/klimt_1.png"), require("../assets/images/pollock_4.jpg"), require("../assets/images/braque_3.jpg")]      
+let artPiecesNames1 = ["klimt_1.png", "vanDongen_2.png","braque_3.png", "pollock_4.png"]      
+let artPieces1 = [require("../assets/images/klimt_1.png"), require("../assets/images/vanDongen_2.png"), require("../assets/images/braque_3.png"), require("../assets/images/pollock_4.png")]      
+let artPiecesNames2 = ["vanDongen_2.png", "klimt_1.png","pollock_4.png", "braque_3.png"]      
+let artPieces2 = [require("../assets/images/vanDongen_2.png"), require("../assets/images/klimt_1.png"), require("../assets/images/pollock_4.png"), require("../assets/images/braque_3.png")]      
 
 export let binaryChoices2Data = new BinaryChoices2Data(artPiecesNames1.length);
 export let binaryChoices2TotalTimeArray = new Array(artPiecesNames1.length).fill(0);

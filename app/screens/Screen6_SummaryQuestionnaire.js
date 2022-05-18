@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
+import { artPieces } from '../components/ArtPiece';
 
 class SummaryQuestionnaireData {    
     constructor(im1Liking=0, im2Liking=0, im3Liking=0, im4Liking=0, im5Liking=0, experience=0, additionalInfo=0, tourType=0) {
@@ -20,8 +21,7 @@ export let summaryQuestionnaireData = new SummaryQuestionnaireData();
 export let summaryQuestionnaireTotalTime;
 
 export default function SummaryQuestionnaire({navigation}) {    
-    let startingTime = performance.now();
-    let artPiecesNames = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"]    
+    let startingTime = performance.now();    
     
     let [im1Liking, setIm1Liking] = useState(0);
     let [im2Liking, setIm2Liking] = useState(0);
@@ -58,7 +58,7 @@ export default function SummaryQuestionnaire({navigation}) {
             
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 1-</Text>
+                    <Text style = {styles.text}>{artPieces[0].name}-</Text>
                 </View>     
                 <View style= {styles.oddView}>
                     
@@ -83,7 +83,7 @@ export default function SummaryQuestionnaire({navigation}) {
             
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 2-</Text>
+                    <Text style = {styles.text}>{artPieces[1].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
@@ -105,11 +105,11 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 3-</Text>
+                    <Text style = {styles.text}>{artPieces[2].name}-</Text>
                 </View>     
                 <View style= {styles.oddView}>
                     <Image
-                        source={require('../assets/images/braque_3.jpg')}
+                        source={require('../assets/images/braque_3.png')}
                         style={styles.pieces}    
                     />
                     <View style={styles.oddView}>
@@ -127,11 +127,11 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                    <Text style = {styles.text}>{artPieces[3].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pollock_4.jpg`)}
+                        source={require(`../assets/images/pollock_4.png`)}
                         style={styles.pieces}    
                     />
                     <View style={styles.evenView}>
@@ -149,7 +149,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
+                    <Text style = {styles.text}>{artPieces[4].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
@@ -171,7 +171,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                    <Text style = {styles.text}>{artPieces[5].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
@@ -193,7 +193,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.oddViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 5-</Text>
+                    <Text style = {styles.text}>{artPieces[6].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image
@@ -215,7 +215,7 @@ export default function SummaryQuestionnaire({navigation}) {
 
             <View style={styles.evenViewWrapper}>       
                 <View style={{alignItems:"center"}}>
-                    <Text style = {styles.text}>-שם יצירה מס' 4-</Text>
+                    <Text style = {styles.text}>{artPieces[7].name}-</Text>
                 </View>     
                 <View style= {styles.block}>
                     <Image

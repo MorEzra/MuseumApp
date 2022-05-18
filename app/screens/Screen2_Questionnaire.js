@@ -138,7 +138,7 @@ export default function Questionnaire({navigation}) {
               </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
           
-          <View style={styles.evenView}>
+          <View style={styles.oddView}>
             <Text style={styles.text}>מתי פעם אחרונה ביקרת במוזיאון</Text>
             <RadioButton.Group
             onValueChange={(value) => {setLastMuseumVisit(value)}}>
@@ -161,7 +161,7 @@ export default function Questionnaire({navigation}) {
 
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
 
-          <View style={styles.evenView}>
+          <View style={styles.oddView}>
             <Text style={styles.text}>האם ביקרת בתערוכה זו בעבר?</Text>
             <RadioButton.Group
             onValueChange={(value) => {setThisExhibitionVisit(value)}}>
