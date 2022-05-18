@@ -12,7 +12,7 @@ export default function ResearchGuidelines({navigation}) {
         <View>
           <Text style={styles.text}>תוצג עבורך התמונה ההתחלתית ממנה מתחיל הסיור, תתבקש לצלם את התמונה בהגיעך אליה ולשמוע קטע קול קצר אודותיה. </Text>
           <Text style={styles.text}>לאחר מכן, על מנת להתאים לך את התמונה בצורה הטובה ביותר, עליך לבחור מתוך מספר אפשרויות מה תרצה לראות בתמונה הבאה. </Text>
-          <Text style={styles.text}>בצורה זו תמשיך לעבור בין 5 תמונות במוזיאון.</Text>
+          <Text style={styles.text}>בצורה זו תמשיך לעבור בין 8 תמונות במוזיאון.</Text>
           <Text style={styles.text}>לבסוף, תתבקש לענות על מספר שאלות אודות הסיור והיצירות.</Text>                
         </View>
         <Button 

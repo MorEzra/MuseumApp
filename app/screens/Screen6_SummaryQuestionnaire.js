@@ -21,7 +21,7 @@ export let summaryQuestionnaireTotalTime;
 
 export default function SummaryQuestionnaire({navigation}) {    
     let startingTime = performance.now();
-    let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]    
+    let artPiecesNames = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"]    
     
     let [im1Liking, setIm1Liking] = useState(0);
     let [im2Liking, setIm2Liking] = useState(0);
@@ -57,7 +57,7 @@ export default function SummaryQuestionnaire({navigation}) {
                 <View style= {styles.oddView}>
                     
                     <Image
-                        source={require(`../assets/images/pic1.png`)}
+                        source={require(`../assets/images/klimt_1.png`)}
                         style={styles.pieces}    
                     />
 
@@ -81,7 +81,7 @@ export default function SummaryQuestionnaire({navigation}) {
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pic2.png`)}
+                        source={require(`../assets/images/vanDongen_2.png`)}
                         style={styles.pieces}    
                     />
                     <View style={styles.evenView}>
@@ -103,7 +103,7 @@ export default function SummaryQuestionnaire({navigation}) {
                 </View>     
                 <View style= {styles.oddView}>
                     <Image
-                        source={require('../assets/images/pic3.jpg')}
+                        source={require('../assets/images/braque_3.jpg')}
                         style={styles.pieces}    
                     />
                     <View style={styles.oddView}>
@@ -125,7 +125,7 @@ export default function SummaryQuestionnaire({navigation}) {
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pic4.jpg`)}
+                        source={require(`../assets/images/pollock_4.jpg`)}
                         style={styles.pieces}    
                     />
                     <View style={styles.evenView}>
@@ -147,7 +147,7 @@ export default function SummaryQuestionnaire({navigation}) {
                 </View>     
                 <View style= {styles.block}>
                     <Image
-                        source={require(`../assets/images/pic4.jpg`)}
+                        source={require(`../assets/images/giacometti_5.png`)}
                         style={styles.pieces}    
                     />
                     <View style={styles.oddView}>
@@ -210,7 +210,8 @@ export default function SummaryQuestionnaire({navigation}) {
         alignSelf: "center",
         width:250,
         height:250,
-        marginLeft:15        
+        marginLeft:15,
+        resizeMode: 'contain'      
     },
     radiobutton: {
         

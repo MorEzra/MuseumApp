@@ -1,30 +1,17 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Pressable} from 'react-native';
+import ArtPiece from './ArtPiece';
+import { artPieces } from './ArtPiece';
 
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
 
-class ArtPiece {
-  constructor(name, attributes, chosenAttributeIndex, piece) {
-    this.name = name;
-    this.attributes = attributes;
-    this.chosenAttributeIndex = chosenAttributeIndex;
-    this.piece = piece;
-    
-  }
-}
-
 
 export default function ArtPieces({navigation}) { 
   /*TODO: plug in real attributes later... */
-  let artPieces = [];
-  artPieces.push(new ArtPiece("pic1.png", ["attribute1", "attribute2", "attribute3"], 0, require("../assets/images/pic4.jpg")))
-  artPieces.push(new ArtPiece("pic2.png", ["attribute10", "attribute20", "attribute30"], 1, require("../assets/images/pic4.jpg")))
-  artPieces.push(new ArtPiece("pic3.jpg", ["attribute100", "attribute200", "attribute300"], 2, require("../assets/images/pic4.jpg")))
-  artPieces.push(new ArtPiece("pic4.jpg", ["attribute1000", "attribute2000", "attribute3000"], 0, require("../assets/images/pic4.jpg")))
-
-  let active = false;
+  let artPiecesNames = artPieces.map(({name}) => name);
+  let active = true;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
@@ -53,7 +40,7 @@ export default function ArtPieces({navigation}) {
   let [chosenAttribute, setChosenAttribute] = useState(false);
   return (      
     <View style={styles.container}>            
-      <Text style = {styles.header}>-שם יצירה מספר {artPiecesCounterReference}-</Text>     
+      <Text style = {styles.header}>יצירה מספר {artPiecesCounterReference}: {artPiecesNames[artPiecesCounterReference - 1]}</Text>     
       {/* ------------------------------------------------ audio ------------------------------------------------ */}
       
       <AudioPlayer />
@@ -61,7 +48,7 @@ export default function ArtPieces({navigation}) {
       {/* ------------------------------------------------ art piece ------------------------------------------------ */}
       <Image        
         source={artPieces[artPiecesCounterReference-1].piece}
-        style={{ width: 400, height: 400, marginBottom:10 }} 
+        style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:10 }} 
       />
             
       {/* ------------------------------------------------ choices ------------------------------------------------ */}
@@ -154,7 +141,7 @@ const styles = StyleSheet.create({
     text: {
         fontWeight:'bold',
         fontSize:15,
-        textDecorationLine: 'underline',
+        textDecorationLine: 'underline'
     },
 
     attributesView: {       
@@ -167,6 +154,7 @@ const styles = StyleSheet.create({
       marginRight:20,
       fontSize:30,
       fontWeight: 'bold',
+      textAlign: 'right'
     },
 });
 

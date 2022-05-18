@@ -10,10 +10,10 @@ class BinaryChoices2Data {
     }
 }
 
-let artPiecesNames1 = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"]      
-let artPieces1 = [require("../assets/images/pic1.png"), require("../assets/images/pic2.png"), require("../assets/images/pic3.jpg"), require("../assets/images/pic4.jpg")]      
-let artPiecesNames2 = ["pic2.png", "pic1.png","pic4.jpg", "pic3.jpg"]      
-let artPieces2 = [require("../assets/images/pic2.png"), require("../assets/images/pic1.png"), require("../assets/images/pic4.jpg"), require("../assets/images/pic3.jpg")]      
+let artPiecesNames1 = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"]      
+let artPieces1 = [require("../assets/images/klimt_1.png"), require("../assets/images/vanDongen_2.png"), require("../assets/images/braque_3.jpg"), require("../assets/images/pollock_4.jpg")]      
+let artPiecesNames2 = ["vanDongen_2.png", "klimt_1.png","pollock_4.jpg", "braque_3.jpg"]      
+let artPieces2 = [require("../assets/images/vanDongen_2.png"), require("../assets/images/klimt_1.png"), require("../assets/images/pollock_4.jpg"), require("../assets/images/braque_3.jpg")]      
 
 export let binaryChoices2Data = new BinaryChoices2Data(artPiecesNames1.length);
 export let binaryChoices2TotalTimeArray = new Array(artPiecesNames1.length).fill(0);
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
         width: 400,
         height: 400,
         marginRight: 20,
+        resizeMode: 'contain'
     }
   });
   

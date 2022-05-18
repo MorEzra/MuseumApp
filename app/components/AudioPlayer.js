@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     },
 	audio: {
 		flexDirection: "row",
-		justifyContent: 'center',    
+		justifyContent: 'center',  
+		margin: 10  
 	},
 
 	audioButtons: {

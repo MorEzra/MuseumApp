@@ -9,12 +9,12 @@ class BinaryChoicesData {
     }
 }
 
-let artPiecesNames = ["pic1.png", "pic2.png","pic3.jpg", "pic4.jpg"];
+let artPiecesNames = ["klimt_1.png", "vanDongen_2.png","braque_3.jpg", "pollock_4.jpg"];
 let artPieces = [
-  require("../assets/images/pic1.png"),
-  require("../assets/images/pic2.png"),
-  require("../assets/images/pic3.jpg"),
-  require("../assets/images/pic4.jpg")
+  require("../assets/images/klimt_1.png"),
+  require("../assets/images/vanDongen_2.png"),
+  require("../assets/images/braque_3.jpg"),
+  require("../assets/images/pollock_4.jpg")
 ]
 export let binaryChoicesData = new BinaryChoicesData(artPiecesNames);
 export let binaryChoicesTotalTimeArray = new Array(artPiecesNames.length).fill(0);
@@ -30,7 +30,7 @@ export default function BinaryChoices({navigation}) {
       
       <Image        
         source={artPieces[artPiecesCounter]}
-        style={{ width: 400, height: 400 }}         
+        style={{ width: 400, height: 600, resizeMode: 'contain' }}         
       />
 
       <View style = {styles.buttons}>
