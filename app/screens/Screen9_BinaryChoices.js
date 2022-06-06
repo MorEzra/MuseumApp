@@ -2,6 +2,8 @@ import React, { useState }  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
+import sendDataToServer from '../components/sendDataToServer';
+
 export let binaryChoices2ScreenTotalTime;
 
 class BinaryChoices2Data {
@@ -54,6 +56,7 @@ export default function BinaryChoices2({navigation}) {
                     binaryChoices2TotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);                              
                     binaryChoices2Data.likings2[artPiecesCounter] = 1;
                     if (artPiecesCounter == artPiecesNames1.length - 1) {                        
+                        sendDataToServer();
                         navigation.navigate("ThanksForParticipating");
                     }
                     else {
