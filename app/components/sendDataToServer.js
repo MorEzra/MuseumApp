@@ -19,14 +19,14 @@ import { binaryChoices2TotalTimeArray }            from '../screens/Screen9_Bina
 
 function sendDataToServer() {  
 	let session = welcomeScreenTotalTime;
-	fetch("https://experiments.schonberglab.org/v2/workers-api/sessions?key=test-worker-key", {
-  body: "{\"hello\":\"world\"}",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  mode: 'no-cors',
-  method: "POST"
-})
+// 	fetch("https://experiments.schonberglab.org/v2/workers-api/sessions?key=test-worker-key", {
+//     body: "{\"hello\":\"world\"}",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     mode: 'no-cors',
+//     method: "POST"
+// })
 }
 
 export default sendDataToServer();
