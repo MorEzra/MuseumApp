@@ -1,8 +1,8 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
-import RadioForm from 'react-native-simple-radio-button';
 import { RadioButton } from 'react-native-paper';
+import { globalStyles } from '../assets/styles/global';
 
 class QuestionnaireData {
   constructor(name="", age=0, address="", gender=0, museumVisitsFrequency=0, lastMuseumVisit=0, telAvivMuseumVisit=0, thisExhibitionVisit=0) {
@@ -76,21 +76,21 @@ export default function Questionnaire({navigation}) {
     questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
     
     return ( 
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
         <ScrollView >
           <View style={{marginBottom:10}}>
-            <Text style = {styles.header} >שאלון פרטים אישיים</Text>
+            <Text style = {globalStyles.header} >שאלון פרטים אישיים</Text>
           </View>           
           {/*------------------------------------------------------- first name -------------------------------------------------------*/}          
           <View style={styles.oddView}>
-            <Text style={styles.text}>שם מלא</Text>        
+            <Text style={globalStyles.questionnaireHeader}>שם מלא</Text>        
             <TextInput
               style={styles.textInput}    
               onChangeText={(value) => setName(value)}
             />
           
           {/*------------------------------------------------------- age -------------------------------------------------------*/}
-            <Text style={styles.text}>גיל</Text>
+            <Text style={globalStyles.questionnaireHeader}>גיל</Text>
             <TextInput
               style = {styles.textInput}
               keyboardType="numeric"
@@ -101,24 +101,24 @@ export default function Questionnaire({navigation}) {
           {/*------------------------------------------------------- gender -------------------------------------------------------*/}
           
           <View style={styles.evenView}>
-            <Text style={styles.text}>מגדר</Text>
+            <Text style={globalStyles.questionnaireHeader}>מגדר</Text>
             <RadioButton.Group
             onValueChange={(value) => {setGender(value)}}>
-                <RadioButton.Item status={ gender === 0 ? 'checked' : 'unchecked' } label={genderArray[0]['label']} value={genderArray[0]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ gender === 1 ? 'checked' : 'unchecked' } label={genderArray[1]['label']} value={genderArray[1]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ gender === 2 ? 'checked' : 'unchecked' } label={genderArray[2]['label']} value={genderArray[2]['value']} style={styles.radioItem} />
+                <RadioButton.Item status={ gender === 0 ? 'checked' : 'unchecked' } label={genderArray[0]['label']} value={genderArray[0]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ gender === 1 ? 'checked' : 'unchecked' } label={genderArray[1]['label']} value={genderArray[1]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ gender === 2 ? 'checked' : 'unchecked' } label={genderArray[2]['label']} value={genderArray[2]['value']} style={globalStyles.radioItem} />
               </RadioButton.Group>
               </View>
           
           {/*------------------------------------------------------- address -------------------------------------------------------*/}
           <View style={styles.oddView}>
-            <Text style={styles.text}>כתובת</Text>
+            <Text style={globalStyles.questionnaireHeader}>כתובת</Text>
             <TextInput
               style = {styles.textInput}
               onChangeText={(value) => setAddress(value)}
             />
             {/*------------------------------------------------------- occupation -------------------------------------------------------*/}
-            <Text style={styles.text}>עיסוק</Text>
+            <Text style={globalStyles.questionnaireHeader}>עיסוק</Text>
       
             <TextInput
               style = {styles.textInput}
@@ -127,46 +127,46 @@ export default function Questionnaire({navigation}) {
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
           
           <View style={styles.evenView}>
-            <Text style={styles.text}>מהי תדירות הגעתך למוזיאונים</Text>
+            <Text style={globalStyles.questionnaireHeader}>מהי תדירות הגעתך למוזיאונים</Text>
             <RadioButton.Group
-            onValueChange={(value) => {setMuseumVisitsFrequency(value)}}>
-                <RadioButton.Item status={ museumVisitsFrequency === 0 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[0]['label']} value={museumVisitsFrequencyArray[0]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ museumVisitsFrequency === 1 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[1]['label']} value={museumVisitsFrequencyArray[1]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ museumVisitsFrequency === 2 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[2]['label']} value={museumVisitsFrequencyArray[2]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ museumVisitsFrequency === 3 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[3]['label']} value={museumVisitsFrequencyArray[3]['value']} style={styles.radioItem} />
+                onValueChange={(value) => {setMuseumVisitsFrequency(value)}}>
+                <RadioButton.Item status={ museumVisitsFrequency === 0 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[0]['label']} value={museumVisitsFrequencyArray[0]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ museumVisitsFrequency === 1 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[1]['label']} value={museumVisitsFrequencyArray[1]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ museumVisitsFrequency === 2 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[2]['label']} value={museumVisitsFrequencyArray[2]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ museumVisitsFrequency === 3 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[3]['label']} value={museumVisitsFrequencyArray[3]['value']} style={globalStyles.radioItem} />
               </RadioButton.Group>
               </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
           
           <View style={styles.oddView}>
-            <Text style={styles.text}>מתי פעם אחרונה ביקרת במוזיאון</Text>
+            <Text style={globalStyles.questionnaireHeader}>מתי פעם אחרונה ביקרת במוזיאון</Text>
             <RadioButton.Group
-            onValueChange={(value) => {setLastMuseumVisit(value)}}>
-                <RadioButton.Item status={ lastMuseumVisit === 0 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[0]['label']} value={lastMuseumVisitArray[0]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ lastMuseumVisit === 1 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[1]['label']} value={lastMuseumVisitArray[1]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ lastMuseumVisit === 2 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[2]['label']} value={lastMuseumVisitArray[2]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ lastMuseumVisit === 3 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[3]['label']} value={lastMuseumVisitArray[3]['value']} style={styles.radioItem} />
+                onValueChange={(value) => {setLastMuseumVisit(value)}}>
+                <RadioButton.Item status={ lastMuseumVisit === 0 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[0]['label']} value={lastMuseumVisitArray[0]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ lastMuseumVisit === 1 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[1]['label']} value={lastMuseumVisitArray[1]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ lastMuseumVisit === 2 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[2]['label']} value={lastMuseumVisitArray[2]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ lastMuseumVisit === 3 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[3]['label']} value={lastMuseumVisitArray[3]['value']} style={globalStyles.radioItem} />
               </RadioButton.Group>
               </View>
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
           
           <View style={styles.evenView}>
-            <Text style={styles.text}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
+            <Text style={globalStyles.questionnaireHeader}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
             <RadioButton.Group
-            onValueChange={(value) => {setTelAvivMuseumVisit(value)}}>
-                <RadioButton.Item status={ telAvivMuseumVisit === 0 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[0]['label']} value={telAvivMuseumVisitArray[0]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ telAvivMuseumVisit === 1 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[1]['label']} value={telAvivMuseumVisitArray[1]['value']} style={styles.radioItem} />
+                onValueChange={(value) => {setTelAvivMuseumVisit(value)}}>
+                <RadioButton.Item status={ telAvivMuseumVisit === 0 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[0]['label']} value={telAvivMuseumVisitArray[0]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ telAvivMuseumVisit === 1 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[1]['label']} value={telAvivMuseumVisitArray[1]['value']} style={globalStyles.radioItem} />
               </RadioButton.Group>
             </View>
 
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
 
           <View style={styles.oddView}>
-            <Text style={styles.text}>האם ביקרת בתערוכה זו בעבר?</Text>
+            <Text style={globalStyles.questionnaireHeader}>האם ביקרת בתערוכה זו בעבר?</Text>
             <RadioButton.Group
             onValueChange={(value) => {setThisExhibitionVisit(value)}}>
-                <RadioButton.Item status={ thisExhibitionVisit === 0 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[0]['label']} value={thisExhibitionVisitArray[0]['value']} style={styles.radioItem} />
-                <RadioButton.Item status={ thisExhibitionVisit === 1 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[1]['label']} value={thisExhibitionVisitArray[1]['value']} style={styles.radioItem} />
+                <RadioButton.Item status={ thisExhibitionVisit === 0 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[0]['label']} value={thisExhibitionVisitArray[0]['value']} style={globalStyles.radioItem} />
+                <RadioButton.Item status={ thisExhibitionVisit === 1 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[1]['label']} value={thisExhibitionVisitArray[1]['value']} style={globalStyles.radioItem} />
               </RadioButton.Group>
             </View>
 
@@ -187,15 +187,6 @@ export default function Questionnaire({navigation}) {
   }
   
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-      direction: 'rtl',
-      paddingBottom: 90
-    },
-  
     textInput: {
       width: 270,
       borderColor: "black",
@@ -203,22 +194,8 @@ export default function Questionnaire({navigation}) {
       marginBottom:10,
       marginRight:2,
       marginLeft:7,
-      direction: "rtl"
-    },
-  
-    header: {
-      textDecorationLine:'underline',
-      fontSize:20,
-      fontWeight:"bold",
-      color: "dodgerblue",  
-      direction: "rtl" ,
-      alignSelf: "center"   
-    },
-  
-    text: {
-      fontWeight:"bold",
-      alignSelf: "center"
-            
+      direction: "rtl",
+      alignSelf:"center",
     },
 
     oddView: {
@@ -227,7 +204,7 @@ export default function Questionnaire({navigation}) {
       borderColor:"black",
       borderRadius:10,
       borderWidth:2,
-      direction: "rtl"
+      direction: "rtl",      
     },
 
     evenView: {
@@ -237,9 +214,5 @@ export default function Questionnaire({navigation}) {
       borderWidth:2,
       direction: "rtl"
     },
-    radioItem: {
-      direction:"rtl",
-      alignSelf: 'flex-end'
-  }
   });
   

@@ -1,12 +1,17 @@
-import React, { Component, memo, useEffect, useRef, useState } from 'react';
-import { Animated, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import {Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Audio } from 'expo-av';
 
-  
-const AudioPlayer = (props) =>{  
-	const [sound, setSound] = React.useState();	  
-	const [status, setStatus] = React.useState(false);	  
+import { artPiecesCounterReference } from '../screens/Screen4_ArrivalInstructions';
+
+export let isPlaying = false;
+
+const AudioPlayer = (props) =>{  	  
+	const [sound, setSound] = React.useState(undefined);	  
+	const [status, setStatus] = React.useState(false);	
+	
 	async function playSound() {
+		isPlaying = true;
 		if(sound) {
 			if(status) {
 				console.log('Pausing');
@@ -20,7 +25,7 @@ const AudioPlayer = (props) =>{
 		} else {
 			console.log('Loading Sound');
 			const { sound : sound} = await Audio.Sound.createAsync(
-				require('../assets/audio/pictures_at_an_exhibition_mussorgsky.mp3')
+				require('../assets/audio/pieces_explanations/' + artPiecesCounterReference + '.ogg')
 			);
 			
 			setSound(sound);
@@ -41,7 +46,7 @@ const AudioPlayer = (props) =>{
 		<View style={styles.audio}>
 			<TouchableOpacity onPress={() => {playSound()}}>
 				<Image
-					source={require("../assets/images/playpause_button.png")}
+					source={require("../assets/images/buttons/playpause_button.png")}
 					style={styles.audioButtons} 
 				/>
 			</TouchableOpacity>
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
 	audio: {
 		flexDirection: "row",
 		justifyContent: 'center',  
-		margin: 10  
+		marginBottom:20,
 	},
 
 	audioButtons: {
