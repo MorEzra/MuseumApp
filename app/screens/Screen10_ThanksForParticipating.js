@@ -1,6 +1,9 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, ScrollView, View} from 'react-native';
+import { globalStyles } from '../assets/styles/global';
+
+import { active } from './Screen1_WelcomeScreen';
 
 // /* Data Variables*/
 // import { questionnaireData }                  from './Screen2_Questionnaire';
@@ -58,12 +61,15 @@ export default function ThanksForParticipating({navigation}) {
   // let timingsData = new TimingsData(welcomeScreenTotalTime, questionnaireTotalTime, researchGuidelinesTotalTime, summaryQuestionnaireTotalTime, summaryQuestionnaireAdditionalTotalTime, binaryChoicesExplanationTotalTime, binaryChoicesTotalTimeArray, binaryChoices2TotalTimeArray)
   // let otherData = new OtherData(questionnaireData, summaryQuestionnaireData, summaryQuestionnaireAdditionalData, binaryChoicesData, binaryChoices2Data)
   return (      
-    <View style={styles.container}>           
+    <View style={globalStyles.container}>           
       <ScrollView>
-        <Text style = {styles.header}>תודה על השתתפותך!</Text>
-        <Text>אנא החזירו את האייפד לכניסה, שם תקבלו את שובר המתנה</Text>
-
-{/*         
+        <Text style = {globalStyles.header}>תודה על השתתפותך!</Text>
+        <Text
+        style = {
+          globalStyles.instructionsText
+        }>
+          אנא החזירו את האייפד לכניסה, שם תקבלו את שובר המתנה
+        </Text>
         
         <Text> </Text>
         <Text> </Text>
@@ -72,27 +78,9 @@ export default function ThanksForParticipating({navigation}) {
         
         <Text>{JSON.stringify(otherData, null, "\t")}</Text>
         <Text>{JSON.stringify({"timingsData":timingsData, "otherData": otherData}, null, "\t")}</Text>            
-          */}
         <StatusBar style="auto" />
       </ScrollView>
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',    
-    },    
-  
-    header: {
-      textDecorationLine:'underline',
-      fontSize:20,
-      fontWeight:"bold",
-      color: "dodgerblue",  
-    },     
-  });
   

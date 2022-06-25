@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
-import RadioForm from 'react-native-simple-radio-button';
+import { StyleSheet, Text, View, ScrollView, Button} from 'react-native';
 import { RadioButton } from 'react-native-paper';
-
+import { globalStyles } from '../assets/styles/global';
 
 class SummaryQuestionnaireAdditionalData {
     constructor(experience, additionalInfo, tourType) {
@@ -53,38 +52,38 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
   
     return (      
     <View style={styles.container}>
-        <View>
-            <Text style = {styles.header}>המשך שאלון סיכום ניסוי</Text>
+        <ScrollView>
+            <Text style = {globalStyles.header}>המשך שאלון סיכום ניסוי</Text>
             <View style={styles.oddView}>            
-                <Text style = {styles.text}>דרגו את חוויתכם מהסיור</Text>
+                <Text style = {globalStyles.questionnaireHeader}>דרגו את חוויתכם מהסיור</Text>
                 <RadioButton.Group
                     onValueChange={(value) => {setExperience(value)}}>
-                    <RadioButton.Item status={ experience === 1 ? 'checked' : 'unchecked' } label={experienceArray[0]['label']} value={experienceArray[0]['value']} style={styles.radioItem} />
-                    <RadioButton.Item status={ experience === 2 ? 'checked' : 'unchecked' } label={experienceArray[1]['label']} value={experienceArray[1]['value']} style={styles.radioItem} />
-                    <RadioButton.Item status={ experience === 3 ? 'checked' : 'unchecked' } label={experienceArray[2]['label']} value={experienceArray[2]['value']} style={styles.radioItem} />
-                    <RadioButton.Item status={ experience === 4 ? 'checked' : 'unchecked' } label={experienceArray[3]['label']} value={experienceArray[3]['value']} style={styles.radioItem} />
-                    <RadioButton.Item status={ experience === 5 ? 'checked' : 'unchecked' } label={experienceArray[4]['label']} value={experienceArray[4]['value']} style={styles.radioItem} />
+                    <RadioButton.Item status={ experience === 1 ? 'checked' : 'unchecked' } label={experienceArray[0]['label']} value={experienceArray[0]['value']} style={globalStyles.radioItem} />
+                    <RadioButton.Item status={ experience === 2 ? 'checked' : 'unchecked' } label={experienceArray[1]['label']} value={experienceArray[1]['value']} style={globalStyles.radioItem} />
+                    <RadioButton.Item status={ experience === 3 ? 'checked' : 'unchecked' } label={experienceArray[2]['label']} value={experienceArray[2]['value']} style={globalStyles.radioItem} />
+                    <RadioButton.Item status={ experience === 4 ? 'checked' : 'unchecked' } label={experienceArray[3]['label']} value={experienceArray[3]['value']} style={globalStyles.radioItem} />
+                    <RadioButton.Item status={ experience === 5 ? 'checked' : 'unchecked' } label={experienceArray[4]['label']} value={experienceArray[4]['value']} style={globalStyles.radioItem} />
                 </RadioButton.Group>
             </View>
 
             <View style={styles.evenView}>            
-                <Text style = {styles.text}>האם הייתם רוצים לקבל מידע נוסף במהלך הסיור</Text>
+                <Text style = {globalStyles.questionnaireHeader}>האם הייתם רוצים לקבל מידע נוסף במהלך הסיור</Text>
                 <RadioButton.Group
                     onValueChange={(value) => {setAdditionalInfo(value)}}>
-                        <RadioButton.Item status={ additionalInfo === 1 ? 'checked' : 'unchecked' } label={additionalInfoArray[0]['label']} value={additionalInfoArray[0]['value']} style={styles.radioItem} />
-                        <RadioButton.Item status={ additionalInfo === 2 ? 'checked' : 'unchecked' } label={additionalInfoArray[1]['label']} value={additionalInfoArray[1]['value']} style={styles.radioItem} />
-                        <RadioButton.Item status={ additionalInfo === 3 ? 'checked' : 'unchecked' } label={additionalInfoArray[2]['label']} value={additionalInfoArray[2]['value']} style={styles.radioItem} />
-                        <RadioButton.Item status={ additionalInfo === 4 ? 'checked' : 'unchecked' } label={additionalInfoArray[3]['label']} value={additionalInfoArray[3]['value']} style={styles.radioItem} />
-                        <RadioButton.Item status={ additionalInfo === 5 ? 'checked' : 'unchecked' } label={additionalInfoArray[4]['label']} value={additionalInfoArray[4]['value']} style={styles.radioItem} />
+                        <RadioButton.Item status={ additionalInfo === 1 ? 'checked' : 'unchecked' } label={additionalInfoArray[0]['label']} value={additionalInfoArray[0]['value']} style={globalStyles.radioItem} />
+                        <RadioButton.Item status={ additionalInfo === 2 ? 'checked' : 'unchecked' } label={additionalInfoArray[1]['label']} value={additionalInfoArray[1]['value']} style={globalStyles.radioItem} />
+                        <RadioButton.Item status={ additionalInfo === 3 ? 'checked' : 'unchecked' } label={additionalInfoArray[2]['label']} value={additionalInfoArray[2]['value']} style={globalStyles.radioItem} />
+                        <RadioButton.Item status={ additionalInfo === 4 ? 'checked' : 'unchecked' } label={additionalInfoArray[3]['label']} value={additionalInfoArray[3]['value']} style={globalStyles.radioItem} />
+                        <RadioButton.Item status={ additionalInfo === 5 ? 'checked' : 'unchecked' } label={additionalInfoArray[4]['label']} value={additionalInfoArray[4]['value']} style={globalStyles.radioItem} />
                     </RadioButton.Group>
             </View>
                 
             <View style={styles.oddView}>            
-                <Text style = {styles.text}>כיצד הייתם רוצים שהסיור יתנהל?</Text>
+                <Text style = {globalStyles.questionnaireHeader}>כיצד הייתם רוצים שהסיור יתנהל?</Text>
                 <RadioButton.Group
                     onValueChange={(value) => {setTourType(value)}}>
-                    <RadioButton.Item status={ tourType === 0 ? 'checked' : 'unchecked' } label={tourTypeArray[0]['label']} value={tourTypeArray[0]['value']} style={styles.radioItem} />
-                    <RadioButton.Item status={ tourType === 1 ? 'checked' : 'unchecked' } label={tourTypeArray[1]['label']} value={tourTypeArray[1]['value']} style={styles.radioItem} />
+                    <RadioButton.Item status={ tourType === 0 ? 'checked' : 'unchecked' } label={tourTypeArray[0]['label']} value={tourTypeArray[0]['value']} style={globalStyles.radioItem} />
+                    <RadioButton.Item status={ tourType === 1 ? 'checked' : 'unchecked' } label={tourTypeArray[1]['label']} value={tourTypeArray[1]['value']} style={globalStyles.radioItem} />
                 </RadioButton.Group>
             </View>
             <Button 
@@ -97,7 +96,7 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
                         }
                     }>
             </Button>     
-        </View>     
+        </ScrollView>     
         <StatusBar style="auto" />
     </View>
   );
@@ -111,20 +110,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',    
     },
-  
-    header: {
-      textDecorationLine:'underline',
-      textAlign: 'center',
-      fontSize:20,
-      fontWeight:"bold",
-      color: "dodgerblue",  
-      marginBottom:10          
-    },
-
-    text: {
-        fontWeight:"bold",
-        textAlign: "center"
-    },
 
     radiobutton: {
         alignSelf:"flex-end"        
@@ -136,8 +121,8 @@ const styles = StyleSheet.create({
         borderColor:"black",
         borderRadius:10,
         borderWidth:2
-      },
-  
+      },      
+
       evenView: {
         backgroundColor:"#fff",      
         marginBottom:10,
@@ -145,9 +130,6 @@ const styles = StyleSheet.create({
         borderWidth:2
       },
 
-    radioItem: {
-        direction:"rtl",
-        alignSelf: 'flex-end'
-    }
+   
   });
   
