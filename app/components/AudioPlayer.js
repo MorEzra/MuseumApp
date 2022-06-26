@@ -3,7 +3,7 @@ import {Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Audio } from 'expo-av';
 
 import { artPiecesCounterReference } from '../screens/Screen4_ArrivalInstructions';
-
+import { artPieces } from './ArtPiece';
 export let isPlaying = false;
 
 const AudioPlayer = (props) =>{  	  
@@ -25,7 +25,7 @@ const AudioPlayer = (props) =>{
 		} else {
 			console.log('Loading Sound');
 			const { sound : sound} = await Audio.Sound.createAsync(
-				require('../assets/audio/pieces_explanations/' + artPiecesCounterReference + '.ogg')
+				artPieces[artPiecesCounterReference-1].audio_explanation
 			);
 			
 			setSound(sound);
