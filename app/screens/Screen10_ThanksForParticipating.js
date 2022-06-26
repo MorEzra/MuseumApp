@@ -74,10 +74,10 @@ export default function ThanksForParticipating({navigation}) {
         <Text> </Text>
         <Text> </Text>
         <Text> </Text>
-        <Text>FOR DEBUGGING PURPOSES:</Text>
+        {/* <Text>FOR DEBUGGING PURPOSES:</Text>
         
         <Text>{JSON.stringify(otherData, null, "\t")}</Text>
-        <Text>{JSON.stringify({"timingsData":timingsData, "otherData": otherData}, null, "\t")}</Text>            
+        <Text>{JSON.stringify({"timingsData":timingsData, "otherData": otherData}, null, "\t")}</Text>             */}
         <StatusBar style="auto" />
       </ScrollView>
     </View>
