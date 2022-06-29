@@ -3,8 +3,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 
-import sendDataToServer from '../components/sendDataToServer'; // TODO - ???? this?
-
 /* Data Variables*/
 import { questionnaireData }                  from './Screen2_Questionnaire';
 import { summaryQuestionnaireData }           from './Screen6_SummaryQuestionnaire';
@@ -66,12 +64,35 @@ class BinaryChoices2Data {
 }
 
 
-let pair1 = [];
-let pair2 = [];
-for (let i=1; i<=15; i++) {  
-  pair1.push(require("../assets/images/pairs/" + i +"/1.png"));
-  pair2.push(require("../assets/images/pairs/" + i +"/2.png"));
-}
+let pair1 = [require("../assets/images/pairs/1/1.png"),
+require("../assets/images/pairs/2/1.png"),
+require("../assets/images/pairs/3/1.png"),
+require("../assets/images/pairs/4/1.png"),
+require("../assets/images/pairs/5/1.png"),
+require("../assets/images/pairs/6/1.png"),
+require("../assets/images/pairs/7/1.png"),
+require("../assets/images/pairs/8/1.png"),
+require("../assets/images/pairs/9/1.png"),
+require("../assets/images/pairs/10/1.png"),
+require("../assets/images/pairs/11/1.png"),
+require("../assets/images/pairs/12/1.png"),
+require("../assets/images/pairs/13/1.png"),
+require("../assets/images/pairs/14/1.png")];
+let pair2 = [require("../assets/images/pairs/1/2.png"),
+require("../assets/images/pairs/2/2.png"),
+require("../assets/images/pairs/3/2.png"),
+require("../assets/images/pairs/4/2.png"),
+require("../assets/images/pairs/5/2.png"),
+require("../assets/images/pairs/6/2.png"),
+require("../assets/images/pairs/7/2.png"),
+require("../assets/images/pairs/8/2.png"),
+require("../assets/images/pairs/9/2.png"),
+require("../assets/images/pairs/10/2.png"),
+require("../assets/images/pairs/11/2.png"),
+require("../assets/images/pairs/12/2.png"),
+require("../assets/images/pairs/13/2.png"),
+require("../assets/images/pairs/14/2.png")];
+
 
 export let binaryChoices2Data = new BinaryChoices2Data(pair1.length);
 export let binaryChoices2TotalTimeArray = new Array(pair1.length).fill(0);
