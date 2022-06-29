@@ -112,18 +112,15 @@ export default function BinaryChoices2({navigation}) {
                     binaryChoices2TotalTimeArray[artPiecesCounter] = ((finishingTime - startingTime) / 1000).toFixed(2);                              
                     binaryChoices2Data.likings2[artPiecesCounter] = 1;
                     if (artPiecesCounter == pair1.length - 1) {                        
-                        // sendDataToServer();
-                        // Send to server kek
                         fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=test-worker-key", {
                             method: "POST",
                             mode: 'cors',
                             headers: {
                               "Content-Type": "application/json"
                             },
-                            body: JSON.stringify({"timingsData":timingsData, "otherData": otherData}),
+                            body: JSON.stringify({"timingsData": timingsData, "otherData": otherData}),
                           }
                         )
-
                         navigation.navigate("ThanksForParticipating");
                     }
                     else {
