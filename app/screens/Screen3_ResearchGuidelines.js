@@ -21,7 +21,7 @@ export default function ResearchGuidelines({navigation}) {
           onPress={() => {
             let finishingTime = performance.now();
             researchGuidelinesTotalTime = finishingTime - startingTime;            
-            navigation.navigate("ArrivalInstructions")
+            navigation.navigate("OverviewScreen")
             }
           }>
         </Button>

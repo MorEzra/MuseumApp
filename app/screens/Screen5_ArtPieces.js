@@ -1,9 +1,10 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
-import { artPieces } from '../components/ArtPiece';
+
 import { globalStyles } from '../assets/styles/global';
 
+import { artPieces } from '../components/ArtPiece';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
 //import { active } from './Screen1_WelcomeScreen';
@@ -62,7 +63,9 @@ export default function ArtPieces({navigation}) {
           />
           {/* ------------------------------------------------ audio ------------------------------------------------ */}
           
-          <AudioPlayer />
+          <AudioPlayer 
+          soundfile={artPieces[artPiecesCounterReference-1].audio_explanation} 
+          />
 
           {
             artPiecesCounterReference != 8 ? (

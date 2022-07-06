@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from                  './app/screens/Screen1_WelcomeScreen';
 import Questionnaire from                  './app/screens/Screen2_Questionnaire';
 import ResearchGuidelines from             './app/screens/Screen3_ResearchGuidelines';
+import OverviewScreen from                 './app/screens/Screen3point5_Overview';
 import ArrivalInstructions from            './app/screens/Screen4_ArrivalInstructions';
 import ArtPieces from                      './app/screens/Screen5_ArtPieces';
 import SummaryQuestionnaire from           './app/screens/Screen6_SummaryQuestionnaire';
@@ -38,6 +39,12 @@ function App() {
         <Stack.Screen
          name="ResearchGuidelines"
          component={ResearchGuidelines}
+         options={{ title: 'הנחיות לסיור'}}
+        />
+
+        <Stack.Screen
+         name="OverviewScreen"
+         component={OverviewScreen}
          options={{ title: 'הנחיות לסיור'}}
         />
 
