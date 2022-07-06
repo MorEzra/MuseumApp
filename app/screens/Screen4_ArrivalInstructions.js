@@ -13,30 +13,32 @@ export default function ArrivalInstructions({navigation}) {
 
   artPiecesCounterReference = artPiecesCounter;
   return (      
-    <View style={globalStyles.container}>
-      <ScrollView>
+    <View style={[globalStyles.container, 
+
+    ]}>
+      <Text style = {globalStyles.header}>
+        יצירה מספר {artPiecesCounter + 1}: {artPiecesNames[artPiecesCounter]}
+      </Text>
+
         <View
          style={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
 
-        <Text style = {globalStyles.header}>
-          יצירה מספר {artPiecesCounter + 1}: {artPiecesNames[artPiecesCounter]}
-        </Text>
-
-        <View style={
-            {
-              flexDirection: "row",
-              alignItems: 'center'
-            }
-          }>         
+      
+          <View style={
+              {
+                flexDirection: "row",
+                alignItems: 'center'
+              }
+            }>         
 
           {/* -------------------------------------------------- map image -------------------------------------------------- */}
 
           <Image
               source={artPieces[Math.min(artPiecesCounter, artPieces.length - 1)].mapPath}
-              style={{ width: 650, height: 400 }}
+              style={{ width: 600, height: 350 }}
           />
         </View>
         {/* ------------------------------------------------ camera ------------------------------------------------ */}
@@ -68,7 +70,7 @@ export default function ArrivalInstructions({navigation}) {
         {/* ------------------------------------------------ piece ------------------------------------------------ */}
           <Image
               source={artPieces[Math.min(artPiecesCounter, artPieces.length - 1)].piece}
-              style={{resizeMode: 'contain', width: 475, height: 475, marginBottom:25,  }}
+              style={{resizeMode: 'contain', width: 400, height: 400, marginBottom:25,  }}
           />
           </View>
         
@@ -87,9 +89,8 @@ export default function ArrivalInstructions({navigation}) {
           style= {{height: 50}}>
             
         </View>
-      </View>
-      </ScrollView>        
-      <StatusBar style="auto" />
+      </View>     
+      <StatusBar hidden={false} />
     </View>
   );
 }
