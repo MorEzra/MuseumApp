@@ -11,9 +11,10 @@ import AudioPlayer from '../components/AudioPlayer';
 
 export default function ArtPieces({navigation}) { 
   let artPiecesNames = artPieces.map(({name}) => name);
+  let active = 1;
   let buttonName = (active) ? "בחרתי" : "המשך";  
+  let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?": "מאפיין היצירה הבאה באוסף יהיה:"
   
-  let active = 0;
 
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
   let attribute2DefaultBackgroundColor = (active) ? "white" : "white";
@@ -67,7 +68,7 @@ export default function ArtPieces({navigation}) {
             artPiecesCounterReference != 8 ? (
             <View style={styles.attributesView}>
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
-            <Text style={styles.text}>איזה מאפיין תרצו שיהיה ליצירה הבאה?</Text>  
+            <Text style={styles.text}>{ChoicesText}</Text>  
             {/* ------------------------------------------------ attribute1 ------------------------------------------------ */}
               <Pressable
                 style={{backgroundColor:attribute1BackgroundColor, borderWidth:1, marginBottom:10}}
@@ -125,6 +126,7 @@ export default function ArtPieces({navigation}) {
                 if (!active || (chosenAttribute && active)) {                            
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("SummaryQuestionnaire");
+                    
                   else {                              
                     navigation.navigate("ArrivalInstructions");
                   }
@@ -152,7 +154,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:30,
         marginBottom:25,
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        textAlign: "right"
     },
 
     attributesView: {       

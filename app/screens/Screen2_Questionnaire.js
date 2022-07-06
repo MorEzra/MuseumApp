@@ -178,9 +178,14 @@ export default function Questionnaire({navigation}) {
                 questionnaireTotalTime = finishingTime - startingTime;
                 navigation.navigate("ResearchGuidelines")
               }
-            }>
+            }
+            style = {{}}
+            >
           </Button>         
-          
+          <View
+          style= {{height: 50}}>
+            
+          </View>
           <StatusBar style="auto" />
         </ScrollView>        
       </View>);

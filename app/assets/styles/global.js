@@ -14,7 +14,8 @@ export const globalStyles = StyleSheet.create({
         fontWeight:"bold",
         color: "dodgerblue", 
         alignSelf: "center",             
-        marginBottom:20,      
+        marginBottom:20,
+        textAlign: 'center'      
       },
 
      questionnaireHeader: {

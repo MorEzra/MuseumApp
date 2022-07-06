@@ -13,7 +13,7 @@ class ArtPiece {
   
 
 export let artPieces =
-  [ new ArtPiece(1, "פרדריקה מריה בר מאת קילמט", ["יצירה מאירופה של ראשית המאה ה-20", "יצירה פוביסטית", "אמן הולנדי"],                   0,   require("../assets/images/pieces/1.png"),         require("../assets/images/maps/1.jpg"), "",	require('../assets/audio/pieces_explanations/1.wav')),
+  [ new ArtPiece(1, "פרדריקה מריה בר מאת קלימט", ["יצירה מאירופה של ראשית המאה ה-20", "יצירה פוביסטית", "אמן הולנדי"],                   0,   require("../assets/images/pieces/1.png"),         require("../assets/images/maps/1.jpg"), "",	require('../assets/audio/pieces_explanations/1.wav')),
     new ArtPiece(2, "נסיכת בבל מאת קייס ואן דונגן", ["ציור נוף", "צייר מאסכולת פריז", "אמנות קוביסטית"],                                 1,   require("../assets/images/pieces/2.png"),          require("../assets/images/maps/2.jpg"), "היצירה הבאה היא בשעה 7 שלכם. הסתובבו אחורה לכיוון דלת הכניסה ופנו ימינה", require('../assets/audio/pieces_explanations/2.wav')),
     new ArtPiece(3, "סירה בנמל אנטוורפן מאת ז'ורז' בראק", ["ציור אקספרסיוניסטי", "ציור מופשט", "אמנות שנוצרה אחרי מלחמת העולם השניה"], 2,   require("../assets/images/pieces/3.png"),          require("../assets/images/maps/3.jpg"), "היצירה היא בשעה 1 שלכם. פנו ימינה המשיכו ישר ופנו שוב ימינה", require('../assets/audio/pieces_explanations/3.wav')),
     new ArtPiece(4, "תולעי אדמה מאת ג'קסון פולוק", ["אמן שוויצרי", "אמן רב תחומי", "אמן שפעל בפריז"],                                     0,  require("../assets/images/pieces/4.png"),           require("../assets/images/maps/4.jpg"), "היצירה היא בשעה 6 שלכם. לכו כל הדרך לאולם הרחוק ביותר מכם.", require('../assets/audio/pieces_explanations/4.wav')),
