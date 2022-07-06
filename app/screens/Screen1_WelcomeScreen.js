@@ -34,7 +34,7 @@ export default function WelcomeScreen({navigation}) {
           onPress={() => {
             let finishingTime = performance.now();
             welcomeScreenTotalTime = (finishingTime - startingTime);
-            navigation.navigate("OverviewScreen");
+            navigation.navigate("Questionnaire");
            }
           }>
       </Button>
