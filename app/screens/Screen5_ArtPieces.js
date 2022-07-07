@@ -126,7 +126,7 @@ export default function ArtPieces({navigation}) {
           <Button 
               title={buttonName}
               onPress={() => {
-                if (!active || (chosenAttribute && active)) {                            
+                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                            
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("SummaryQuestionnaire");
                     
