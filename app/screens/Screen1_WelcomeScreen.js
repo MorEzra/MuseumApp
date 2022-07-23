@@ -46,6 +46,7 @@ export default function WelcomeScreen({navigation}) {
 
       <Button           
           title="המשך"
+          disabled = { checked === 'checked' ? false : true }
           onPress={() => {
             let finishingTime = performance.now();
             welcomeScreenTotalTime = (finishingTime - startingTime);

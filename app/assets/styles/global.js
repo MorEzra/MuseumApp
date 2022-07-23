@@ -7,15 +7,18 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',    
       },
-    
+    questionnaireContainer: {
+      flex: 1,
+      backgroundColor: '#fff'  
+    },
       header: {
-        textDecorationLine:'underline',
         fontSize:50,
         fontWeight:"bold",
-        color: "dodgerblue", 
+        color: "darkblue", 
         alignSelf: "center",             
         marginBottom:20,
-        textAlign: 'center'      
+        textAlign: 'center',
+        fontFamily: "Greta,GretaLangs,serif"      
       },
 
      questionnaireHeader: {

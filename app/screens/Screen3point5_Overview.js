@@ -41,8 +41,10 @@ export default function OverviewScreen({navigation}) {
             source={require("../assets/images/Sefi.png")}
             style={{ resizeMode: 'contain', width: 200, height: 200}} 
           />
+          <Text >דוקטור ספי הנדלר הסטוריון אומנות</Text>
+
           </View>
-          
+
           <View style={
             {
               flexBasis: 100,

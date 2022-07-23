@@ -76,7 +76,7 @@ export default function Questionnaire({navigation}) {
     questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
     
     return ( 
-      <View style={globalStyles.container}>
+      <View style={globalStyles.questionnaireContainer}>
         <ScrollView >
           <View style={{marginBottom:10}}>
             <Text style = {globalStyles.header} >שאלון פרטים אישיים</Text>
@@ -110,20 +110,6 @@ export default function Questionnaire({navigation}) {
               </RadioButton.Group>
               </View>
           
-          {/*------------------------------------------------------- address -------------------------------------------------------*/}
-          <View style={styles.oddView}>
-            <Text style={globalStyles.questionnaireHeader}>כתובת</Text>
-            <TextInput
-              style = {styles.textInput}
-              onChangeText={(value) => setAddress(value)}
-            />
-            {/*------------------------------------------------------- occupation -------------------------------------------------------*/}
-            <Text style={globalStyles.questionnaireHeader}>עיסוק</Text>
-      
-            <TextInput
-              style = {styles.textInput}
-            />
-          </View>
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
           
           <View style={styles.evenView}>
