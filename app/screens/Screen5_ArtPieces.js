@@ -12,7 +12,7 @@ import AudioPlayer from '../components/AudioPlayer';
 
 export default function ArtPieces({navigation}) { 
   let artPiecesNames = artPieces.map(({name}) => name);
-  let active = 1;
+  let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?": "מאפיין היצירה הבאה באוסף יהיה:"
   
@@ -66,12 +66,12 @@ export default function ArtPieces({navigation}) {
           <AudioPlayer 
           soundfile={artPieces[artPiecesCounterReference-1].audio_explanation} 
           />
-
+          <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
           {
             artPiecesCounterReference != 8 ? (
             <View style={styles.attributesView}>
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
-            <Text style={styles.text}>{ChoicesText}</Text>  
+            <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
             {/* ------------------------------------------------ attribute1 ------------------------------------------------ */}
               <Pressable
                 style={{backgroundColor:attribute1BackgroundColor, borderWidth:1, marginBottom:10}}
@@ -128,7 +128,7 @@ export default function ArtPieces({navigation}) {
               onPress={() => {
                 if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                            
                   if (artPiecesCounterReference == artPieces.length) 
-                    navigation.navigate("SummaryQuestionnaire");
+                    navigation.navigate("SummaryQuestionnaire1");
                     
                   else {                              
                     navigation.navigate("ArrivalInstructions");

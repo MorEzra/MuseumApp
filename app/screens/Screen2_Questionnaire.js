@@ -112,7 +112,7 @@ export default function Questionnaire({navigation}) {
           
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
           
-          <View style={styles.evenView}>
+          <View style={styles.oddView}>
             <Text style={globalStyles.questionnaireHeader}>מהי תדירות הגעתך למוזיאונים</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setMuseumVisitsFrequency(value)}}>
@@ -124,7 +124,7 @@ export default function Questionnaire({navigation}) {
               </View>
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
           
-          <View style={styles.oddView}>
+          <View style={styles.evenView}>
             <Text style={globalStyles.questionnaireHeader}>מתי פעם אחרונה ביקרת במוזיאון</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setLastMuseumVisit(value)}}>
@@ -136,7 +136,7 @@ export default function Questionnaire({navigation}) {
               </View>
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
           
-          <View style={styles.evenView}>
+          <View style={styles.oddView}>
             <Text style={globalStyles.questionnaireHeader}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setTelAvivMuseumVisit(value)}}>
@@ -147,7 +147,7 @@ export default function Questionnaire({navigation}) {
 
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
 
-          <View style={styles.oddView}>
+          <View style={styles.evenView}>
             <Text style={globalStyles.questionnaireHeader}>האם ביקרת בתערוכה זו בעבר?</Text>
             <RadioButton.Group
             onValueChange={(value) => {setThisExhibitionVisit(value)}}>

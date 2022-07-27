@@ -63,7 +63,7 @@ export default function BinaryChoices({navigation}) {
             }
         }>
             <Text style={{color:"white", fontWeight:"bold"}}>אהבתי</Text>            
-        </Pressable>             
+        </Pressable>     
       </View>             
       <StatusBar style="auto" />
     </View>

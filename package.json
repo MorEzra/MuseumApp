@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@miblanchard/react-native-slider": "^2.1.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "@react-navigation/stack": "^6.1.1",
@@ -31,7 +32,9 @@
     "react-native-screens": "~3.10.1",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-web": "0.17.1",
+    "react-surveyjs-vas-widget": "^1.0.1",
     "scroll-view": "^0.1.0",
+    "survey-react": "^1.9.41",
     "touchable-opacity-scale": "^1.0.2"
   },
   "devDependencies": {
