@@ -16,14 +16,14 @@ export default function BinaryChoicesExplanation({navigation}) {
         globalStyles.instructionsText
       }
       >במסך הבא, תתבקשו לסמן העדפות של יצירות.
-          אנא סמנו "אהבתי" או "לא אהבתי"
+          אנא דרגו מ 1 עד 10 כמה אהבתם כל יצירה."
       </Text>
       <Button 
           title="המשך"
           onPress={() => {
             let finishingTime = performance.now();
             binaryChoicesExplanationTotalTime = finishingTime - startingTime;
-            navigation.navigate("BinaryChoices")
+            navigation.navigate("BinaryChoices1_1")
           }
         }>
       </Button>          

@@ -135,15 +135,7 @@ export default function ArtPieces({navigation}) {
                   }
                 }
               }}>
-          </Button>
-
-          {/*<Button 
-              title="show"
-              onPress={() => {
-                  setShow(!show);
-                }
-              }>                
-              </Button>*/}
+          </Button>      
         </View>
       </ScrollView>
       <StatusBar style="auto" />

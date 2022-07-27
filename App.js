@@ -21,7 +21,17 @@ import SummaryQuestionnaire8 from          './app/screens/Screen6_SummaryQuestio
 
 import SummaryQuestionnaireAdditional from './app/screens/Screen6.5_SummaryQuestionnaireAdditional';
 import BinaryChoicesExplanation from       './app/screens/Screen7_BinaryChoicesExplanation';
-import BinaryChoices from                  './app/screens/Screen8_BinaryChoices';
+
+//import BinaryChoices from                  './app/screens/Screen8_BinaryChoices';
+import BinaryChoices1_1 from './app/screens/Screen8_BinaryChoices/1';
+import BinaryChoices1_2 from './app/screens/Screen8_BinaryChoices/2';
+import BinaryChoices1_3 from './app/screens/Screen8_BinaryChoices/3';
+import BinaryChoices1_4 from './app/screens/Screen8_BinaryChoices/4';
+import BinaryChoices1_5 from './app/screens/Screen8_BinaryChoices/5';
+import BinaryChoices1_6 from './app/screens/Screen8_BinaryChoices/6';
+import BinaryChoices1_7 from './app/screens/Screen8_BinaryChoices/7';
+import BinaryChoices1_8 from './app/screens/Screen8_BinaryChoices/8';
+
 import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices';
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
@@ -146,12 +156,76 @@ function App() {
         options={{ title: 'שלב אחרון בניסוי!'}}
         />
 
-        {/*----------------- Screen8 ----------------- */}
+        {/*----------------- Screen8.1 ----------------- */}
+        
         <Stack.Screen
-        name="BinaryChoices"
-        component={BinaryChoices}
-        options={{ title: 'סמנו אהבתי / לא אהבתי'}}
+        name="BinaryChoices1_1"
+        component={BinaryChoices1_1}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
         />
+
+        {/*----------------- Screen8.2 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_2"
+        component={BinaryChoices1_2}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+
+        {/*----------------- Screen8.3 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_3"
+        component={BinaryChoices1_3}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+
+        {/*----------------- Screen8.4 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_4"
+        component={BinaryChoices1_4}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+
+        {/*----------------- Screen8.5 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_5"
+        component={BinaryChoices1_5}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+
+        {/*----------------- Screen8.6 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_6"
+        component={BinaryChoices1_6}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+        
+        {/*----------------- Screen8.7 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_7"
+        component={BinaryChoices1_7}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />
+
+        {/*----------------- Screen8.8 ----------------- */}
+        
+        <Stack.Screen
+        name="BinaryChoices1_8"
+        component={BinaryChoices1_8}
+        options={{ title: "דרג כמה אהבת את היצירה"}}
+
+        />       
         
         {/*----------------- Screen9 ----------------- */}
         <Stack.Screen
