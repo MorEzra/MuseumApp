@@ -44,8 +44,7 @@ export default function BinaryChoices1_7({navigation}) {
           value={5}
           onValueChange={
             value => setRate(parseInt(value))            
-          }                
-              
+          }                              
         />
       <Text style={{fontWeight:"bold", fontSize:20, marginRight:20}}>מאוד אהבתי</Text>
       
