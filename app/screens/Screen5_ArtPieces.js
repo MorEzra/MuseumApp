@@ -2,8 +2,9 @@ import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
 
-import { globalStyles } from '../assets/styles/global';
+import FastImage from 'react-native-fast-image'
 
+import { globalStyles } from '../assets/styles/global';
 import { artPieces } from '../components/ArtPiece';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
@@ -57,9 +58,9 @@ export default function ArtPieces({navigation}) {
           
 
           {/* ------------------------------------------------ art piece ------------------------------------------------ */}
-          <Image        
+          <FastImage        
             source={artPieces[artPiecesCounterReference-1].piece}
-            style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:20 }} 
+            style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:20 }}
           />
           {/* ------------------------------------------------ audio ------------------------------------------------ */}
           

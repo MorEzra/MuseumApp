@@ -25,7 +25,8 @@ export const globalStyles = StyleSheet.create({
       fontWeight:"bold",
       alignSelf: "center",
       fontSize:20,
-      marginBottom:20
+      marginBottom:20,
+      textAlign: 'right'
     },
 
     instructionsText: {

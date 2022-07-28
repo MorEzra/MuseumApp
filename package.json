@@ -26,6 +26,7 @@
     "react-native": "0.64.3",
     "react-native-camera": "^4.2.1",
     "react-native-camera-hooks": "^0.5.3",
+    "react-native-fast-image": "^8.5.11",
     "react-native-fs": "^2.19.0",
     "react-native-gesture-handler": "~2.1.0",
     "react-native-paper": "^4.12.1",
