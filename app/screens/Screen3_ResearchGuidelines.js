@@ -1,9 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
+import { researchTimerBegin } from './Screen1_WelcomeScreen';
 
-export let researchGuidelinesTotalTime;
+export let tFinishGuidelines;
 
 export default function ResearchGuidelines({navigation}) {  
     let startingTime = performance.now();
@@ -20,7 +21,7 @@ export default function ResearchGuidelines({navigation}) {
           title="הבנתי, אפשר להתחיל"
           onPress={() => {
             let finishingTime = performance.now();
-            researchGuidelinesTotalTime = finishingTime - startingTime;            
+            tFinishGuidelines = finishingTime - startingTime;            
             navigation.navigate("OverviewScreen")
             }
           }>

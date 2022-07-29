@@ -23,23 +23,7 @@ export let summaryQuestionnaireTotalTime;
 
 export default function SummaryQuestionnaire8({navigation}) {    
     let startingTime = performance.now();    
-    
-    let [im1Liking, setIm1Liking] = useState(0);
-    let [im2Liking, setIm2Liking] = useState(0);
-    let [im3Liking, setIm3Liking] = useState(0);
-    let [im4Liking, setIm4Liking] = useState(0);
-    let [im5Liking, setIm5Liking] = useState(0);
-    let [im6Liking, setIm6Liking] = useState(0);
-    let [im7Liking, setIm7Liking] = useState(0);
-    let [im8Liking, setIm8Liking] = useState(0);
-
-    summaryQuestionnaireData.im1Liking = im1Liking;    
-    summaryQuestionnaireData.im2Liking = im2Liking;    
-    summaryQuestionnaireData.im3Liking = im3Liking;    
-    summaryQuestionnaireData.im4Liking = im4Liking;    
-    summaryQuestionnaireData.im5Liking = im5Liking;     
-    summaryQuestionnaireData.im6Liking = im6Liking;     
-    summaryQuestionnaireData.im7Liking = im7Liking;     
+    let [im8Liking, setIm8Liking] = useState(0);   
     summaryQuestionnaireData.im8Liking = im8Liking;     
     
     let likingArray = [

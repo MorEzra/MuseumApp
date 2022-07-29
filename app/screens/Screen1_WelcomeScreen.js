@@ -1,13 +1,15 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { RadioButton } from 'react-native-paper';
 
-export let welcomeScreenTotalTime;
-export let active = Math.round(Math.random())
+export let researchTimerBegin = performance.now();
+export let tFinishWelcomeScreen;
+export let active = Math.round(Math.random());
+export let debugMode = true;
+
 export default function WelcomeScreen({navigation}) {
-  let startingTime = performance.now();
   const [checked, setChecked] = React.useState('unchecked');
   
   return (      
@@ -30,7 +32,6 @@ export default function WelcomeScreen({navigation}) {
 בלחיצה על 'המשך' הינך מסכים להשתתף במחקר, תהנו!
 
       </Text>
-      
       <RadioButton.Item
         value="unchecked"
         label="קראתי את ההוראות ואני מאשר את השתתפותי בניסוי"
@@ -46,10 +47,9 @@ export default function WelcomeScreen({navigation}) {
 
       <Button           
           title="המשך"
-          disabled = { checked === 'checked' ? false : true }
-          onPress={() => {
-            let finishingTime = performance.now();
-            welcomeScreenTotalTime = (finishingTime - startingTime);
+          disabled = { checked === 'checked' || debugMode ? false : true }
+          onPress={() => {        
+            tFinishWelcomeScreen = performance.now() - researchTimerBegin;
             navigation.navigate("Questionnaire");
            }
           }>
