@@ -1,6 +1,6 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ScrollView, View} from 'react-native';
+import {Text, ScrollView, View} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 
 import { active } from './Screen1_WelcomeScreen';
