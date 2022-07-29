@@ -74,7 +74,12 @@ function App() {
         const imageAssets = cacheImages(Images.slice(0,70));
         
         
-        const fontAssets = cacheFonts([MaterialCommunityIcons.font]);
+        const fontAssets = cacheFonts([MaterialCommunityIcons.font,
+          {'Hillel':
+          require('/home/yonata/VscodeProjects/MuseumApp/app/assets/fonts/hillelclm-medium-webfont.ttf')},
+          {'Suez':
+          require('/home/yonata/VscodeProjects/MuseumApp/app/assets/fonts/SuezOne-Regular.ttf')}
+          ]);
 
         await Promise.all([...imageAssets, ...fontAssets]);
       } catch (e) {
