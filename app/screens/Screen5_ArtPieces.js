@@ -7,7 +7,6 @@ import { globalStyles } from '../assets/styles/global';
 import { artPieces } from '../components/ArtPiece';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
-//import { active } from './Screen1_WelcomeScreen';
 
 
 export default function ArtPieces({navigation}) { 
@@ -36,7 +35,7 @@ export default function ArtPieces({navigation}) {
     }
   }
 
-  let show = true; //[show, setShow] = useState(false); //TODO: show if audio finished playing?
+  let [finishedPlaying, setFinishedPlaying] = useState(false); //TODO: show if audio finished playing?
 
   let [attribute1BackgroundColor, setAttribute1BackgroundColor] = useState(attribute1DefaultBackgroundColor);
   let [attribute2BackgroundColor, setAttribute2BackgroundColor] = useState(attribute2DefaultBackgroundColor);
@@ -62,14 +61,22 @@ export default function ArtPieces({navigation}) {
             style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:20 }} 
           />
           {/* ------------------------------------------------ audio ------------------------------------------------ */}
-          
-          <AudioPlayer 
-          soundfile={artPieces[artPiecesCounterReference-1].audio_explanation} 
-          />
-          <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
           {
-            artPiecesCounterReference != 8 ? (
-            <View style={styles.attributesView}>
+          !finishedPlaying? (
+            <AudioPlayer 
+            soundfile={artPieces[artPiecesCounterReference-1].audio_explanation} 
+            
+            />
+          ) : null
+          }
+          {
+            !finishedPlaying? (
+            <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
+            ) : null
+          }
+          {
+            (artPiecesCounterReference != 8) && finishedPlaying ? (
+            <View style={styles.attributesView}>          
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
             <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
             {/* ------------------------------------------------ attribute1 ------------------------------------------------ */}
@@ -123,6 +130,12 @@ export default function ArtPieces({navigation}) {
             </View> 
             ) : null 
           }   
+          <Button
+          title="show"
+          onPress={()=>setFinishedPlaying(!finishedPlaying)}
+          >          
+          </Button>
+
           <Button 
               title={buttonName}
               onPress={() => {

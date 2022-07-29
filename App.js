@@ -42,7 +42,7 @@ import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices'
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
 
-import Images from './app/assets/images/images'
+//import Images from './app/assets/images/images'
 
 function cacheImages(images) {
   return images.map(image => {
@@ -55,14 +55,14 @@ function cacheImages(images) {
 }
 
 
-function cacheFonts(fonts) {
+/*function cacheFonts(fonts) {
   return fonts.map(font => Font.loadAsync(font));
-}
+}*/
 
 const Stack = createNativeStackNavigator();
 
 function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
+  /*const [appIsReady, setAppIsReady] = useState(false);
   
   // Load any resources or data that you need prior to rendering the app
   useEffect(() => {
@@ -76,9 +76,9 @@ function App() {
         
         const fontAssets = cacheFonts([MaterialCommunityIcons.font,
           {'Hillel':
-          require('/home/yonata/VscodeProjects/MuseumApp/app/assets/fonts/hillelclm-medium-webfont.ttf')},
+          require('./app/assets/fonts/hillelclm-medium-webfont.ttf')},
           {'Suez':
-          require('/home/yonata/VscodeProjects/MuseumApp/app/assets/fonts/SuezOne-Regular.ttf')}
+          require('./app/assets/fonts/SuezOne-Regular.ttf')}
           ]);
 
         await Promise.all([...imageAssets, ...fontAssets]);
@@ -92,11 +92,11 @@ function App() {
     }
 
     loadResourcesAndDataAsync();
-  }, []);
+  }, []);*/
 
-  if (!appIsReady) {
+  /*if (!appIsReady) {
     return null;
-  }
+  }*/
 
   return (
     <NavigationContainer>
