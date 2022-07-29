@@ -18,7 +18,6 @@ export const globalStyles = StyleSheet.create({
         alignSelf: "center",             
         marginBottom:20,
         textAlign: 'center',
-        fontFamily: "Greta,GretaLangs,serif"      
       },
 
      questionnaireHeader: {

@@ -1,13 +1,19 @@
-import React from 'react';
+import React,  { useState, useEffect } from 'react';
 import { StyleSheet, Text, Button, View, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Asset } from 'expo-asset';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 import WelcomeScreen from                  './app/screens/Screen1_WelcomeScreen';
 import Questionnaire from                  './app/screens/Screen2_Questionnaire';
 import ResearchGuidelines from             './app/screens/Screen3_ResearchGuidelines';
 import OverviewScreen from                 './app/screens/Screen3point5_Overview';
 import ArrivalInstructions from            './app/screens/Screen4_ArrivalInstructions';
 import ArtPieces from                      './app/screens/Screen5_ArtPieces';
+
 
 //import SummaryQuestionnaire from           './app/screens/Screen6_SummaryQuestionnaire';
 import SummaryQuestionnaire1 from          './app/screens/Screen6_SummaryQuestionnaire/q1';
@@ -36,11 +42,57 @@ import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices'
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
 
+import Images from './app/assets/images/images'
+
+function cacheImages(images) {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+}
+
+
+function cacheFonts(fonts) {
+  return fonts.map(font => Font.loadAsync(font));
+}
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const [appIsReady, setAppIsReady] = useState(false);
   
+  // Load any resources or data that you need prior to rendering the app
+  useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+
+        SplashScreen.preventAutoHideAsync();
+        
+        const imageAssets = cacheImages(Images.slice(0,70));
+        
+        
+        const fontAssets = cacheFonts([MaterialCommunityIcons.font]);
+
+        await Promise.all([...imageAssets, ...fontAssets]);
+      } catch (e) {
+        // You might want to provide this error information to an error reporting service
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+        SplashScreen.hideAsync();
+      }
+    }
+
+    loadResourcesAndDataAsync();
+  }, []);
+
+  if (!appIsReady) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
