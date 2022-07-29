@@ -4,6 +4,9 @@ import { StyleSheet, Text, View, Button, Image} from 'react-native';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
 import Slider from '@react-native-community/slider'
+import { tExperimentBegin } from '../Screen1_WelcomeScreen';
+
+export let tFinishBinaryChoices1Q1;
 
 class BinaryChoicesData {
     constructor(n) {        
@@ -12,7 +15,6 @@ class BinaryChoicesData {
 }
 
 export default function BinaryChoices1_1({navigation}) {    
-  let startingTime = performance.now();
   let [rate, setRate] = useState(5)
 
   return (      
@@ -51,6 +53,7 @@ export default function BinaryChoices1_1({navigation}) {
       <Button 
           title="המשך"
           onPress={() => {         
+            tFinishBinaryChoices1Q1 = performance.now() - tExperimentBegin;
             navigation.navigate("BinaryChoices1_2")            
           }
         }>

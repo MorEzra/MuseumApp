@@ -2,8 +2,9 @@ import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
-export let binaryChoicesExplanationTotalTime;
+export let tFinishBinaryChoicesExplanation;
 
 export default function BinaryChoicesExplanation({navigation}) {  
   let startingTime = performance.now();
@@ -21,8 +22,7 @@ export default function BinaryChoicesExplanation({navigation}) {
       <Button 
           title="המשך"
           onPress={() => {
-            let finishingTime = performance.now();
-            binaryChoicesExplanationTotalTime = finishingTime - startingTime;
+            tFinishBinaryChoicesExplanation = performance.now() - tExperimentBegin
             navigation.navigate("BinaryChoices1_1")
           }
         }>

@@ -3,13 +3,24 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
-class SummaryQuestionnaireAdditionalData {
-    
+class SummaryQuestionnaireData {    
+    constructor(im1Liking=0, im2Liking=0, im3Liking=0, im4Liking=0, im5Liking=0, experience=0, additionalInfo=0, tourType=0) {
+        this.im1Liking = im1Liking;
+        this.im2Liking = im2Liking;
+        this.im3Liking = im3Liking;
+        this.im4Liking = im4Liking;
+        this.im5Liking = im5Liking;
+        this.im6Liking = im6Liking;
+        this.im7Liking = im7Liking;
+        this.im8Liking = im8Liking;
+        this.experience = experience;
+        this.additionalInfo = additionalInfo;
+        this.tourType = tourType;
+    }
 }
-
-export let summaryQuestionnaireAdditionalData = new SummaryQuestionnaireAdditionalData();
-export let summaryQuestionnaireAdditionalTotalTime;
+export let tFinishQuestionnaireAdditionalArray = new Array(7).fill(0);
 
 export default function SummaryQuestionnaireAdditional({navigation}) {    
     let q1 = "אנא דרג את שביעות הרצון הכללית שלך מהסיור המודרך באוסף מינזה בלומנטל ";
@@ -57,10 +68,10 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
             <Button 
                 title="המשך"
                 onPress={() =>
-                        {          
-                            if (counter == qArray.length - 1) {     
-                            setCounter(0)             
-                            navigation.navigate("BinaryChoicesExplanation")
+                        {       
+                            tFinishQuestionnaireAdditionalArray[counter] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2);                
+                            if (counter == qArray.length - 1) {                                                                 
+                                navigation.navigate("BinaryChoicesExplanation")
                             }
                             setCounter(counter+1);
                         }

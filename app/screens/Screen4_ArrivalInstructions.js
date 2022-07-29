@@ -1,11 +1,14 @@
 import React , {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Button, TouchableOpacity, Image} from 'react-native';
+import { Text, View, Button, TouchableOpacity, Image} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 
 import { artPieces } from '../components/ArtPiece';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
 export let artPiecesCounterReference = 0;
+export let tFinishArrivalInstructionsArray = new Array(artPieces.length).fill(0);
+
 export default function ArrivalInstructions({navigation}) {  
 
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
@@ -78,7 +81,7 @@ export default function ArrivalInstructions({navigation}) {
         <Button 
             title="הגעתי"        
             onPress={() =>  {
-                //artPiecesCounterReference = artPiecesCounterReference;  
+                tFinishArrivalInstructionsArray[artPiecesCounter] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2)    ;
                 setArtPiecesCounter(artPiecesCounter+1);              
                 navigation.navigate("ArtPieces")
               }

@@ -4,7 +4,7 @@ import { Text, View, Button } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { RadioButton } from 'react-native-paper';
 
-export let researchTimerBegin = performance.now();
+export let tExperimentBegin = performance.now();
 export let tFinishWelcomeScreen;
 export let active = Math.round(Math.random());
 export let debugMode = true;
@@ -49,7 +49,7 @@ export default function WelcomeScreen({navigation}) {
           title="המשך"
           disabled = { checked === 'checked' || debugMode ? false : true }
           onPress={() => {        
-            tFinishWelcomeScreen = performance.now() - researchTimerBegin;
+            tFinishWelcomeScreen = performance.now() - tExperimentBegin;
             navigation.navigate("Questionnaire");
            }
           }>

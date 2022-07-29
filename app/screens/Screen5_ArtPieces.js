@@ -1,13 +1,15 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, Image, Pressable} from 'react-native';
 
 import { globalStyles } from '../assets/styles/global';
 
 import { artPieces } from '../components/ArtPiece';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import AudioPlayer from '../components/AudioPlayer';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
+export let tFinishArtPiecesArray = new Array(artPieces.length).fill(0);
 
 export default function ArtPieces({navigation}) { 
   let artPiecesNames = artPieces.map(({name}) => name);
@@ -139,7 +141,8 @@ export default function ArtPieces({navigation}) {
           <Button 
               title={buttonName}
               onPress={() => {
-                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                            
+                tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 100).toFixed(2);
+                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                                              
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("SummaryQuestionnaire1");
                     

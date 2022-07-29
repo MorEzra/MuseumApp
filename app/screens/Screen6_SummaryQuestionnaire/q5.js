@@ -4,29 +4,12 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
+import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
-class SummaryQuestionnaireData {    
-    constructor(im1Liking=0, im2Liking=0, im3Liking=0, im4Liking=0, im5Liking=0, experience=0, additionalInfo=0, tourType=0) {
-        this.im1Liking = im1Liking;
-        this.im2Liking = im2Liking;
-        this.im3Liking = im3Liking;
-        this.im4Liking = im4Liking;
-        this.im5Liking = im5Liking;
-        this.experience = experience;
-        this.additionalInfo = additionalInfo;
-        this.tourType = tourType;
-    }
-}
-
-export let summaryQuestionnaireData = new SummaryQuestionnaireData();
-export let summaryQuestionnaireTotalTime;
+export let tFinishSummaryQuestionnaireQ5;
 
 export default function SummaryQuestionnaire5({navigation}) {    
-    let startingTime = performance.now();    
-    let [im5Liking, setIm5Liking] = useState(0);
-  
-    summaryQuestionnaireData.im5Liking = im5Liking;     
-    
+    let [im5Liking, setIm5Liking] = useState(0);    
     
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
@@ -68,8 +51,7 @@ export default function SummaryQuestionnaire5({navigation}) {
             <Button 
             title="המשך"
             onPress={() => {
-                let finishingTime = performance.now();
-                summaryQuestionnaireTotalTime = finishingTime - startingTime;
+                tFinishSummaryQuestionnaireQ5 = performance.now() - tExperimentBegin;
                 navigation.navigate("SummaryQuestionnaire6")
                 }
             }>

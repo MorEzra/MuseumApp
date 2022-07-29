@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
-import { researchTimerBegin } from './Screen1_WelcomeScreen';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
 class QuestionnaireData {
   constructor(name="", age=0, address="", gender=0, museumVisitsFrequency=0, lastMuseumVisit=0, telAvivMuseumVisit=0, thisExhibitionVisit=0) {
@@ -159,7 +159,7 @@ export default function Questionnaire({navigation}) {
             title="המשך"
             onPress={() => 
               {  
-                tFinishFirstQuestionnaire = performance.now() - researchTimerBegin;             
+                tFinishFirstQuestionnaire = performance.now() - tExperimentBegin;             
                 navigation.navigate("ResearchGuidelines")
               }
             }
