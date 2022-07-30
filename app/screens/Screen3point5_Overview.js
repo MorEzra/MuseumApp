@@ -1,12 +1,55 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
-import AudioPlayer from '../components/AudioPlayer';
 import { globalStyles } from '../assets/styles/global';
 
 export default function OverviewScreen({navigation}) { 
   let show = true; //[show, setShow] = useState(false); //TODO: show if audio finished playing?
   let audio_explanation = require("../assets/audio/instructions/overview.wav")
+
+
+  // Audio 
+  const [sound, setSound] = React.useState(undefined);	  
+	const [status, setStatus] = React.useState(false);	
+	const [finishedPlaying, setFinishedPlaying] = useState(false);	
+
+
+	async function playSound(soundfile) {
+		if(sound) {
+			if(status) {
+				console.log('Pausing');
+				sound.pauseAsync();
+				setStatus(false);
+			} else {
+				console.log('Playing Sound');
+				setStatus(true);
+				await sound.playAsync()
+			}
+		} else {
+			console.log('Loading Sound');
+			
+			const { sound : sound} = await Audio.Sound.createAsync(
+				soundfile
+			);
+			
+			setSound(sound);
+			setStatus(true);
+			
+			await sound.playAsync();
+			sound.setOnPlaybackStatusUpdate((playbackStatus) => {
+				setFinishedPlaying(playbackStatus.didJustFinish);
+        console.log(finishedPlaying)
+			})
+		}
+	}
+	React.useEffect(() => {
+		return sound
+			? () => {
+				console.log('Unloading Sound');
+				sound.unloadAsync(); }
+		: undefined;
+	}, [sound]);
+
 
   return (      
     <View style={globalStyles.container}>
@@ -52,23 +95,34 @@ export default function OverviewScreen({navigation}) {
               flexShrink: 0
             }
           }>
-            <AudioPlayer
-            soundfile={audio_explanation}
-            />
-          </View>
-          <View style={
             {
-              flexBasis: 100,
-              flexGrow: 0.01,
-              flexShrink: 0
+          !finishedPlaying? (
+            <View style={globalStyles.audio} >
+              <TouchableOpacity onPress={() => {playSound(audio_explanation)}}>
+                <Image
+                  source={require("../assets/images/buttons/playpause_button.png")}
+                  style={globalStyles.audioButtons} 
+                />
+			        </TouchableOpacity>
+		        </View>
+          ) : null
             }
-          }>
-            <Button 
-          title='המשך'
-          onPress={() => {navigation.navigate("ArrivalInstructions")}}>
-            </Button>
           </View>
-
+          {finishedPlaying? (
+            <View style={
+              {
+                flexBasis: 100,
+                flexGrow: 0.01,
+                flexShrink: 0
+              }
+            }>
+              <Button 
+            title='המשך'
+            onPress={() => {navigation.navigate("ArrivalInstructions")}}>
+              </Button>
+            </View>
+          ) : null
+          }
         </View>
 
         

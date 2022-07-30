@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
 
@@ -6,16 +6,16 @@ import { globalStyles } from '../assets/styles/global';
 
 import { artPieces } from '../components/ArtPiece';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
-import AudioPlayer from '../components/AudioPlayer';
-
+import { Audio } from 'expo-av';
 
 export default function ArtPieces({navigation}) { 
+  
+  // Multiple choice and art pieces
   let artPiecesNames = artPieces.map(({name}) => name);
   let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?": "מאפיין היצירה הבאה באוסף יהיה:"
   
-
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
   let attribute2DefaultBackgroundColor = (active) ? "white" : "white";
   let attribute3DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
@@ -35,13 +35,61 @@ export default function ArtPieces({navigation}) {
     }
   }
 
-  let [finishedPlaying, setFinishedPlaying] = useState(false); //TODO: show if audio finished playing?
-
   let [attribute1BackgroundColor, setAttribute1BackgroundColor] = useState(attribute1DefaultBackgroundColor);
   let [attribute2BackgroundColor, setAttribute2BackgroundColor] = useState(attribute2DefaultBackgroundColor);
   let [attribute3BackgroundColor, setAttribute3BackgroundColor] = useState(attribute3DefaultBackgroundColor);
 
   let [chosenAttribute, setChosenAttribute] = useState(false);
+
+  // Audio 
+  const [sound, setSound] = React.useState(undefined);	  
+	const [status, setStatus] = React.useState(false);	
+	const [finishedPlaying, setFinishedPlaying] = useState(false);	
+
+
+	async function playSound(soundfile) {
+		if(sound) {
+			if(status) {
+				console.log('Pausing');
+				sound.pauseAsync();
+				setStatus(false);
+			} else {
+				console.log('Playing Sound');
+				setStatus(true);
+				await sound.playAsync()
+			}
+		} else {
+			console.log('Loading Sound');
+			
+			const { sound : sound} = await Audio.Sound.createAsync(
+				soundfile
+			);
+			
+			setSound(sound);
+			setStatus(true);
+			
+			await sound.playAsync();
+			sound.setOnPlaybackStatusUpdate((playbackStatus) => {
+        if (!playbackStatus.didJustFinish) {
+        console.log(playbackStatus.positionMillis)
+        }
+        else {
+          console.log('finished');
+          setFinishedPlaying(true)
+        }
+			})
+		}
+	}
+	React.useEffect(() => {
+		return sound
+			? () => {
+				console.log('Unloading Sound');
+				sound.unloadAsync(); }
+		: undefined;
+	}, [sound]);
+
+
+
   return (      
     <View style={globalStyles.container}>            
       <ScrollView>
@@ -63,16 +111,16 @@ export default function ArtPieces({navigation}) {
           {/* ------------------------------------------------ audio ------------------------------------------------ */}
           {
           !finishedPlaying? (
-            <AudioPlayer 
-            soundfile={artPieces[artPiecesCounterReference-1].audio_explanation} 
-            
-            />
+            <View style={globalStyles.audio} >
+              <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
+			        <TouchableOpacity onPress={() => {playSound(artPieces[artPiecesCounterReference-1].audio_explanation)}}>
+                <Image
+                  source={require("../assets/images/buttons/playpause_button.png")}
+                  style={globalStyles.audioButtons} 
+                />
+			        </TouchableOpacity>
+		        </View>
           ) : null
-          }
-          {
-            !finishedPlaying? (
-            <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
-            ) : null
           }
           {
             (artPiecesCounterReference != 8) && finishedPlaying ? (
@@ -129,13 +177,9 @@ export default function ArtPieces({navigation}) {
 
             </View> 
             ) : null 
-          }   
-          <Button
-          title="show"
-          onPress={()=>setFinishedPlaying(!finishedPlaying)}
-          >          
-          </Button>
-
+          }
+          {
+          finishedPlaying? (
           <Button 
               title={buttonName}
               onPress={() => {
@@ -149,6 +193,8 @@ export default function ArtPieces({navigation}) {
                 }
               }}>
           </Button>      
+          ) : null
+          }
         </View>
       </ScrollView>
       <StatusBar style="auto" />

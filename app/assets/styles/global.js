@@ -40,5 +40,16 @@ export const globalStyles = StyleSheet.create({
     radioItem: {
         direction:"rtl",
         alignSelf: 'flex-end'
-    },    
+    }, 
+    audio: {
+      flexDirection: "column",
+      justifyContent: 'center',  
+      marginBottom:20,
+    },
+  
+    audioButtons: {
+      width:80, 
+      height:80,
+      alignSelf: 'center'
+    }
 });
