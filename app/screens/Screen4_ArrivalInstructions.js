@@ -67,7 +67,7 @@ export default function ArrivalInstructions({navigation}) {
               </TouchableOpacity>
               <Text
               style = {globalStyles.instructionsText}        
-              >בהגיעך אל התמונה,{'\n'}אנא לחץ כאן{'\n'}על מנת לצלם אותה</Text>
+              >בהגיעכם אל התמונה,{'\n'}אנא לחצו כאן{'\n'}על מנת לצלם אותה</Text>
             </View>   
           {/* ------------------------------------------------ piece ------------------------------------------------ */}
             <Image

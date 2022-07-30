@@ -16,7 +16,7 @@ export default function BinaryChoicesExplanation({navigation}) {
         globalStyles.instructionsText
       }
       >במסך הבא, תתבקשו לסמן העדפות של יצירות.
-          אנא דרגו מ 1 עד 10 כמה אהבתם כל יצירה."
+          אנא דרגו מ 1 עד 10 כמה אהבתם כל יצירה.
       </Text>
       <Button 
           title="המשך"

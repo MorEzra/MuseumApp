@@ -10,26 +10,26 @@ export let tFinishQuestionnaireAdditionalArray = new Array(7).fill(0);
 export let ratingArray = new Array(7).fill(0);
 
 export default function SummaryQuestionnaireAdditional({navigation}) {    
-    let q1 = "אנא דרג את שביעות הרצון הכללית שלך מהסיור המודרך באוסף מינזה בלומנטל ";
-    let q2 = "אנא דרג/י את שביעות הרצון מן ההסברים אודות היצירות ";
-    let q3 = "משך הביקור היה לטעמך ";
-    let q4 = "האם תרצה/י לשמוע עוד הסברים מסוג זה על יצירות נוספות באוסף?";
-    let q5 = "?האם תרצה/י לשוב ולבקר במוזיאון עם הדרכה כזו ";
-    let q6 = "האם תרצה לבקר גם במוזיאונים אחרים על הדרכה כזו?";
-    let q7 = "?האם תמליצ/י לחברים לבקר באוסף בליווי הדרכה קולית מסוג זה";
+    let q1 = "אנא דרגו את שביעות הרצון הכללית שלכם מהסיור המודרך באוסף מינזה בלומנטל ";
+    let q2 = "אנא דרגו את שביעות הרצון מן ההסברים אודות היצירות ";
+    let q3 = "משך הביקור היה לטעמכם ";
+    let q4 = "האם תרצו לשמוע עוד הסברים מסוג זה על יצירות נוספות באוסף?";
+    let q5 = "?האם תרצו לשוב ולבקר במוזיאון עם הדרכה כזו ";
+    let q6 = "האם תרצו לבקר גם במוזיאונים אחרים על הדרכה כזו?";
+    let q7 = "?האם תמליצו לחברים לבקר באוסף בליווי הדרכה קולית מסוג זה";
     
     let qArray = [q1, q2, q3, q4, q5, q6, q7];
     let [rating, setRating]   = useState(0);       
     let [counter, setCounter] = useState(0);  
 
     let ratings = [
-        {label: "כלל לא שבע רצון",   value:1},
-        {label: "לא שבע רצון",       value:2},
-        {label: "די לא שבע רצון",    value:3},
+        {label: "כלל לא שבע/ת רצון",   value:1},
+        {label: "לא שבע/ת רצון",       value:2},
+        {label: "די לא שבע/ת רצון",    value:3},
         {label: "ניטרלי",            value:4},
-        {label: "די שבע רצון",       value:5},
-        {label: "שבע רצון",          value:6},
-        {label: "מאוד שבע רצון",     value:7},
+        {label: "די שבע/ת רצון",       value:5},
+        {label: "שבע/ת רצון",          value:6},
+        {label: "מאוד שבע/ת רצון",     value:7},
         {label: "טרם מולא",          value:0}
     ];
     let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);

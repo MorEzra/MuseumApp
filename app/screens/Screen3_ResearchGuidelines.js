@@ -11,10 +11,10 @@ export default function ResearchGuidelines({navigation}) {
       <View style={globalStyles.container}>                
         <Text style = {globalStyles.header} >מהלך הסיור</Text>
         <View>
-          <Text style={globalStyles.instructionsText}>תוצג עבורך היצירה ההתחלתית ממנה מתחיל הסיור, תתבקש לצלם את היצירה בהגיעך אליה ולשמוע הסבר קצר אודותיה. </Text>
-          <Text style={globalStyles.instructionsText}>לאחר מכן, על מנת להתאים לך את היצירה הבאה בצורה הטובה ביותר, עליך לבחור מתוך מספר אפשרויות מה תרצה לראות בהמשך. </Text>
-          <Text style={globalStyles.instructionsText}>בצורה זו תסייר בין 8 יצירות באוסף.</Text>
-          <Text style={globalStyles.instructionsText}>לבסוף, תתבקש לענות על מספר שאלות אודות הסיור והיצירות.</Text>                
+          <Text style={globalStyles.instructionsText}>תוצג עבורכם היצירה ההתחלתית ממנה מתחיל הסיור, תתבקשו לצלם את היצירה בהגיעכם אליה ולשמוע הסבר קצר אודותיה. </Text>
+          <Text style={globalStyles.instructionsText}>לאחר מכן, על מנת להתאים לכם את היצירה הבאה בצורה הטובה ביותר, עליכם לבחור מתוך מספר אפשרויות מה תרצו לראות בהמשך. </Text>
+          <Text style={globalStyles.instructionsText}>בצורה זו תסיירו בין 8 יצירות באוסף.</Text>
+          <Text style={globalStyles.instructionsText}>לבסוף, תתבקשו לענות על מספר שאלות אודות הסיור והיצירות.</Text>                
         </View>
         <Button 
           title="הבנתי, אפשר להתחיל"

@@ -122,7 +122,7 @@ export default function Questionnaire({navigation}) {
           {/*------------------------------------------------- museum visits frequency ------------------------------------------------*/}
           
           <View style={styles.oddView}>
-            <Text style={globalStyles.questionnaireHeader}>מהי תדירות הגעתך למוזיאונים</Text>
+            <Text style={globalStyles.questionnaireHeader}>מהי תדירות הגעתכם למוזיאונים</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setMuseumVisitsFrequency(value)}}>
                 <RadioButton.Item status={ museumVisitsFrequency === 0 ? 'checked' : 'unchecked' } label={museumVisitsFrequencyArray[0]['label']} value={museumVisitsFrequencyArray[0]['value']} style={globalStyles.radioItem} />
@@ -134,7 +134,7 @@ export default function Questionnaire({navigation}) {
           {/*--------------------------------------------------- last museum visit --------------------------------------------------*/}
           
           <View style={styles.evenView}>
-            <Text style={globalStyles.questionnaireHeader}>מתי פעם אחרונה ביקרת במוזיאון</Text>
+            <Text style={globalStyles.questionnaireHeader}>מתי פעם אחרונה ביקרתם במוזיאון</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setLastMuseumVisit(value)}}>
                 <RadioButton.Item status={ lastMuseumVisit === 0 ? 'checked' : 'unchecked' } label={lastMuseumVisitArray[0]['label']} value={lastMuseumVisitArray[0]['value']} style={globalStyles.radioItem} />
@@ -146,7 +146,7 @@ export default function Questionnaire({navigation}) {
           {/*---------------------------------------------------- TA museum visit ---------------------------------------------------*/}
           
           <View style={styles.oddView}>
-            <Text style={globalStyles.questionnaireHeader}>האם ביקרת במוזיאון תל אביב בעבר?</Text>
+            <Text style={globalStyles.questionnaireHeader}>האם ביקרתם במוזיאון תל אביב בעבר?</Text>
             <RadioButton.Group
                 onValueChange={(value) => {setTelAvivMuseumVisit(value)}}>
                 <RadioButton.Item status={ telAvivMuseumVisit === 0 ? 'checked' : 'unchecked' } label={telAvivMuseumVisitArray[0]['label']} value={telAvivMuseumVisitArray[0]['value']} style={globalStyles.radioItem} />
@@ -157,7 +157,7 @@ export default function Questionnaire({navigation}) {
           {/*--------------------------------------------------- this exhibition visit --------------------------------------------------*/}
 
           <View style={styles.evenView}>
-            <Text style={globalStyles.questionnaireHeader}>האם ביקרת בתערוכה זו בעבר?</Text>
+            <Text style={globalStyles.questionnaireHeader}>האם ביקרתם בתערוכה זו בעבר?</Text>
             <RadioButton.Group
             onValueChange={(value) => {setThisExhibitionVisit(value)}}>
                 <RadioButton.Item status={ thisExhibitionVisit === 0 ? 'checked' : 'unchecked' } label={thisExhibitionVisitArray[0]['label']} value={thisExhibitionVisitArray[0]['value']} style={globalStyles.radioItem} />
