@@ -42,7 +42,11 @@ import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices'
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
 
-import Images from './app/assets/images/images'
+// import Images from './app/assets/images/images'// for web compatibilty just comment this line and do "doCaching = false"! everything else is ok.
+
+const Stack = createNativeStackNavigator();
+const doCaching = false
+
 
 function cacheImages(images) {
   return images.map(image => {
@@ -59,40 +63,40 @@ function cacheFonts(fonts) {
   return fonts.map(font => Font.loadAsync(font));
 }
 
-const Stack = createNativeStackNavigator();
-
 function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   
   // Load any resources or data that you need prior to rendering the app
-  useEffect(() => {
-    async function loadResourcesAndDataAsync() {
-      try {
+  if (doCaching) {
+    useEffect(() => {
+      async function loadResourcesAndDataAsync() {
+        try {
 
-        SplashScreen.preventAutoHideAsync();
-        
-        const imageAssets = cacheImages(Images.slice(0,70));
-        
-        const fontAssets = cacheFonts([MaterialCommunityIcons.font,
-          {'Hillel':
-          require('./app/assets/fonts/hillelclm-medium-webfont.ttf')},
-          {'Suez':
-          require('./app/assets/fonts/SuezOne-Regular.ttf')}
-          ]);
+          SplashScreen.preventAutoHideAsync();
+          
+          const imageAssets = cacheImages(Images.slice(0,70));
+          
+          const fontAssets = cacheFonts([MaterialCommunityIcons.font,
+            {'Hillel':
+            require('./app/assets/fonts/hillelclm-medium-webfont.ttf')},
+            {'Suez':
+            require('./app/assets/fonts/SuezOne-Regular.ttf')}
+            ]);
 
-        await Promise.all([...imageAssets, ...fontAssets]);
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        setAppIsReady(true);
-        SplashScreen.hideAsync();
+          await Promise.all([...imageAssets, ...fontAssets]);
+        } catch (e) {
+          console.warn(e);
+        } finally {
+          setAppIsReady(true);
+          SplashScreen.hideAsync();
+        }
       }
-    }
 
-    loadResourcesAndDataAsync();
-  }, []);
+      loadResourcesAndDataAsync();
+    }, []);
+  }
 
-  if (!appIsReady) {
+  if (!appIsReady && doCaching) {
     return null;
   }
 
