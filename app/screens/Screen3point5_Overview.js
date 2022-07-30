@@ -1,7 +1,10 @@
-import React, {useState}  from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
+
+export let tFinishSefiOverview;
 
 export default function OverviewScreen({navigation}) { 
   let show = true; //[show, setShow] = useState(false); //TODO: show if audio finished playing?
@@ -118,7 +121,8 @@ export default function OverviewScreen({navigation}) {
             }>
               <Button 
             title='המשך'
-            onPress={() => {navigation.navigate("ArrivalInstructions")}}>
+            onPress={() => {tFinishSefiOverview = performance.now() - tExperimentBegin;
+                            navigation.navigate("ArrivalInstructions")}}>
               </Button>
             </View>
           ) : null

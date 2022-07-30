@@ -2,11 +2,11 @@ import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
+import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
-export let binaryChoicesExplanationTotalTime;
+export let tFinishBinaryChoicesExplanation;
 
 export default function BinaryChoicesExplanation({navigation}) {  
-  let startingTime = performance.now();
   return (      
     <View style={styles.container}>
      
@@ -16,13 +16,12 @@ export default function BinaryChoicesExplanation({navigation}) {
         globalStyles.instructionsText
       }
       >במסך הבא, תתבקשו לסמן העדפות של יצירות.
-          אנא דרגו מ 1 עד 10 כמה אהבתם כל יצירה."
+          אנא דרגו מ 1 עד 10 כמה אהבתם כל יצירה.
       </Text>
       <Button 
           title="המשך"
           onPress={() => {
-            let finishingTime = performance.now();
-            binaryChoicesExplanationTotalTime = finishingTime - startingTime;
+            tFinishBinaryChoicesExplanation = performance.now() - tExperimentBegin
             navigation.navigate("BinaryChoices1_1")
           }
         }>

@@ -4,44 +4,16 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
+import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
 
-class SummaryQuestionnaireData {    
-    constructor(im1Liking=0, im2Liking=0, im3Liking=0, im4Liking=0, im5Liking=0, experience=0, additionalInfo=0, tourType=0) {
-        this.im1Liking = im1Liking;
-        this.im2Liking = im2Liking;
-        this.im3Liking = im3Liking;
-        this.im4Liking = im4Liking;
-        this.im5Liking = im5Liking;
-        this.experience = experience;
-        this.additionalInfo = additionalInfo;
-        this.tourType = tourType;
-    }
-}
 
-export let summaryQuestionnaireData = new SummaryQuestionnaireData();
-export let summaryQuestionnaireTotalTime;
+export let tFinishSummaryQuestionnaireQ1;
+export let summaryQuestionnaireQ1Rating
 
-export default function SummaryQuestionnaire1({navigation}) {    
-    let startingTime = performance.now();    
-    
-    let [im1Liking, setIm1Liking] = useState(0);
-    let [im2Liking, setIm2Liking] = useState(0);
-    let [im3Liking, setIm3Liking] = useState(0);
-    let [im4Liking, setIm4Liking] = useState(0);
-    let [im5Liking, setIm5Liking] = useState(0);
-    let [im6Liking, setIm6Liking] = useState(0);
-    let [im7Liking, setIm7Liking] = useState(0);
-    let [im8Liking, setIm8Liking] = useState(0);
+export default function SummaryQuestionnaire1({navigation}) {        
+    let [im1Liking, setIm1Liking] = useState(0);        
+    summaryQuestionnaireQ1Rating = im1Liking;
 
-    summaryQuestionnaireData.im1Liking = im1Liking;    
-    summaryQuestionnaireData.im2Liking = im2Liking;    
-    summaryQuestionnaireData.im3Liking = im3Liking;    
-    summaryQuestionnaireData.im4Liking = im4Liking;    
-    summaryQuestionnaireData.im5Liking = im5Liking;     
-    summaryQuestionnaireData.im6Liking = im6Liking;     
-    summaryQuestionnaireData.im7Liking = im7Liking;     
-    summaryQuestionnaireData.im8Liking = im8Liking;     
-    
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
         {label: "לא אהבתי", value:2},
@@ -51,6 +23,7 @@ export default function SummaryQuestionnaire1({navigation}) {
         {label: "טרם מולא", value:6}
       ];
 
+    let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
     return (      
       <View style={styles.container}>   
         <ScrollView>
@@ -80,16 +53,22 @@ export default function SummaryQuestionnaire1({navigation}) {
                         </View>
                     
                 </View>
-            </View>                                       
-            
+            </View>    
+            {
+              finishQuestionnaireMessage ? (<Text style={globalStyles.completionMessage}>אנא דרג את היצירה</Text>) : null
+            }                                             
             <Button 
             title="המשך"
-            onPress={() => {
-                let finishingTime = performance.now();
-                summaryQuestionnaireTotalTime = finishingTime - startingTime;
-                navigation.navigate("SummaryQuestionnaire2")
+            onPress={() => {    
+                if (debugMode || summaryQuestionnaireQ1Rating != 0) {            
+                  tFinishSummaryQuestionnaireQ1 = performance.now() - tExperimentBegin;
+                  navigation.navigate("SummaryQuestionnaire2");
                 }
-            }>
+                else {
+                  setFinishQuestionnaireMessage(true)
+                }
+            }
+          }>
             </Button>
         </ScrollView>    
         <StatusBar style="auto" />

@@ -28,6 +28,13 @@ export const globalStyles = StyleSheet.create({
       marginBottom:20
     },
 
+    completionMessage: {
+      fontWeight:"bold",
+      color:"red",
+      fontSize:30,
+      alignSelf:"center",
+    },
+
     instructionsText: {
       paddingBottom: 20,
       margin: 20,

@@ -218,7 +218,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_1"
         component={BinaryChoices1_1}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
         />
 
         {/*----------------- Screen8.2 ----------------- */}
@@ -226,7 +226,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_2"
         component={BinaryChoices1_2}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
 
@@ -235,7 +235,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_3"
         component={BinaryChoices1_3}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
 
@@ -244,7 +244,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_4"
         component={BinaryChoices1_4}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
 
@@ -253,7 +253,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_5"
         component={BinaryChoices1_5}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
 
@@ -262,7 +262,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_6"
         component={BinaryChoices1_6}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
         
@@ -271,7 +271,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_7"
         component={BinaryChoices1_7}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />
 
@@ -280,7 +280,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_8"
         component={BinaryChoices1_8}
-        options={{ title: "דרג כמה אהבת את היצירה"}}
+        options={{ title: "דרגו כמה אהבתם את היצירה"}}
 
         />       
         

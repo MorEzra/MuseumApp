@@ -4,21 +4,16 @@ import { StyleSheet, Text, View, Button, Image} from 'react-native';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
 import Slider from '@react-native-community/slider'
+import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
-class BinaryChoicesData {
-    constructor(n) {        
-        this.likings = new Array(n).fill(-1)
-    }
-}
-
+export let tFinishBinaryChoices1Q1;
+export let rate1;
 export default function BinaryChoices1_1({navigation}) {    
-  let startingTime = performance.now();
   let [rate, setRate] = useState(5)
-
+  rate1 = rate;
   return (      
     <View style={globalStyles.container}>
       <Text style = {globalStyles.header}>אנא דרגו מ - 1 עד 10 כמה אהבתם את היצירה</Text>      
-      <Text>1</Text>
       <Image        
         source={artPieces[0].piece}
         style={{ width: 400, height: 600, resizeMode: 'contain' }}         
@@ -51,6 +46,7 @@ export default function BinaryChoices1_1({navigation}) {
       <Button 
           title="המשך"
           onPress={() => {         
+            tFinishBinaryChoices1Q1 = performance.now() - tExperimentBegin;
             navigation.navigate("BinaryChoices1_2")            
           }
         }>
