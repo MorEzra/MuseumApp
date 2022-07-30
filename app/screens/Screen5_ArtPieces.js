@@ -141,7 +141,7 @@ export default function ArtPieces({navigation}) {
           <Button 
               title={buttonName}
               onPress={() => {
-                tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 100).toFixed(2);
+                tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
                 if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                                              
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("SummaryQuestionnaire1");

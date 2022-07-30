@@ -4,14 +4,16 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
-import { tExperimentBegin } from '../Screen1_WelcomeScreen';
+import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 
 export let tFinishSummaryQuestionnaireQ1;
+export let summaryQuestionnaireQ1Rating
 
-export default function SummaryQuestionnaire1({navigation}) {    
-    let [im1Liking, setIm1Liking] = useState(0);    
-    
+export default function SummaryQuestionnaire1({navigation}) {        
+    let [im1Liking, setIm1Liking] = useState(0);        
+    summaryQuestionnaireQ1Rating = im1Liking;
+
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
         {label: "לא אהבתי", value:2},
@@ -21,6 +23,7 @@ export default function SummaryQuestionnaire1({navigation}) {
         {label: "טרם מולא", value:6}
       ];
 
+    let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
     return (      
       <View style={styles.container}>   
         <ScrollView>
@@ -50,15 +53,22 @@ export default function SummaryQuestionnaire1({navigation}) {
                         </View>
                     
                 </View>
-            </View>                                       
-            
+            </View>    
+            {
+              finishQuestionnaireMessage ? (<Text style={globalStyles.completionMessage}>אנא דרג את היצירה</Text>) : null
+            }                                             
             <Button 
             title="המשך"
-            onPress={() => {                
-                tFinishSummaryQuestionnaireQ1 = performance.now() - tExperimentBegin;
-                navigation.navigate("SummaryQuestionnaire2")
+            onPress={() => {    
+                if (debugMode || summaryQuestionnaireQ1Rating != 0) {            
+                  tFinishSummaryQuestionnaireQ1 = performance.now() - tExperimentBegin;
+                  navigation.navigate("SummaryQuestionnaire2");
                 }
-            }>
+                else {
+                  setFinishQuestionnaireMessage(true)
+                }
+            }
+          }>
             </Button>
         </ScrollView>    
         <StatusBar style="auto" />

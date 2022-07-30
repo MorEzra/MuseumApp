@@ -3,24 +3,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button} from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
-import { tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode, tExperimentBegin } from './Screen1_WelcomeScreen';
 
-class SummaryQuestionnaireData {    
-    constructor(im1Liking=0, im2Liking=0, im3Liking=0, im4Liking=0, im5Liking=0, experience=0, additionalInfo=0, tourType=0) {
-        this.im1Liking = im1Liking;
-        this.im2Liking = im2Liking;
-        this.im3Liking = im3Liking;
-        this.im4Liking = im4Liking;
-        this.im5Liking = im5Liking;
-        this.im6Liking = im6Liking;
-        this.im7Liking = im7Liking;
-        this.im8Liking = im8Liking;
-        this.experience = experience;
-        this.additionalInfo = additionalInfo;
-        this.tourType = tourType;
-    }
-}
+
 export let tFinishQuestionnaireAdditionalArray = new Array(7).fill(0);
+export let ratingArray = new Array(7).fill(0);
 
 export default function SummaryQuestionnaireAdditional({navigation}) {    
     let q1 = "אנא דרג את שביעות הרצון הכללית שלך מהסיור המודרך באוסף מינזה בלומנטל ";
@@ -32,7 +19,6 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
     let q7 = "?האם תמליצ/י לחברים לבקר באוסף בליווי הדרכה קולית מסוג זה";
     
     let qArray = [q1, q2, q3, q4, q5, q6, q7];
-
     let [rating, setRating]   = useState(0);       
     let [counter, setCounter] = useState(0);  
 
@@ -46,7 +32,8 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
         {label: "מאוד שבע רצון",     value:7},
         {label: "טרם מולא",          value:0}
     ];
-  
+    let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
+
     return (      
     <View style={styles.container}>
         <ScrollView>
@@ -54,7 +41,12 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
             <View style={counter % 2 == 0 ? styles.evenView : styles.oddView}>            
                 <Text style = {globalStyles.questionnaireHeader}>{qArray[counter]}</Text>
                 <RadioButton.Group
-                    onValueChange={(value) => {setRating(value)}}>
+                    onValueChange={
+                        (value) => {
+                            setRating(value)
+                            ratingArray[counter] = value;
+                        }
+                    }>
                     <RadioButton.Item status={ rating === 1 ? 'checked' : 'unchecked' } label={ratings[0]['label']} value={ratings[0]['value']} style={globalStyles.radioItem} />
                     <RadioButton.Item status={ rating === 2 ? 'checked' : 'unchecked' } label={ratings[1]['label']} value={ratings[1]['value']} style={globalStyles.radioItem} />
                     <RadioButton.Item status={ rating === 3 ? 'checked' : 'unchecked' } label={ratings[2]['label']} value={ratings[2]['value']} style={globalStyles.radioItem} />
@@ -64,16 +56,25 @@ export default function SummaryQuestionnaireAdditional({navigation}) {
                     <RadioButton.Item status={ rating === 7 ? 'checked' : 'unchecked' } label={ratings[6]['label']} value={ratings[6]['value']} style={globalStyles.radioItem} />
                 </RadioButton.Group>
             </View>
-            
+            {
+              finishQuestionnaireMessage ? (<Text style={globalStyles.completionMessage}>אנא סמן את תשובתך</Text>) : null
+            } 
             <Button 
                 title="המשך"
                 onPress={() =>
-                        {       
+                        {   
+                            if (debugMode || rating != 0) {
                             tFinishQuestionnaireAdditionalArray[counter] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2);                
                             if (counter == qArray.length - 1) {                                                                 
                                 navigation.navigate("BinaryChoicesExplanation")
                             }
                             setCounter(counter+1);
+                            setRating(0);
+                            setFinishQuestionnaireMessage(false);
+                            }
+                            else {
+                                setFinishQuestionnaireMessage(true);
+                            }
                         }
                     }>
             </Button>     

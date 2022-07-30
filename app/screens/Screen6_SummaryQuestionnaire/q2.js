@@ -4,13 +4,15 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
-import { tExperimentBegin } from '../Screen1_WelcomeScreen';
+import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 export let tFinishSummaryQuestionnaireQ2;
+export let summaryQuestionnaireQ2Rating;
 
 export default function SummaryQuestionnaire2({navigation}) {    
     let [im2Liking, setIm2Liking] = useState(0);
-   
+    summaryQuestionnaireQ2Rating = im2Liking;
+
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
         {label: "לא אהבתי", value:2},
@@ -19,7 +21,7 @@ export default function SummaryQuestionnaire2({navigation}) {
         {label: "אהבתי מאוד", value:5},
         {label: "טרם מולא", value:6}
       ];
-
+    let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
     return (      
       <View style={styles.container}>   
         <ScrollView>
@@ -47,12 +49,19 @@ export default function SummaryQuestionnaire2({navigation}) {
                         </View>
                 </View>
             </View>                          
-            
+            {
+              finishQuestionnaireMessage ? (<Text style={globalStyles.completionMessage}>אנא דרג את היצירה</Text>) : null
+            }                                             
             <Button 
             title="המשך"
             onPress={() => {
-                tFinishSummaryQuestionnaireQ2 = performance.now() - tExperimentBegin;
-                navigation.navigate("SummaryQuestionnaire3")
+                if (debugMode || summaryQuestionnaireQ2Rating != 0) {
+                  tFinishSummaryQuestionnaireQ2 = performance.now() - tExperimentBegin;
+                  navigation.navigate("SummaryQuestionnaire3");
+                }
+                else {
+                  setFinishQuestionnaireMessage(true)
+                }
                 }
             }>
             </Button>

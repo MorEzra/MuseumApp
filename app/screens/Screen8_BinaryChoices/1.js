@@ -7,20 +7,13 @@ import Slider from '@react-native-community/slider'
 import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 export let tFinishBinaryChoices1Q1;
-
-class BinaryChoicesData {
-    constructor(n) {        
-        this.likings = new Array(n).fill(-1)
-    }
-}
-
+export let rate1;
 export default function BinaryChoices1_1({navigation}) {    
   let [rate, setRate] = useState(5)
-
+  rate1 = rate;
   return (      
     <View style={globalStyles.container}>
       <Text style = {globalStyles.header}>אנא דרגו מ - 1 עד 10 כמה אהבתם את היצירה</Text>      
-      <Text>1</Text>
       <Image        
         source={artPieces[0].piece}
         style={{ width: 400, height: 600, resizeMode: 'contain' }}         

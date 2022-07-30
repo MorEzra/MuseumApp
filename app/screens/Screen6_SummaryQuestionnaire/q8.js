@@ -4,13 +4,15 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
-import { tExperimentBegin } from '../Screen1_WelcomeScreen';
+import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 export let tFinishSummaryQuestionnaireQ8;
+export let summaryQuestionnaireQ8Rating;
 
 export default function SummaryQuestionnaire8({navigation}) {    
     let [im8Liking, setIm8Liking] = useState(0);   
-    
+    summaryQuestionnaireQ8Rating = im8Liking;
+
     let likingArray = [
         {label: "לא אהבתי בכלל", value:1},
         {label: "לא אהבתי", value:2},
@@ -19,7 +21,7 @@ export default function SummaryQuestionnaire8({navigation}) {
         {label: "אהבתי מאוד", value:5},
         {label: "טרם מולא", value:6}
       ];
-
+    let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
     return (      
       <View style={styles.container}>   
         <ScrollView>
@@ -47,12 +49,19 @@ export default function SummaryQuestionnaire8({navigation}) {
                         </View>
                 </View>
             </View>                               
-            
+            {
+              finishQuestionnaireMessage ? (<Text style={globalStyles.completionMessage}>אנא דרג את היצירה</Text>) : null
+            }                                             
             <Button 
             title="המשך"
             onPress={() => {
+              if (debugMode || summaryQuestionnaireQ8Rating != 0) {
                 tFinishSummaryQuestionnaireQ8 = performance.now() - tExperimentBegin;
                 navigation.navigate("SummaryQuestionnaireAdditional")
+              }
+              else {
+                setFinishQuestionnaireMessage(true)
+              }
                 }
             }>
             </Button>

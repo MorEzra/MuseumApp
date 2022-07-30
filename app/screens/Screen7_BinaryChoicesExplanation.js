@@ -7,7 +7,6 @@ import { tExperimentBegin } from './Screen1_WelcomeScreen';
 export let tFinishBinaryChoicesExplanation;
 
 export default function BinaryChoicesExplanation({navigation}) {  
-  let startingTime = performance.now();
   return (      
     <View style={styles.container}>
      

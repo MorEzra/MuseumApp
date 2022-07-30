@@ -7,10 +7,11 @@ import Slider from '@react-native-community/slider'
 import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 export let tFinishBinaryChoices1Q7;
+export let rate7;
 
 export default function BinaryChoices1_7({navigation}) {    
   let [rate, setRate] = useState(5)
-  
+  rate7 = rate;
 
   return (      
     <View style={globalStyles.container}>

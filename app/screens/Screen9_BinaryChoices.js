@@ -2,12 +2,12 @@ import React, { useState }  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
-import { debugMode } from './Screen1_WelcomeScreen';
+import { active, debugMode } from './Screen1_WelcomeScreen';
 
 /* Data Variables*/
 
 
-/* Timing Variables */
+/* ------------------------------------- Timing Variables ------------------------------------- */
 import { tExperimentBegin, tFinishWelcomeScreen }          from './Screen1_WelcomeScreen';
 import { tFinishFirstQuestionnaire }                       from './Screen2_Questionnaire';
 import { tFinishGuidelines }                               from './Screen3_ResearchGuidelines';
@@ -27,27 +27,39 @@ import { tFinishSummaryQuestionnaireQ8 }                   from './Screen6_Summa
 import { tFinishQuestionnaireAdditionalArray }             from './Screen6.5_SummaryQuestionnaireAdditional';
 import { tFinishBinaryChoicesExplanation }                 from './Screen7_BinaryChoicesExplanation';
 
-import { tFinishBinaryChoices1Q1 }                         from './Screen8_BinaryChoices/1';
-import { tFinishBinaryChoices1Q2 }                         from './Screen8_BinaryChoices/2';
-import { tFinishBinaryChoices1Q3 }                         from './Screen8_BinaryChoices/3';
-import { tFinishBinaryChoices1Q4 }                         from './Screen8_BinaryChoices/4';
-import { tFinishBinaryChoices1Q5 }                         from './Screen8_BinaryChoices/5';
-import { tFinishBinaryChoices1Q6 }                         from './Screen8_BinaryChoices/6';
-import { tFinishBinaryChoices1Q7 }                         from './Screen8_BinaryChoices/7';
-import { tFinishBinaryChoices1Q8 }                         from './Screen8_BinaryChoices/8';
-/* tFinishBinaryChoices2Array in this file*/
+import { rate1, tFinishBinaryChoices1Q1 }                         from './Screen8_BinaryChoices/1';
+import { rate2, tFinishBinaryChoices1Q2 }                         from './Screen8_BinaryChoices/2';
+import { rate3, tFinishBinaryChoices1Q3 }                         from './Screen8_BinaryChoices/3';
+import { rate4, tFinishBinaryChoices1Q4 }                         from './Screen8_BinaryChoices/4';
+import { rate5, tFinishBinaryChoices1Q5 }                         from './Screen8_BinaryChoices/5';
+import { rate6, tFinishBinaryChoices1Q6 }                         from './Screen8_BinaryChoices/6';
+import { rate7, tFinishBinaryChoices1Q7 }                         from './Screen8_BinaryChoices/7';
+import { rate8, tFinishBinaryChoices1Q8 }                         from './Screen8_BinaryChoices/8';
 
+/* ------------------------------------- Data -------------------------------------  */
+
+import { questionnaireData }            from './Screen2_Questionnaire';
+
+import { summaryQuestionnaireQ1Rating } from './Screen6_SummaryQuestionnaire/q1';
+import { summaryQuestionnaireQ2Rating } from './Screen6_SummaryQuestionnaire/q2';
+import { summaryQuestionnaireQ3Rating } from './Screen6_SummaryQuestionnaire/q3';
+import { summaryQuestionnaireQ4Rating } from './Screen6_SummaryQuestionnaire/q4';
+import { summaryQuestionnaireQ5Rating } from './Screen6_SummaryQuestionnaire/q5';
+import { summaryQuestionnaireQ6Rating } from './Screen6_SummaryQuestionnaire/q6';
+import { summaryQuestionnaireQ7Rating } from './Screen6_SummaryQuestionnaire/q7';
+import { summaryQuestionnaireQ8Rating } from './Screen6_SummaryQuestionnaire/q8';
+
+import { ratingArray } from './Screen6.5_SummaryQuestionnaireAdditional';
 class TimingsData {
   constructor() 
   {
-    //(x / 1000).toFixed(2)    
-    this.tExperimentBegin               = (tExperimentBegin/ 1000).toFixed(2)    
-    this.tFinishWelcomeScreen           = (tFinishWelcomeScreen/ 1000).toFixed(2)    
-    this.tFinishFirstQuestionnaire      = (tFinishFirstQuestionnaire/ 1000).toFixed(2)    
-    this.tFinishGuidelines              = (tFinishGuidelines/ 1000).toFixed(2)        
-    this.tFinishSefiOverview            = (tFinishSefiOverview/ 1000).toFixed(2)    
-    this.tFinishArrivalInstructions     = tFinishArrivalInstructionsArray
-    this.tFinishArtPieces               = tFinishArtPiecesArray
+    this.tExperimentBegin               = (tExperimentBegin/ 1000).toFixed(2);
+    this.tFinishWelcomeScreen           = (tFinishWelcomeScreen/ 1000).toFixed(2); 
+    this.tFinishFirstQuestionnaire      = (tFinishFirstQuestionnaire/ 1000).toFixed(2);  
+    this.tFinishGuidelines              = (tFinishGuidelines/ 1000).toFixed(2);   
+    this.tFinishSefiOverview            = (tFinishSefiOverview/ 1000).toFixed(2); 
+    this.tFinishArrivalInstructions     = tFinishArrivalInstructionsArray;
+    this.tFinishArtPieces               = tFinishArtPiecesArray;
     this.tFinishSummaryQuestionnaire = [
       (tFinishSummaryQuestionnaireQ1/ 1000).toFixed(2)    ,
       (tFinishSummaryQuestionnaireQ2/ 1000).toFixed(2)    ,
@@ -57,9 +69,9 @@ class TimingsData {
       (tFinishSummaryQuestionnaireQ6/ 1000).toFixed(2)    ,
       (tFinishSummaryQuestionnaireQ7/ 1000).toFixed(2)    ,
       (tFinishSummaryQuestionnaireQ8/ 1000).toFixed(2)    
-    ]
-    this.tFinishQuestionnaireAdditionalArray = tFinishQuestionnaireAdditionalArray
-    this.tFinishBinaryChoicesExplanation     = (tFinishBinaryChoicesExplanation/ 1000).toFixed(2)    
+    ];
+    this.tFinishQuestionnaireAdditionalArray = tFinishQuestionnaireAdditionalArray;
+    this.tFinishBinaryChoicesExplanation     = (tFinishBinaryChoicesExplanation/ 1000).toFixed(2);
     this.tFinishBinaryChoices1 = [
       (tFinishBinaryChoices1Q1/ 1000).toFixed(2)    ,
       (tFinishBinaryChoices1Q2/ 1000).toFixed(2)    ,
@@ -69,33 +81,41 @@ class TimingsData {
       (tFinishBinaryChoices1Q6/ 1000).toFixed(2)    ,
       (tFinishBinaryChoices1Q7/ 1000).toFixed(2)    ,
       (tFinishBinaryChoices1Q8/ 1000).toFixed(2)    
-    ]
-    this.tFinishBinaryChoices2Array = tFinishBinaryChoices2Array
+    ];
+    this.tFinishBinaryChoices2Array = tFinishBinaryChoices2Array;
   }
 }
-/*
-class OtherData {
-  constructor(questionnaireData,
-    summaryQuestionnaireData,
-    summaryQuestionnaireAdditionalData,
-    binaryChoicesData,
-    binaryChoices2Data,)
+
+class Data {
+  constructor()
     {
-      this.questionnaireData    = questionnaireData
-      this.summaryQuestionnaireData     = summaryQuestionnaireData
-      this.summaryQuestionnaireAdditionalData     = summaryQuestionnaireAdditionalData
-      this.binaryChoicesData    = binaryChoicesData
-      this.binaryChoices2Data     = binaryChoices2Data
+      this.active = active;
+      this.questionnaireData = questionnaireData;   
+      this.summaryQuestionnaireRating = [
+        summaryQuestionnaireQ1Rating,
+        summaryQuestionnaireQ2Rating,
+        summaryQuestionnaireQ3Rating,
+        summaryQuestionnaireQ4Rating,
+        summaryQuestionnaireQ5Rating,
+        summaryQuestionnaireQ6Rating,
+        summaryQuestionnaireQ7Rating,
+        summaryQuestionnaireQ8Rating
+      ];
+      this.ratingArray = ratingArray;
+      this.binaryChoices1Ratings = [        
+        rate1,
+        rate2,
+        rate3,
+        rate4,
+        rate5,
+        rate6,
+        rate7,
+        rate8,
+      ];
+
+      this.binaryChoices2Ratings = binaryChoices2Ratings;
     }
 }
-*/
-
-
-/*class BinaryChoices2Data {
-    constructor(n) {        
-        this.likings2 = new Array(n).fill(-1)
-    }
-}*/
 
 
 let pair1 = [require("../assets/images/pairs/1/1.png"),
@@ -127,11 +147,13 @@ require("../assets/images/pairs/12/2.png"),
 require("../assets/images/pairs/13/2.png"),
 require("../assets/images/pairs/14/2.png")];
 
-let tFinishBinaryChoices2Array = new Array(pair1.length.length).fill(0);
+let tFinishBinaryChoices2Array = new Array(pair1.length).fill(0);
+let binaryChoices2Ratings = new Array(pair1.length).fill(0);
 
 export default function BinaryChoices2({navigation}) {  
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
-  let timingData = new TimingsData()
+  let timingData = new TimingsData();
+  let data = new Data();
 
   return (      
     <View style={globalStyles.container}>
@@ -141,6 +163,9 @@ export default function BinaryChoices2({navigation}) {
           debugMode  && artPiecesCounter == pair1.length ? (
             <View>
               <Text>Data:</Text>
+              <Text>{JSON.stringify(data, null, "\t")}</Text>
+
+              <Text></Text>
               <Text>Time:</Text>
               <Text>{JSON.stringify(timingData, null, "\t")}</Text>              
             </View>
@@ -149,7 +174,7 @@ export default function BinaryChoices2({navigation}) {
         <View style={styles.imagesView}>
           <TouchableOpacity
           onPress={() => {                
-                  //binaryChoices2Data.likings2[artPiecesCounter] = 0;
+                  binaryChoices2Ratings[artPiecesCounter] = 0;
                   tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
                   if (artPiecesCounter == pair1.length - 1 && !debugMode) {                  
                     navigation.navigate("ThanksForParticipating");                    
@@ -167,7 +192,7 @@ export default function BinaryChoices2({navigation}) {
 
           <TouchableOpacity
             onPress={() => {                
-                  //binaryChoices2Data.likings2[artPiecesCounter] = 1; 
+                  binaryChoices2Ratings[artPiecesCounter] = 1; 
                   tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2)    ;   
                   if (artPiecesCounter == pair1.length - 1 && !debugMode) {                        
                     navigation.navigate("ThanksForParticipating");                  

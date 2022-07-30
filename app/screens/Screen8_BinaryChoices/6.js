@@ -7,10 +7,11 @@ import Slider from '@react-native-community/slider'
 import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
 export let tFinishBinaryChoices1Q6;
+export let rate6;
 
 export default function BinaryChoices1_6({navigation}) {    
   let [rate, setRate] = useState(5)
-
+  rate6 = rate;
   return (      
     <View style={globalStyles.container}>
       <Text style = {globalStyles.header}>אנא דרגו מ - 1 עד 10 כמה אהבתם את היצירה</Text>      
