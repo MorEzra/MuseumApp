@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-na
 import CameraButton from '../components/CameraButton';
 
 
-export default function CaneraScreen({navigation}) {
+export default function CameraScreen({navigation}) {
     
   return (
     <View style={styles.container} >
