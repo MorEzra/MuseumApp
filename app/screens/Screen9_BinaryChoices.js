@@ -157,7 +157,6 @@ export default function BinaryChoices2({navigation}) {
 
   return (      
     <View style={globalStyles.container}>
-      <ScrollView>
         <Text style = {globalStyles.header}>אנא לחצו על התמונות שאתם מעדיפים</Text>     
         {
           debugMode  && artPiecesCounter == pair1.length ? (
@@ -227,7 +226,6 @@ export default function BinaryChoices2({navigation}) {
                       }
         */}
         <StatusBar style="auto" />
-      </ScrollView>
     </View>
   );
 }
@@ -239,8 +237,8 @@ const styles = StyleSheet.create({
     },
 
     pieces: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 300,
         marginRight: 20,
         resizeMode: 'contain'
     }

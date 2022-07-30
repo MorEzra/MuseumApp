@@ -58,7 +58,9 @@ export default function ArrivalInstructions({navigation}) {
               }
             }>
               <TouchableOpacity
-              onPress={() => navigation.navigate("CameraScreen")}
+              onPress={() => {
+                setArtPiecesCounter(artPiecesCounter+1);              
+                navigation.navigate("CameraScreen")}}
               >
                 <Image
                   source={require("../assets/images/buttons/camera.png")}
@@ -75,20 +77,7 @@ export default function ArrivalInstructions({navigation}) {
                 style={{resizeMode: 'contain', width: 380, height: 380, marginBottom:25,  }}
             />
           </View>
-          {
-            //should be debugMode?
-            true ? (
-            <Button 
-                title="הגעתי"        
-                onPress={() =>  {
-                    tFinishArrivalInstructionsArray[artPiecesCounter] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2)    ;
-                    setArtPiecesCounter(artPiecesCounter+1);              
-                    navigation.navigate("ArtPieces")
-                  }
-                }>
-            </Button>  
-            ) : null
-          }
+          
           {/* Added some extra empty space at the bottom of the page to make the "הגעתי" button more accesible */}
           <View 
             style= {{height: 50}}>

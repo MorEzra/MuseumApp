@@ -14,8 +14,7 @@ export default function WelcomeScreen({navigation}) {
   
   return (      
     <View style={globalStyles.container}>
-      <ScrollView>
-        <Text style = {globalStyles.header}>ביקור באוסף מינזה בלומנטל במוזיאון תל אביב</Text>
+      <Text style = {globalStyles.header}>ביקור באוסף מינזה בלומנטל במוזיאון תל אביב</Text>
 
         <Text style={globalStyles.instructionsText}>
         תודה על השתתפותכם בסיור שהינו חלק ממחקר מטעם אוניברסיטת תל אביב.{"\n"}
@@ -36,18 +35,17 @@ export default function WelcomeScreen({navigation}) {
         <View style = {{flexDirection:"row", justifyContent:"space-between"}}>
           <Image        
                 source={require("../assets/images/logos/museum.png")}
-                style={{ resizeMode: 'contain', width: 300, height: 300, marginBottom:20, marginLeft:50}} 
+                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginLeft:50}} 
           />
           <Image        
                 source={require("../assets/images/logos/felizia.png")}
-                style={{ resizeMode: 'contain', width: 300, height: 300, marginBottom:20}} 
+                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20}} 
           />
           <Image        
                 source={require("../assets/images/logos/tau.png")}
-                style={{ resizeMode: 'contain', width: 300, height: 300, marginBottom:20, marginRight:50}} 
+                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginRight:50}} 
           />
         </View>
-        </ScrollView>
         <RadioButton.Item
           value="unchecked"
           label="קראתי את ההוראות ואני מאשר את השתתפותי בניסוי"

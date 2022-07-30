@@ -42,7 +42,7 @@ import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices'
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
 
-//import Images from './app/assets/images/images'
+import Images from './app/assets/images/images'
 
 function cacheImages(images) {
   return images.map(image => {
@@ -55,14 +55,14 @@ function cacheImages(images) {
 }
 
 
-/*function cacheFonts(fonts) {
+function cacheFonts(fonts) {
   return fonts.map(font => Font.loadAsync(font));
-}*/
+}
 
 const Stack = createNativeStackNavigator();
 
 function App() {
-  /*const [appIsReady, setAppIsReady] = useState(false);
+  const [appIsReady, setAppIsReady] = useState(false);
   
   // Load any resources or data that you need prior to rendering the app
   useEffect(() => {
@@ -73,7 +73,6 @@ function App() {
         
         const imageAssets = cacheImages(Images.slice(0,70));
         
-        
         const fontAssets = cacheFonts([MaterialCommunityIcons.font,
           {'Hillel':
           require('./app/assets/fonts/hillelclm-medium-webfont.ttf')},
@@ -83,7 +82,6 @@ function App() {
 
         await Promise.all([...imageAssets, ...fontAssets]);
       } catch (e) {
-        // You might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setAppIsReady(true);
@@ -92,11 +90,11 @@ function App() {
     }
 
     loadResourcesAndDataAsync();
-  }, []);*/
+  }, []);
 
-  /*if (!appIsReady) {
+  if (!appIsReady) {
     return null;
-  }*/
+  }
 
   return (
     <NavigationContainer>

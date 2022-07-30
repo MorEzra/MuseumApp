@@ -1,6 +1,6 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Button, Image, Pressable} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Button, Image, Pressable} from 'react-native';
 
 import { globalStyles } from '../assets/styles/global';
 
@@ -9,6 +9,8 @@ import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import { Audio } from 'expo-av';
 
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode } from './Screen1_WelcomeScreen';
+
 
 export let tFinishArtPiecesArray = new Array(artPieces.length).fill(0);
 
@@ -183,7 +185,7 @@ export default function ArtPieces({navigation}) {
             ) : null 
           }
           {
-          finishedPlaying? (
+          finishedPlaying || debugMode ? (
           <Button 
               title={buttonName}
               onPress={() => {

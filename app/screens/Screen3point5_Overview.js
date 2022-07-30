@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
-import { tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode, tExperimentBegin } from './Screen1_WelcomeScreen';
+import { Audio } from 'expo-av';
 
 export let tFinishSefiOverview;
 
 export default function OverviewScreen({navigation}) { 
-  let show = true; //[show, setShow] = useState(false); //TODO: show if audio finished playing?
   let audio_explanation = require("../assets/audio/instructions/overview.wav")
 
 
@@ -40,11 +40,16 @@ export default function OverviewScreen({navigation}) {
 			
 			await sound.playAsync();
 			sound.setOnPlaybackStatusUpdate((playbackStatus) => {
-				setFinishedPlaying(playbackStatus.didJustFinish);
-        console.log(finishedPlaying)
-			})
-		}
-	}
+				if (!playbackStatus.didJustFinish) {
+          console.log(playbackStatus.positionMillis)
+          }
+          else {
+            console.log('finished');
+            setFinishedPlaying(true)
+          }
+		    })
+	}}
+
 	React.useEffect(() => {
 		return sound
 			? () => {
@@ -111,7 +116,7 @@ export default function OverviewScreen({navigation}) {
           ) : null
             }
           </View>
-          {finishedPlaying? (
+          {finishedPlaying || debugMode? (
             <View style={
               {
                 flexBasis: 100,
