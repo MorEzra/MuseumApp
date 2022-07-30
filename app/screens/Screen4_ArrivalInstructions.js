@@ -76,7 +76,8 @@ export default function ArrivalInstructions({navigation}) {
             />
           </View>
           {
-            debugMode ? (
+            //should be debugMode?
+            true ? (
             <Button 
                 title="הגעתי"        
                 onPress={() =>  {
