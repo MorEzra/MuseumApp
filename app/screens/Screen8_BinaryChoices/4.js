@@ -10,7 +10,9 @@ export let tFinishBinaryChoices1Q4;
 export let rate4;
 
 export default function BinaryChoices1_4({navigation}) {    
-  let [rate, setRate] = useState(5)
+  let [rate, setRate] = useState(3);
+  let [colors, setColors] = useState(["black", "black", "black", "black", "black",]);
+  let [sizes, setSizes]  = useState([15, 15, 15, 15, 15]);
   rate4 = rate;
   return (      
     <View style={globalStyles.container}>
@@ -21,28 +23,40 @@ export default function BinaryChoices1_4({navigation}) {
         style={{ width: 400, height: 600, resizeMode: 'contain' }}         
       />
       
-      
-      <Text style={globalStyles.questionnaireHeader}>{rate}</Text>
+      <View style= {{flexDirection:"row"}}>
+      <View style={{width:100}}><Text style={{fontWeight:"bold", fontSize:sizes[0], marginRight:5, color:colors[0]}}>   לא אהבתי</Text></View>
+      <View style={{width:100}}><Text style={{fontWeight:"bold", fontSize:sizes[1], marginRight:5, color:colors[1]}}>  בכלל לא אהבתי</Text></View>
+      <View style={{width:100}}><Text style={{fontWeight:"bold", fontSize:sizes[2], marginRight:5, color:colors[2]}}>ניטרלי</Text></View>
+      <View style={{width:100}}><Text style={{fontWeight:"bold", fontSize:sizes[3], marginRight:5, color:colors[3]}}>אהבתי</Text></View>
+      <View style={{width:100}}><Text style={{fontWeight:"bold", fontSize:sizes[4], marginRight:5, color:colors[4]}}>מאוד אהבתי</Text></View>
+      </View>
       <View style = {{
         flexDirection:"row",
         
       }}>
-        <Text style={{fontWeight:"bold", fontSize:20, marginRight:20}}>בכלל לא אהבתי</Text>
 
         <Slider
           style = {{width:330, height:40, marginRight:20}}
-          minimumValue={0}
-          maximumValue={10}
+          minimumValue={1}
+          maximumValue={5}
           minimumTrackTintColor="green"
           maximumTrackTintColor="black"
           thumbTintColor="green"
-          value={5}
+          value={3}
           onValueChange={
-            value => setRate(parseInt(value))            
-          }                
+            value => {
+              let newColors = ["black", "black", "black", "black", "black"];
+              newColors[parseInt(value-1)] = "green";
+              setColors(newColors)
+
+              let newSizes = [15, 15, 15, 15, 15];
+              newSizes[parseInt(value-1)] = 17;
+              setSizes(newSizes)
+              setRate(parseInt(value))
+            }            
+          }                     
               
         />
-      <Text style={{fontWeight:"bold", fontSize:20, marginRight:20}}>מאוד אהבתי</Text>
       
       </View>
       <Button 
