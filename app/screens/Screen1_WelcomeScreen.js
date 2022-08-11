@@ -35,7 +35,7 @@ export default function WelcomeScreen({navigation}) {
         <View style = {{flexDirection:"row", justifyContent:"space-between"}}>
           <Image        
                 source={require("../assets/images/logos/museum.png")}
-                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginLeft:50}} 
+                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginLeft:25, marginRight:75}} 
           />
           <Image        
                 source={require("../assets/images/logos/felizia.png")}
@@ -43,9 +43,10 @@ export default function WelcomeScreen({navigation}) {
           />
           <Image        
                 source={require("../assets/images/logos/tau.png")}
-                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginRight:50}} 
+                style={{ resizeMode: 'contain', width: 150, height: 150, marginBottom:20, marginRight:25, marginLeft:75}} 
           />
         </View>
+        
         <RadioButton.Item
           value="unchecked"
           label="קראתי את ההוראות ואני מאשר את השתתפותי בניסוי"

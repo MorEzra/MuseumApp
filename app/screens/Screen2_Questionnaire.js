@@ -199,7 +199,6 @@ export default function Questionnaire({navigation}) {
   
   const styles = StyleSheet.create({
     textInput: {
-      width: 270,
       borderColor: "black",
       borderWidth: 1,
       marginBottom:10,
@@ -210,7 +209,8 @@ export default function Questionnaire({navigation}) {
     },
 
     oddView: {
-      backgroundColor:"aliceblue",      
+      backgroundColor:"aliceblue",   
+      borderWidth:300,   
       marginBottom:10,
       borderColor:"black",
       borderRadius:10,

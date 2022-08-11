@@ -8,7 +8,9 @@ export const globalStyles = StyleSheet.create({
         justifyContent: 'center',    
       },
     questionnaireContainer: {
-      flex: 1,
+      flex: 1,      
+      width:700,
+      alignSelf:"center",
       backgroundColor: '#fff'  
     },
       header: {
