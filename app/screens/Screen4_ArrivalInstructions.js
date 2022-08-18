@@ -77,13 +77,6 @@ export default function ArrivalInstructions({navigation}) {
                 style={{resizeMode: 'contain', width: 380, height: 380, marginBottom:25,  }}
             />
           </View>
-          <Button 
-              title="NEXT"
-              onPress={() => {
-                    navigation.navigate("BinaryChoices1_1");
-                  }
-              }>
-          </Button>   
           {/* Added some extra empty space at the bottom of the page to make the "הגעתי" button more accesible */}
           <View 
             style= {{height: 50}}>

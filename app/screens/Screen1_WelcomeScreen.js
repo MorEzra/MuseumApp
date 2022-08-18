@@ -6,7 +6,7 @@ import { RadioButton } from 'react-native-paper';
 
 export let tExperimentBegin = performance.now();
 export let tFinishWelcomeScreen;
-export let active = Math.round(Math.random());
+export let active = 0;
 export let debugMode = true;
 
 export default function WelcomeScreen({navigation}) {

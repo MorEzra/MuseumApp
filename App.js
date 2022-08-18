@@ -42,10 +42,10 @@ import BinaryChoices2 from                 './app/screens/Screen9_BinaryChoices'
 import ThanksForParticipating from         './app/screens/Screen10_ThanksForParticipating';
 import CameraScreen from                   './app/screens/CameraScreen';
 
-// import Images from './app/assets/images/images'// for web compatibilty just comment this line and do "doCaching = false"! everything else is ok.
+import Images from './app/assets/images/images'// for web compatibilty just comment this line and do "doCaching = false"! everything else is ok.
 
 const Stack = createNativeStackNavigator();
-const doCaching = false
+const doCaching = true
 
 
 function cacheImages(images) {

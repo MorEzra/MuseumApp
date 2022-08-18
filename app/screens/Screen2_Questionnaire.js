@@ -200,6 +200,7 @@ export default function Questionnaire({navigation}) {
   const styles = StyleSheet.create({
     textInput: {
       borderColor: "black",
+      width: 270,
       borderWidth: 1,
       marginBottom:10,
       marginRight:2,
