@@ -79,8 +79,8 @@ function App() {
           const fontAssets = cacheFonts([MaterialCommunityIcons.font,
             {'Hillel':
             require('./app/assets/fonts/hillelclm-medium-webfont.ttf')},
-            {'Suez':
-            require('./app/assets/fonts/SuezOne-Regular.ttf')}
+            {'simpleclm': 
+            require('./app/assets/fonts/simpleclm-bold-webfont.ttf')}
             ]);
 
           await Promise.all([...imageAssets, ...fontAssets]);

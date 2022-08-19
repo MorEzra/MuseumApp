@@ -66,7 +66,7 @@ export default function WelcomeScreen({navigation}) {
             disabled = { checked === 'checked' || debugMode ? false : true }
             onPress={() => {        
               tFinishWelcomeScreen = performance.now() - tExperimentBegin;
-              navigation.navigate("ArrivalInstructions");
+              navigation.navigate("Questionnaire");
             }
             }>
         </Button>

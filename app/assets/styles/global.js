@@ -20,7 +20,7 @@ export const globalStyles = StyleSheet.create({
         alignSelf: "center",             
         marginBottom:20,
         textAlign: 'center',
-        fontFamily: "Suez"      
+        fontFamily: "simpleclm"      
       },
 
      questionnaireHeader: {
