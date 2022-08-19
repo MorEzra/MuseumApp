@@ -9,7 +9,7 @@ import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import { Audio } from 'expo-av';
 
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
-import { debugMode } from './Screen1_WelcomeScreen';
+import { debugMode, active } from './Screen1_WelcomeScreen';
 
 
 export let tFinishArtPiecesArray = new Array(artPieces.length).fill(0);
@@ -18,10 +18,9 @@ export default function ArtPieces({navigation}) {
   
   // Multiple choice and art pieces
   let artPiecesNames = artPieces.map(({name}) => name);
-  let active = false;
   let buttonName = (active) ? "בחרתי" : "המשך";  
   let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?": "מאפיין היצירה הבאה באוסף יהיה:"
-  
+
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
   let attribute2DefaultBackgroundColor = (active) ? "white" : "white";
   let attribute3DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
@@ -190,7 +189,7 @@ export default function ArtPieces({navigation}) {
               title={buttonName}
               onPress={() => {
                 tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
-                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length)) {                                              
+                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("SummaryQuestionnaire1");
                     

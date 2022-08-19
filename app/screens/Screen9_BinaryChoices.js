@@ -159,15 +159,15 @@ export default function BinaryChoices2({navigation}) {
     <View style={globalStyles.container}>
         <Text style = {globalStyles.header}>אנא לחצו על התמונות שאתם מעדיפים</Text>     
         {
-          debugMode  && artPiecesCounter == pair1.length ? (
-            <View>
+          !debugMode  && artPiecesCounter == pair1.length ? (
+            <ScrollView>
               <Text>Data:</Text>
               <Text>{JSON.stringify(data, null, "\t")}</Text>
 
               <Text></Text>
               <Text>Time:</Text>
               <Text>{JSON.stringify(timingData, null, "\t")}</Text>              
-            </View>
+            </ScrollView>
           ) : null
         }       
         <View style={styles.imagesView}>

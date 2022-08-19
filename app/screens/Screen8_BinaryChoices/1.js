@@ -16,7 +16,7 @@ export default function BinaryChoices1_1({navigation}) {
   rate1 = rate;
   return (      
     <View style={globalStyles.container}>
-      <Text style = {globalStyles.header}>אנא דרגו מ - 1 עד 10 כמה אהבתם את היצירה</Text>      
+      <Text style = {globalStyles.header}>אנא דרגו כמה אהבתם את היצירה</Text>      
       <Image        
         source={artPieces[0].piece}
         style={{ width: 400, height: 600, resizeMode: 'contain' }}         
