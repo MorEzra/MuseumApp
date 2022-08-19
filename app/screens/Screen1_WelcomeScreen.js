@@ -8,6 +8,7 @@ export let tExperimentBegin = performance.now();
 export let tFinishWelcomeScreen;
 export let active = 0;
 export let debugMode = true;
+export let noPictureMode= false;
 
 export default function WelcomeScreen({navigation}) {
   const [checked, setChecked] = React.useState('unchecked');
@@ -65,7 +66,7 @@ export default function WelcomeScreen({navigation}) {
             disabled = { checked === 'checked' || debugMode ? false : true }
             onPress={() => {        
               tFinishWelcomeScreen = performance.now() - tExperimentBegin;
-              navigation.navigate("Questionnaire");
+              navigation.navigate("ArrivalInstructions");
             }
             }>
         </Button>

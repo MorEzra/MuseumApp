@@ -4,7 +4,7 @@ import { Text, View, ScrollView, Button, TouchableOpacity, Image} from 'react-na
 import { globalStyles } from '../assets/styles/global';
 
 import { artPieces } from '../components/ArtPiece';
-import { debugMode, tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode, noPictureMode, tExperimentBegin } from './Screen1_WelcomeScreen';
 
 export let artPiecesCounterReference = 0;
 export let tFinishArrivalInstructionsArray = new Array(artPieces.length).fill(0);
@@ -59,8 +59,11 @@ export default function ArrivalInstructions({navigation}) {
             }>
               <TouchableOpacity
               onPress={() => {
-                setArtPiecesCounter(artPiecesCounter+1);              
-                navigation.navigate("CameraScreen")}}
+                setArtPiecesCounter(artPiecesCounter+1);
+                if (!noPictureMode) {              
+                navigation.navigate("CameraScreen")}
+                else {navigation.navigate("ArtPieces")}
+              }}
               >
                 <Image
                   source={require("../assets/images/buttons/camera.png")}
