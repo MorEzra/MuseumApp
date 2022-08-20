@@ -157,9 +157,10 @@ export default function BinaryChoices2({navigation}) {
 
   return (      
     <View style={globalStyles.container}>
-        <Text style = {globalStyles.header}>אנא לחצו על התמונות שאתם מעדיפים</Text>     
+        <Text style = {globalStyles.header}>במסך זה מוצגות בפניכם זוג תמונות. אנא לחצו על התמונה שאתם מעדיפים</Text>     
+        <Text></Text>
         {
-          !debugMode  && artPiecesCounter == pair1.length ? (
+          debugMode  && artPiecesCounter == pair1.length ? (
             <ScrollView>
               <Text>Data:</Text>
               <Text>{JSON.stringify(data, null, "\t")}</Text>
@@ -170,43 +171,48 @@ export default function BinaryChoices2({navigation}) {
             </ScrollView>
           ) : null
         }       
-        <View style={styles.imagesView}>
-          <TouchableOpacity
-          onPress={() => {                
-                  binaryChoices2Ratings[artPiecesCounter] = 0;
-                  tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
-                  if (artPiecesCounter == pair1.length - 1 && !debugMode) {                  
-                    navigation.navigate("ThanksForParticipating");                    
-                  }
-                  else {
-                      setArtPiecesCounter(artPiecesCounter+1)
-                  }
-                }
-              }>
-              <Image
-              source={pair1[artPiecesCounter]}
-              style={styles.pieces} 
-              />
-          </TouchableOpacity>       
-
-          <TouchableOpacity
+        { 
+            artPiecesCounter != pair1.length ? (
+            <View style={styles.imagesView}>
+            <TouchableOpacity
             onPress={() => {                
-                  binaryChoices2Ratings[artPiecesCounter] = 1; 
-                  tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2)    ;   
-                  if (artPiecesCounter == pair1.length - 1 && !debugMode) {                        
-                    navigation.navigate("ThanksForParticipating");                  
+                    binaryChoices2Ratings[artPiecesCounter] = 0;
+                    tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
+                    if (artPiecesCounter == pair1.length - 1 && !debugMode) {                  
+                      navigation.navigate("ThanksForParticipating");                    
+                    }
+                    else {
+                        setArtPiecesCounter(artPiecesCounter+1)
+                    }
                   }
-                  else {
-                      setArtPiecesCounter(artPiecesCounter+1)
-                  }                                    
-                }
-              }>
-              <Image
-              source={pair2[artPiecesCounter]}
-              style={styles.pieces} 
-              />
-          </TouchableOpacity>       
-        </View>       
+                }>
+                <Image
+                source={pair1[artPiecesCounter]}
+                style={styles.pieces} 
+                />
+            </TouchableOpacity>       
+  
+            <TouchableOpacity
+              onPress={() => {                
+                    binaryChoices2Ratings[artPiecesCounter] = 1; 
+                    tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2)    ;   
+                    if (artPiecesCounter == pair1.length - 1 && !debugMode) {                        
+                      navigation.navigate("ThanksForParticipating");                  
+                    }
+                    else {
+                        setArtPiecesCounter(artPiecesCounter+1)
+                    }                                    
+                  }
+                }>
+                <Image
+                source={pair2[artPiecesCounter]}
+                style={styles.pieces} 
+                />
+            </TouchableOpacity>       
+          </View>   
+          ) : null
+        }
+            
         {/*
         //TODO: yonatan, send data to server
                       if (artPiecesCounter == pair1.length - 1) {                        

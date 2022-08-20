@@ -1,6 +1,6 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, ScrollView, Button, Image } from 'react-native';
+import { Text, View, Button, Image } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { RadioButton } from 'react-native-paper';
 
@@ -62,7 +62,7 @@ export default function WelcomeScreen({navigation}) {
         />
 
         <Button           
-            title="המשך"
+            title="המשך"            
             disabled = { checked === 'checked' || debugMode ? false : true }
             onPress={() => {        
               tFinishWelcomeScreen = performance.now() - tExperimentBegin;

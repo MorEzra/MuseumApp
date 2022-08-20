@@ -45,9 +45,9 @@ export default function Questionnaire({navigation}) {
 
     let lastMuseumVisitArray = [
       {label: "בחודש האחרון", value:0},      
-      {label: "בשנה האחרונה", value:1},
-      {label: "לפני מס' שנים", value:2},
-      {label: "לא ביקרתי", value:3},
+      {label: "בחצי שנה האחרונה", value:1},
+      {label: "בשנה האחרונה", value:2},
+      {label: "לפני מס' שנים", value:3},
       {label: "טרם מולא", value:9}
     ]
 
@@ -86,7 +86,7 @@ export default function Questionnaire({navigation}) {
 
     return ( 
       <View style={globalStyles.questionnaireContainer}>
-        <ScrollView >
+        <ScrollView style={{width:400, alignSelf:"center"}} >
           <View style={{marginBottom:10}}>
             <Text style = {globalStyles.header} >שאלון פרטים אישיים</Text>
           </View>           
@@ -200,7 +200,7 @@ export default function Questionnaire({navigation}) {
   const styles = StyleSheet.create({
     textInput: {
       borderColor: "black",
-      width: 270,
+      width: 230,
       borderWidth: 1,
       marginBottom:10,
       marginRight:2,
@@ -211,7 +211,6 @@ export default function Questionnaire({navigation}) {
 
     oddView: {
       backgroundColor:"aliceblue",   
-      borderWidth:300,   
       marginBottom:10,
       borderColor:"black",
       borderRadius:10,

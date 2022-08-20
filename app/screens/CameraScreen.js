@@ -52,7 +52,6 @@ const takePicture = async () => {
 
   return (
     <View style={styles.container} >
-      <Text style = {styles.header}>נא לצלם</Text>
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <View style={styles.container}>
 		<Camera style={styles.camera} type={type} ref={cameraRef}>
@@ -71,7 +70,7 @@ const takePicture = async () => {
 				          tFinishArrivalInstructionsArray[artPiecesCounterReference] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2);
                   navigation.navigate("ArtPieces")
                 }}
-				title={"TAKE PICTURE"}
+				title={"צלמ/י"}
 				>
 			</Button>
 		  </View>

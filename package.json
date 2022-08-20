@@ -39,7 +39,8 @@
     "react-surveyjs-vas-widget": "^1.0.1",
     "scroll-view": "^0.1.0",
     "survey-react": "^1.9.41",
-    "touchable-opacity-scale": "^1.0.2"
+    "touchable-opacity-scale": "^1.0.2",
+    "expo-updates": "~0.11.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

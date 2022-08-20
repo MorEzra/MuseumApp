@@ -191,7 +191,7 @@ export default function ArtPieces({navigation}) {
                 tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
                 if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
                   if (artPiecesCounterReference == artPieces.length) 
-                    navigation.navigate("SummaryQuestionnaire1");
+                    navigation.navigate("AdditionalQuestions_1");
                     
                   else {                              
                     navigation.navigate("ArrivalInstructions");
