@@ -3,23 +3,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
-import { debugMode, tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode } from './Screen1_WelcomeScreen';
 
 class QuestionnaireData {
   constructor(name="", age=0, gender=0, museumVisitsFrequency=0, lastMuseumVisit=0, telAvivMuseumVisit=0, thisExhibitionVisit=0) {
+    this.tBegin = -1;
+    this.tFinish = -1;
     this.name = name;
     this.age = age;
     this.gender = gender;
     this.museumVisitsFrequency = museumVisitsFrequency;
     this.lastMuseumVisit = lastMuseumVisit;
     this.telAvivMuseumVisit = telAvivMuseumVisit;
-    this.thisExhibitionVisit = thisExhibitionVisit;
+    this.exhibitionVisit = thisExhibitionVisit;
   }
 }
 export let questionnaireData = new QuestionnaireData();
+export let tBeginFirstQuestionnaire;
 export let tFinishFirstQuestionnaire;
 
 export default function Questionnaire({navigation}) {  
+    let tBegin = new Date();
+    tBeginFirstQuestionnaire = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
     let [subjectName, setSubjectName]                     = useState("");
     let [age, setAge]                                     = useState(0);
     let [gender, setGender]                               = useState(3);
@@ -27,7 +32,10 @@ export default function Questionnaire({navigation}) {
     let [lastMuseumVisit, setLastMuseumVisit]             = useState(9);
     let [telAvivMuseumVisit, setTelAvivMuseumVisit]       = useState(9);
     let [thisExhibitionVisit, setThisExhibitionVisit]     = useState(9);    
-
+    
+    
+    
+    
     let genderArray = [
       {label: "זכר", value:0},      
       {label: "נקבה", value:1},
@@ -72,6 +80,7 @@ export default function Questionnaire({navigation}) {
     questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
     
     let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
+    questionnaireData.tBeginFirstQuestionnaire = 0;
 
     function finishedQuestionnaire(subjectName, age, gender, museumVisitsFrequency, lastMuseumVisit, telAvivMuseumVisit, thisExhibitionVisit) {
       return subjectName!= "" &&
@@ -84,9 +93,9 @@ export default function Questionnaire({navigation}) {
     }
 
 
-    return ( 
-      <View style={globalStyles.questionnaireContainer}>
-        <ScrollView style={{width:400, alignSelf:"center"}} >
+    return (
+      <View style={globalStyles.questionnaireContainer}>        
+        <ScrollView style={{width:400, alignSelf:"center"}} >          
           <View style={{marginBottom:10}}>
             <Text style = {globalStyles.header} >שאלון פרטים אישיים</Text>
           </View>           
@@ -176,7 +185,10 @@ export default function Questionnaire({navigation}) {
             onPress={() => 
               { 
                 if (debugMode || finishedQuestionnaire(subjectName, age, gender, museumVisitsFrequency, lastMuseumVisit, telAvivMuseumVisit, thisExhibitionVisit)) {
-                  tFinishFirstQuestionnaire = performance.now() - tExperimentBegin;             
+                  tFinishFirstQuestionnaireDate = new Date();
+                  tFinishFirstQuestionnaire = tFinishFirstQuestionnaireDate.getHours() + ":" + tFinishFirstQuestionnaireDate.getMinutes() + ":" + tFinishFirstQuestionnaireDate.getSeconds()  + ":" + tFinishFirstQuestionnaireDate.getMilliseconds();
+
+                  questionnaireData.tFinish = tFinishFirstQuestionnaire;              
                   navigation.navigate("ResearchGuidelines")
                 } 
                 else {

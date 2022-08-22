@@ -4,9 +4,11 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
-import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
+import { debugMode } from '../Screen1_WelcomeScreen';
 
-export let tFinishSummaryQuestionnaireQ6;
+export let tBeginSummaryQuestionnaireQ6  = -1;
+export let tFinishSummaryQuestionnaireQ6 = -1;
+
 export let summaryQuestionnaireQ6Rating;
 
 export default function SummaryQuestionnaire6({navigation}) {    
@@ -56,7 +58,8 @@ export default function SummaryQuestionnaire6({navigation}) {
             title="המשך"
             onPress={() => {
               if (debugMode || summaryQuestionnaireQ6Rating != 0) {
-                tFinishSummaryQuestionnaireQ6 = performance.now() - tExperimentBegin;
+                let finishTimer = new Date();
+                  tFinishSummaryQuestionnaireQ6 = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
                 navigation.navigate("SummaryQuestionnaire7");
               }
               else {

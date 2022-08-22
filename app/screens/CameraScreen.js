@@ -1,13 +1,10 @@
 import React, {useState, useRef, useEffect}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Button} from 'react-native';
 import { Camera } from 'expo-camera';
 
-import { artPiecesCounterReference } from '../screens/Screen4_ArrivalInstructions';
-import { tFinishArrivalInstructionsArray } from '../screens/Screen4_ArrivalInstructions';
-import { tExperimentBegin } from '../screens/Screen1_WelcomeScreen';
-
-
+export let tBeginCameraScreen = new Array(8).fill(-1);
+export let tFinishCameraScreen = new Array(8).fill(-1);
 
 export default function CameraScreen({navigation}) {
     
@@ -66,8 +63,7 @@ const takePicture = async () => {
                   if (!r.cancelled) {
                     setImage(r.uri);
                   }
-                  console.log('response', JSON.stringify(r));
-				          tFinishArrivalInstructionsArray[artPiecesCounterReference] = ((performance.now() - tExperimentBegin)/ 1000).toFixed(2);
+                  console.log('response', JSON.stringify(r));				          
                   navigation.navigate("ArtPieces")
                 }}
 				title={"צלמ/י"}

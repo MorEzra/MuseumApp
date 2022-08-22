@@ -2,11 +2,14 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Button } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
-import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
-export let tFinishGuidelines;
+
+export let tBeginGuidelines = -1;
+export let tFinishGuidelines = -1;
 
 export default function ResearchGuidelines({navigation}) {  
+    let tBeginTimer = new Date();
+    tBeginGuidelines = tBeginTimer.getHours() + ":" + tBeginTimer.getMinutes() + ":" + tBeginTimer.getSeconds() + ":" + tBeginTimer.getMilliseconds();
     return (      
       <View style={globalStyles.container}>                
         <Text style = {globalStyles.header} >מהלך הסיור</Text>
@@ -19,7 +22,8 @@ export default function ResearchGuidelines({navigation}) {
         <Button 
           title="הבנתי, אפשר להתחיל"
           onPress={() => {
-            tFinishGuidelines = performance.now() - tExperimentBegin; 
+            let finishTimer = new Date();
+            tFinishGuidelines = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
             navigation.navigate("OverviewScreen")
             }
           }>

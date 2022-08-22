@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Button, Image, TouchableOpacity, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
-import { debugMode, tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode } from './Screen1_WelcomeScreen';
 import { Audio } from 'expo-av';
 
-export let tFinishSefiOverview;
-
+export let tBeginSefiOverview  = -1;
+export let tFinishSefiOverview = -1;
+export let playPauseSefiExplanationAudio = [];
 export default function OverviewScreen({navigation}) { 
+  let tBegin = new Date();
+  tBeginSefiOverview = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+
   let audio_explanation = require("../assets/audio/instructions/overview.wav")
 
 
@@ -106,7 +110,12 @@ export default function OverviewScreen({navigation}) {
             {
           !finishedPlaying? (
             <View style={globalStyles.audio} >
-              <TouchableOpacity onPress={() => {playSound(audio_explanation)}}>
+              <TouchableOpacity onPress={() => {
+                  let timer = new Date();
+                  playPauseSefiExplanationAudio.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                  playSound(audio_explanation)
+                }
+              }>
                 <Image
                   source={require("../assets/images/buttons/playpause_button.png")}
                   style={globalStyles.audioButtons} 
@@ -126,8 +135,12 @@ export default function OverviewScreen({navigation}) {
             }>
               <Button 
             title='המשך'
-            onPress={() => {tFinishSefiOverview = performance.now() - tExperimentBegin;
-                            navigation.navigate("ArrivalInstructions")}}>
+            onPress={() => {
+                  let finishTimer = new Date();
+                  tFinishSefiOverview = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
+                  navigation.navigate("ArrivalInstructions")
+                }
+              }>
               </Button>
             </View>
           ) : null

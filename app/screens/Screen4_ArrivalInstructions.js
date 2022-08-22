@@ -1,13 +1,13 @@
 import React , {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, ScrollView, Button, TouchableOpacity, Image} from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Image} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 
 import { artPieces } from '../components/ArtPiece';
-import { debugMode, noPictureMode, tExperimentBegin } from './Screen1_WelcomeScreen';
+import { debugMode, noPictureMode } from './Screen1_WelcomeScreen';
 
 export let artPiecesCounterReference = 0;
-export let tFinishArrivalInstructionsArray = new Array(artPieces.length).fill(0);
+export let tFinishArrivalInstructionsArray = new Array(artPieces.length).fill(-1);
 
 export default function ArrivalInstructions({navigation}) {  
 
@@ -59,6 +59,8 @@ export default function ArrivalInstructions({navigation}) {
             }>
               <TouchableOpacity
               onPress={() => {
+                let timer = new Date();
+                tFinishArrivalInstructionsArray[artPiecesCounter] = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds();
                 setArtPiecesCounter(artPiecesCounter+1);
                 if (!noPictureMode) {              
                 navigation.navigate("CameraScreen")}

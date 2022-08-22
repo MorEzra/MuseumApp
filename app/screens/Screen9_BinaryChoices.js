@@ -10,8 +10,8 @@ import { active, debugMode } from './Screen1_WelcomeScreen';
 /* ------------------------------------- Timing Variables ------------------------------------- */
 import { tExperimentBegin, tFinishWelcomeScreen }          from './Screen1_WelcomeScreen';
 import { tFinishFirstQuestionnaire }                       from './Screen2_Questionnaire';
-import { tFinishGuidelines }                               from './Screen3_ResearchGuidelines';
-import { tFinishSefiOverview }                             from './Screen3point5_Overview';
+import { tBeginGuidelines, tFinishGuidelines }             from './Screen3_ResearchGuidelines';
+import { playPauseSefiExplanationAudio, tFinishSefiOverview }                             from './Screen3point5_Overview';
 import { tFinishArrivalInstructionsArray }                 from './Screen4_ArrivalInstructions';
 import { tFinishArtPiecesArray }                           from './Screen5_ArtPieces';
 
@@ -27,18 +27,18 @@ import { tFinishSummaryQuestionnaireQ8 }                   from './Screen6_Summa
 import { tFinishQuestionnaireAdditionalArray }             from './Screen6.5_SummaryQuestionnaireAdditional';
 import { tFinishBinaryChoicesExplanation }                 from './Screen7_BinaryChoicesExplanation';
 
-import { rate1, tFinishBinaryChoices1Q1 }                         from './Screen8_BinaryChoices/1';
-import { rate2, tFinishBinaryChoices1Q2 }                         from './Screen8_BinaryChoices/2';
-import { rate3, tFinishBinaryChoices1Q3 }                         from './Screen8_BinaryChoices/3';
-import { rate4, tFinishBinaryChoices1Q4 }                         from './Screen8_BinaryChoices/4';
-import { rate5, tFinishBinaryChoices1Q5 }                         from './Screen8_BinaryChoices/5';
-import { rate6, tFinishBinaryChoices1Q6 }                         from './Screen8_BinaryChoices/6';
-import { rate7, tFinishBinaryChoices1Q7 }                         from './Screen8_BinaryChoices/7';
-import { rate8, tFinishBinaryChoices1Q8 }                         from './Screen8_BinaryChoices/8';
+import { rate1, tBeginBinaryChoicesV1Q1, tFinishBinaryChoicesV1Q1 }                         from './Screen8_BinaryChoices/1';
+import { rate2, tBeginBinaryChoicesV1Q2, tFinishBinaryChoicesV1Q2 }                         from './Screen8_BinaryChoices/2';
+import { rate3, tBeginBinaryChoicesV1Q3, tFinishBinaryChoicesV1Q3 }                         from './Screen8_BinaryChoices/3';
+import { rate4, tBeginBinaryChoicesV1Q4, tFinishBinaryChoicesV1Q4 }                         from './Screen8_BinaryChoices/4';
+import { rate5, tBeginBinaryChoicesV1Q5, tFinishBinaryChoicesV1Q5 }                         from './Screen8_BinaryChoices/5';
+import { rate6, tBeginBinaryChoicesV1Q6, tFinishBinaryChoicesV1Q6 }                         from './Screen8_BinaryChoices/6';
+import { rate7, tBeginBinaryChoicesV1Q7, tFinishBinaryChoicesV1Q7 }                         from './Screen8_BinaryChoices/7';
+import { rate8, tBeginBinaryChoicesV1Q8, tFinishBinaryChoicesV1Q8 }                         from './Screen8_BinaryChoices/8';
 
 /* ------------------------------------- Data -------------------------------------  */
 
-import { questionnaireData }            from './Screen2_Questionnaire';
+import { questionnaireData, tBeginFirstQuestionnaire }            from './Screen2_Questionnaire';
 
 import { summaryQuestionnaireQ1Rating } from './Screen6_SummaryQuestionnaire/q1';
 import { summaryQuestionnaireQ2Rating } from './Screen6_SummaryQuestionnaire/q2';
@@ -50,6 +50,83 @@ import { summaryQuestionnaireQ7Rating } from './Screen6_SummaryQuestionnaire/q7'
 import { summaryQuestionnaireQ8Rating } from './Screen6_SummaryQuestionnaire/q8';
 
 import { ratingArray } from './Screen6.5_SummaryQuestionnaireAdditional';
+import { sessionTimer } from './Screen1_WelcomeScreen';
+
+
+class SessionData {
+  constructor() {
+    today = new Date();
+    
+    // ------- Screen 1 - Welcome Screen Data -------
+    this.date = today.getDay() + "-" + today.getMonth() + "-" + today.getFullYear();
+    this.tExperimentBegin = sessionTimer.getHours() + ":" + sessionTimer.getMinutes() + ":" + sessionTimer.getSeconds() + ":" + sessionTimer.getMilliseconds();
+    this.tFinishWelcomeScreen = tFinishWelcomeScreen;
+    this.active = active;
+
+    // ------- Screen 2 - First Questionaire Data -------
+    this.tBeginFirstQuestionnaire = tBeginFirstQuestionnaire;    
+    this.name = questionnaireData.name;
+    this.age = questionnaireData.age;
+    this.gender = questionnaireData.gender;
+    this.museumVisitsFrequency = questionnaireData.museumVisitsFrequency;
+    this.lastMuseumVisit = questionnaireData.lastMuseumVisit;
+    this.telAvivMuseumVisit = questionnaireData.telAvivMuseumVisit;
+    this.thisExhibitionVisit = questionnaireData.exhibitionVisit; // TODO: add description
+    this.tFinishFirstQuestionnaire = tFinishFirstQuestionnaire;
+
+    // ------- Screen 3 - Research Guidelines -------
+    this.tBeginGuidelines = tBeginGuidelines;
+    this.tFinishGuidelines = tFinishGuidelines;
+
+    // ------- Screen 3.5 - Research Guidelines -------
+    this.tBeginSefiOverview = this.tBeginSefiOverview;
+    this.playPauseSefisExplanation = playPauseSefiExplanationAudio;
+    this.tFinishSefiOverview = this.tFinishSefiOverview;
+
+    // ------- Screens 4, 5 - Arrival Instructions & Art Pieces -------
+    this.tFinishArrivalInstructionsArray = tFinishArrivalInstructionsArray
+
+    // ------- Screen 6.5 - Sefi's Summary Questionnaire -------
+    
+    // ------- Screen 7 - Binary choices explanation -------
+    
+    // ------- Screen 8 - Binary choices -------
+    this.tBeginBinaryChoicesV1Q1  = tBeginBinaryChoicesV1Q1;
+    this.rate1  = rate1;
+    this.tFinishBinaryChoicesV1Q1 = tFinishBinaryChoicesV1Q1;
+
+    this.tBeginBinaryChoicesV1Q2  = tBeginBinaryChoicesV1Q2;
+    this.rate2  = rate2;
+    this.tFinishBinaryChoicesV1Q2 = tFinishBinaryChoicesV1Q2;
+
+    this.tBeginBinaryChoicesV1Q3  = tBeginBinaryChoicesV1Q3;
+    this.rate3  = rate3;
+    this.tFinishBinaryChoicesV1Q3 = tFinishBinaryChoicesV1Q3;
+
+    this.tBeginBinaryChoicesV1Q4  = tBeginBinaryChoicesV1Q4;
+    this.rate4  = rate4;
+    this.tFinishBinaryChoicesV1Q4 = tFinishBinaryChoicesV1Q4;
+
+    this.tBeginBinaryChoicesV1Q5  = tBeginBinaryChoicesV1Q5;
+    this.rate5  = rate5;
+    this.tFinishBinaryChoicesV1Q5 = tFinishBinaryChoicesV1Q5;
+
+    this.tBeginBinaryChoicesV1Q6  = tBeginBinaryChoicesV1Q6;
+    this.rate6  = rate6;
+    this.tFinishBinaryChoicesV1Q6 = tFinishBinaryChoicesV1Q6;
+
+    this.tBeginBinaryChoicesV1Q7  = tBeginBinaryChoicesV1Q7;
+    this.rate7  = rate7;
+    this.tFinishBinaryChoicesV1Q7 = tFinishBinaryChoicesV1Q7;
+
+    this.tBeginBinaryChoicesV1Q8  = tBeginBinaryChoicesV1Q8;
+    this.rate8  = rate8;
+    this.tFinishBinaryChoicesV1Q8 = tFinishBinaryChoicesV1Q8;
+
+    // ------- Screen 9 - Binary choices version 2-------
+  }
+}
+
 class TimingsData {
   constructor() 
   {
@@ -72,16 +149,7 @@ class TimingsData {
     ];
     this.tFinishQuestionnaireAdditionalArray = tFinishQuestionnaireAdditionalArray;
     this.tFinishBinaryChoicesExplanation     = (tFinishBinaryChoicesExplanation/ 1000).toFixed(2);
-    this.tFinishBinaryChoices1 = [
-      (tFinishBinaryChoices1Q1/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q2/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q3/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q4/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q5/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q6/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q7/ 1000).toFixed(2)    ,
-      (tFinishBinaryChoices1Q8/ 1000).toFixed(2)    
-    ];
+    
     this.tFinishBinaryChoices2Array = tFinishBinaryChoices2Array;
   }
 }
@@ -154,14 +222,18 @@ export default function BinaryChoices2({navigation}) {
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
   let timingData = new TimingsData();
   let data = new Data();
-
+  let sessionData = new SessionData();
+  
   return (      
     <View style={globalStyles.container}>
-        <Text style = {globalStyles.header}>במסך זה מוצגות בפניכם זוג תמונות. אנא לחצו על התמונה שאתם מעדיפים</Text>     
-        <Text></Text>
+        <Text style = {globalStyles.header}>במסך זה מוצגות בפניכם זוג תמונות. אנא לחצו על התמונה שאתם מעדיפים</Text>             
+        <Text></Text>        
         {
           debugMode  && artPiecesCounter == pair1.length ? (
             <ScrollView>
+              <Text>SessionData:</Text>
+              <Text>{JSON.stringify(sessionData, null, "\t")}</Text>
+
               <Text>Data:</Text>
               <Text>{JSON.stringify(data, null, "\t")}</Text>
 

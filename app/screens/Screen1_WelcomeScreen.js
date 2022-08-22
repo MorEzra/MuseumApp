@@ -4,11 +4,12 @@ import { Text, View, Button, Image } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { RadioButton } from 'react-native-paper';
 
-export let tExperimentBegin = performance.now();
+export let tExperimentBegin = performance.now(); // TODO: remove
 export let tFinishWelcomeScreen;
 export let active = 0;
 export let debugMode = true;
 export let noPictureMode= false;
+export let sessionTimer = new Date();
 
 export default function WelcomeScreen({navigation}) {
   const [checked, setChecked] = React.useState('unchecked');
@@ -65,7 +66,8 @@ export default function WelcomeScreen({navigation}) {
             title="המשך"            
             disabled = { checked === 'checked' || debugMode ? false : true }
             onPress={() => {        
-              tFinishWelcomeScreen = performance.now() - tExperimentBegin;
+              tFinishWelcomeScreenDate = new Date();
+              tFinishWelcomeScreen = tFinishWelcomeScreenDate.getHours() + ":" + tFinishWelcomeScreenDate.getMinutes() + ":" + tFinishWelcomeScreenDate.getSeconds() + ":" + tFinishWelcomeScreenDate.getMilliseconds();
               navigation.navigate("Questionnaire");
             }
             }>

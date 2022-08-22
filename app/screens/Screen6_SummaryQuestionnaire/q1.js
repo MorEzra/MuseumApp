@@ -4,13 +4,17 @@ import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
-import { debugMode, tExperimentBegin } from '../Screen1_WelcomeScreen';
+import { debugMode } from '../Screen1_WelcomeScreen';
 
 
-export let tFinishSummaryQuestionnaireQ1;
+export let tBeginSummaryQuestionnaireQ1  = -1;
+export let tFinishSummaryQuestionnaireQ1 = -1;
+
 export let summaryQuestionnaireQ1Rating
 
 export default function SummaryQuestionnaire1({navigation}) {        
+    let tBeginTimer = new Date();
+    tBeginSummaryQuestionnaireQ1 = tBeginTimer.getHours() + ":" + tBeginTimer.getMinutes() + ":" + tBeginTimer.getSeconds() + ":" + tBeginTimer.getMilliseconds();
     let [im1Liking, setIm1Liking] = useState(0);        
     summaryQuestionnaireQ1Rating = im1Liking;
 
@@ -61,7 +65,8 @@ export default function SummaryQuestionnaire1({navigation}) {
             title="המשך"
             onPress={() => {    
                 if (debugMode || summaryQuestionnaireQ1Rating != 0) {            
-                  tFinishSummaryQuestionnaireQ1 = performance.now() - tExperimentBegin;
+                  let finishTimer = new Date();
+                  tFinishSummaryQuestionnaireQ1 = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
                   navigation.navigate("SummaryQuestionnaire2");
                 }
                 else {

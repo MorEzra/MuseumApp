@@ -4,12 +4,16 @@ import { StyleSheet, Text, View, Button, Image} from 'react-native';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
 import Slider from '@react-native-community/slider'
-import { tExperimentBegin } from '../Screen1_WelcomeScreen';
 
-export let tFinishBinaryChoices1Q8;
+export let tBeginBinaryChoicesV1Q8  = -1;
+export let tFinishBinaryChoicesV1Q8 = -1;
+
 export let rate8;
 
 export default function BinaryChoices1_8({navigation}) {    
+  let tBeginTimer = new Date();
+  tBeginBinaryChoicesV1Q8 = tBeginTimer.getHours() + ":" + tBeginTimer.getMinutes() + ":" + tBeginTimer.getSeconds() + ":" + tBeginTimer.getMilliseconds();
+  
   let [rate, setRate] = useState(3);
   rate8 = rate;
   return (      
@@ -56,7 +60,8 @@ export default function BinaryChoices1_8({navigation}) {
       <Button 
           title="המשך"
           onPress={() => {  
-            tFinishBinaryChoices1Q8 = performance.now() - tExperimentBegin;               
+            let finishTimer = new Date();
+            tFinishBinaryChoicesV1Q8 = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
             navigation.navigate("BinaryChoices2")            
           }
         }>
