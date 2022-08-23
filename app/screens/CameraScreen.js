@@ -2,13 +2,14 @@ import React, {useState, useRef, useEffect}  from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { Camera } from 'expo-camera';
+import { artPiecesData } from './Screen4_ArrivalInstructions';
+import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 
-export let tBeginCameraScreen = new Array(8).fill(-1);
-export let tFinishCameraScreen = new Array(8).fill(-1);
 
 export default function CameraScreen({navigation}) {
-    
-    
+  let tBegin = new Date();
+  artPiecesData[Math.min(artPiecesCounterReference-1, 7)].tBeginCameraScreen = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+
 	const [count1, setCount1] = useState(0);
   const onPress = () => setCount1(prevCount => prevCount + 1);
 
@@ -51,26 +52,35 @@ const takePicture = async () => {
     <View style={styles.container} >
       {/* ------------------------------------------------ camera ------------------------------------------------ */}
       <View style={styles.container}>
-		<Camera style={styles.camera} type={type} ref={cameraRef}>
-		</Camera>
-		<View style={styles.buttonContainer}>
-			<Button
-                style={[styles.button]}
-                onPress={async () => {
-                  console.log('in take pic');
-                  const r = await takePicture();
-                  setUseCamera(false);
-                  if (!r.cancelled) {
-                    setImage(r.uri);
-                  }
-                  console.log('response', JSON.stringify(r));				          
-                  navigation.navigate("ArtPieces")
-                }}
-				title={"צלמ/י"}
-				>
-			</Button>
-		  </View>
-	  </View>
+
+      <Camera style={styles.camera} type={type} ref={cameraRef}>
+      </Camera>
+      <View>
+        <Text>time:{artPiecesData[artPiecesCounterReference-1].tBeginCameraScreen}</Text>
+        <Text>{artPiecesCounterReference-1}</Text>
+        </View>
+      <View style={styles.buttonContainer}>
+        
+        
+        <Button
+                  style={[styles.button]}
+                  onPress={async () => {
+                    let tFinish = new Date();
+                    artPiecesData[Math.min(artPiecesCounterReference-1, 7)].tFinishCameraScreen = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                    console.log('in take pic');
+                    const r = await takePicture();
+                    setUseCamera(false);
+                    if (!r.cancelled) {
+                      setImage(r.uri);
+                    }
+                    console.log('response', JSON.stringify(r));				          
+                    navigation.navigate("ArtPieces")
+                  }}
+          title={"צלמ/י"}
+          >
+        </Button>
+        </View>
+      </View>
 
       <StatusBar style="auto" />
     </View>    

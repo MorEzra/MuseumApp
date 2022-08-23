@@ -5,12 +5,18 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate1 = -1;
+export let tStartSefiQuestion1 = -1
+export let tFinishSefiQuestion1 = -1
+export let rateQ1 = -1;
 
 export default function AdditionalQuestions_1({navigation}) {
-    let question = "אנא דרגו את שביעות הרצון הכללית שלכם מהסיור המודרך באוסף מינזה בלומנטל ";    
+    let tBegin = new Date();
+    tStartSefiQuestion1 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+
+    let question = "אנא דרגו את שביעות הרצון הכללית שלכם מהסיור המודרך באוסף מינזה בלומנטל ";   
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
+    
 
     let ratings = [
         {label: "כלל לא שבע/ת רצון",   value:1},
@@ -49,8 +55,10 @@ export default function AdditionalQuestions_1({navigation}) {
             value={4}
 
             onValueChange={
-                value => {             
-                setSliderRate(parseInt(value))
+                value => {      
+                    setRating(value);  
+                    rateQ1 = value;  
+                    setSliderRate(parseInt(value))
                 }            
         }/>                             
 
@@ -65,8 +73,10 @@ export default function AdditionalQuestions_1({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_2")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion1 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_2")                                                
+                            setRating(0);
                         }
                         
                     }

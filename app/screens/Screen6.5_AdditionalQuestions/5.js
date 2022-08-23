@@ -5,9 +5,14 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate5 = -1;
+export let tStartSefiQuestion5 = -1
+export let tFinishSefiQuestion5 = -1
+export let rateQ5 = -1;
 
 export default function AdditionalQuestions_5({navigation}) {    
+    let tBegin = new Date();
+    tStartSefiQuestion5 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+
     let question = "?האם תרצו לשוב ולבקר במוזיאון עם הדרכה כזו ";
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
@@ -50,7 +55,9 @@ export default function AdditionalQuestions_5({navigation}) {
 
             onValueChange={
                 value => {             
-                setSliderRate(parseInt(value))
+                    setRating(value);
+                    rateQ5 = value; 
+                    setSliderRate(parseInt(value));
                 }            
         }/>                             
 
@@ -65,8 +72,10 @@ export default function AdditionalQuestions_5({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_6")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion5 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_6")                                                
+                            setRating(0);
                         }
                         
                     }

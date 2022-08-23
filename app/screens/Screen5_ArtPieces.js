@@ -11,11 +11,13 @@ import { Audio } from 'expo-av';
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
 import { debugMode, active } from './Screen1_WelcomeScreen';
 
+import { artPiecesData } from './Screen4_ArrivalInstructions';
 
 export let tFinishArtPiecesArray = new Array(artPieces.length).fill(0);
 
 export default function ArtPieces({navigation}) { 
-  
+  let tBegin = new Date();
+  artPiecesData[artPiecesCounterReference - 1].tBeginArtPiece = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
   // Multiple choice and art pieces
   let artPiecesNames = artPieces.map(({name}) => name);
   let buttonName = (active) ? "בחרתי" : "המשך";  
@@ -80,6 +82,8 @@ export default function ArtPieces({navigation}) {
         }
         else {
           console.log('finished');
+          let timer = new Date();
+          artPiecesData[artPiecesCounterReference-1].tFinishAudio = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds(); 
           setFinishedPlaying(true)
         }
 			})
@@ -118,7 +122,13 @@ export default function ArtPieces({navigation}) {
           !finishedPlaying? (
             <View style={globalStyles.audio} >
               <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
-			        <TouchableOpacity onPress={() => {playSound(artPieces[artPiecesCounterReference-1].audio_explanation)}}>
+			        <TouchableOpacity onPress={
+                () => {
+                    let timer = new Date();
+                    artPiecesData[artPiecesCounterReference-1].tPlayPauseAudio.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                    playSound(artPieces[artPiecesCounterReference-1].audio_explanation)
+                  }
+                }>
                 <Image
                   source={require("../assets/images/buttons/playpause_button.png")}
                   style={globalStyles.audioButtons} 
@@ -128,7 +138,7 @@ export default function ArtPieces({navigation}) {
           ) : null
           }
           {
-            (artPiecesCounterReference != 8) && finishedPlaying ? (
+            (artPiecesCounterReference != 8) && (finishedPlaying || debugMode) ? (
             <View style={styles.attributesView}>          
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
             <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
@@ -137,6 +147,9 @@ export default function ArtPieces({navigation}) {
                 style={{backgroundColor:attribute1BackgroundColor, borderWidth:1, marginBottom:10}}
                 onPress={() => {
                         if (active) {
+                          let timer = new Date();
+                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[0]);
                           setAttribute1BackgroundColor("dodgerblue");
                           setAttribute2BackgroundColor("white");
                           setAttribute3BackgroundColor("aliceblue");
@@ -153,6 +166,9 @@ export default function ArtPieces({navigation}) {
                 style={{backgroundColor:attribute2BackgroundColor, borderWidth:1, marginBottom:10}}
                 onPress={() => {
                         if (active) {
+                          let timer = new Date();
+                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[1]);
                           setAttribute1BackgroundColor("aliceblue");
                           setAttribute2BackgroundColor("dodgerblue");
                           setAttribute3BackgroundColor("aliceblue");
@@ -169,6 +185,9 @@ export default function ArtPieces({navigation}) {
                 style={{backgroundColor:attribute3BackgroundColor, borderWidth:1, marginBottom:10}}
                 onPress={() => {
                         if (active) {
+                          let timer = new Date();
+                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[2]);
                           setAttribute1BackgroundColor("aliceblue");
                           setAttribute2BackgroundColor("white");
                           setAttribute3BackgroundColor("dodgerblue");
@@ -190,6 +209,8 @@ export default function ArtPieces({navigation}) {
               onPress={() => {
                 tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
                 if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
+                  let tFinish = new Date();
+                  artPiecesData[artPiecesCounterReference - 1].tFinishArtPiece = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();
                   if (artPiecesCounterReference == artPieces.length) 
                     navigation.navigate("AdditionalQuestions_1");
                     

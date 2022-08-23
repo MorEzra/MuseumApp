@@ -6,13 +6,45 @@ import { globalStyles } from '../assets/styles/global';
 import { artPieces } from '../components/ArtPiece';
 import { debugMode, noPictureMode } from './Screen1_WelcomeScreen';
 
+class ArtPieceData {
+  constructor() {
+    this.artPieceName = "";
+    this.tBeginArrivalInstructions = -1;
+    this.tFinishArrivalInstructions = -1;
+    this.tBeginCameraScreen = -1;
+    this.tFinishCameraScreen = -1;
+    this.tBeginArtPiece = -1;
+    this.tPlayPauseAudio = [];
+    this.tFinishAudio = -1;
+    this.attributesChoices = [];
+    this.tAttributesChoices = [];
+    this.tFinishArtPiece = -1;
+  }
+}
+
+
 export let artPiecesCounterReference = 0;
 export let tFinishArrivalInstructionsArray = new Array(artPieces.length).fill(-1);
+export let tBeginArrivalInstructionsArray = new Array(artPieces.length).fill(-1);
+export let artPiecesData = [];
+
+let englishArtPiecesNames = ["fredrica", "princess", "boat", "worms", "venezian woman", "horses", "ball", "portrait"]
+for (let i=0; i<artPieces.length; i++) {
+  let newArtPiece = new ArtPieceData();
+  newArtPiece.artPieceName = englishArtPiecesNames[i];
+  
+  artPiecesData.push(newArtPiece);
+}
+
 
 export default function ArrivalInstructions({navigation}) {  
+  let tBegin = new Date();
+  
 
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
   let artPiecesNames = artPieces.map(({name}) => name);
+
+  artPiecesData[Math.min(artPiecesCounter, artPieces.length - 1)].tBeginArrivalInstructions = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
 
   artPiecesCounterReference = artPiecesCounter;
   return (      
@@ -60,6 +92,7 @@ export default function ArrivalInstructions({navigation}) {
               <TouchableOpacity
               onPress={() => {
                 let timer = new Date();
+                artPiecesData[artPiecesCounter].tFinishArrivalInstructions = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds();
                 tFinishArrivalInstructionsArray[artPiecesCounter] = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds();
                 setArtPiecesCounter(artPiecesCounter+1);
                 if (!noPictureMode) {              

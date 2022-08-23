@@ -5,9 +5,14 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate4 = -1;
+export let tStartSefiQuestion4 = -1
+export let tFinishSefiQuestion4 = -1
+export let rateQ4 = -1;
 
-export default function AdditionalQuestions_4({navigation}) {    
+export default function AdditionalQuestions_4({navigation}) {  
+    let tBegin = new Date();
+    tStartSefiQuestion4 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+    
     let question = "האם תרצו לשמוע עוד הסברים מסוג זה על יצירות נוספות באוסף?";
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
@@ -49,8 +54,10 @@ export default function AdditionalQuestions_4({navigation}) {
             value={4}
 
             onValueChange={
-                value => {             
-                setSliderRate(parseInt(value))
+                value => { 
+                    setRating(value);  
+                    rateQ4 = value;             
+                    setSliderRate(parseInt(value))
                 }            
         }/>                             
 
@@ -65,8 +72,10 @@ export default function AdditionalQuestions_4({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_5")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion4 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_5")                                                
+                            setRating(0);
                         }
                         
                     }

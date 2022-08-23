@@ -5,9 +5,14 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate6 = -1;
+export let tStartSefiQuestion6 = -1
+export let tFinishSefiQuestion6 = -1
+export let rateQ6 = -1;
 
-export default function AdditionalQuestions_6({navigation}) {    
+export default function AdditionalQuestions_6({navigation}) {
+    let tBegin = new Date();
+    tStartSefiQuestion6 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+    
     let question = "האם תרצו לבקר גם במוזיאונים אחרים על הדרכה כזו?";
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
@@ -49,8 +54,10 @@ export default function AdditionalQuestions_6({navigation}) {
             value={4}
 
             onValueChange={
-                value => {             
-                setSliderRate(parseInt(value))
+                value => {      
+                    setRating(value);   
+                    rateQ6 = value;        
+                    setSliderRate(parseInt(value))
                 }            
         }/>                             
 
@@ -65,8 +72,10 @@ export default function AdditionalQuestions_6({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_7")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion6 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_7")                                                
+                            setRating(0);
                         }
                         
                     }

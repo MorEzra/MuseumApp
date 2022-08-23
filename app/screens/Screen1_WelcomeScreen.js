@@ -6,7 +6,7 @@ import { RadioButton } from 'react-native-paper';
 
 export let tExperimentBegin = performance.now(); // TODO: remove
 export let tFinishWelcomeScreen;
-export let active = 0;
+export let active = 1;
 export let debugMode = true;
 export let noPictureMode= false;
 export let sessionTimer = new Date();

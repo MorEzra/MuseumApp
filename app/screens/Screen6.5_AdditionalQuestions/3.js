@@ -5,9 +5,14 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate3 = -1;
+export let tStartSefiQuestion3 = -1
+export let tFinishSefiQuestion3 = -1
+export let rateQ3 = -1;
 
 export default function AdditionalQuestions_3({navigation}) {    
+    let tBegin = new Date();
+    tStartSefiQuestion3 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+    
     let question = "משך הביקור היה לטעמכם ";
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
@@ -50,7 +55,9 @@ export default function AdditionalQuestions_3({navigation}) {
 
             onValueChange={
                 value => {             
-                setSliderRate(parseInt(value))
+                    setRating(value);   
+                    rateQ3 = value; 
+                    setSliderRate(parseInt(value))
                 }            
         }/>                             
 
@@ -65,8 +72,10 @@ export default function AdditionalQuestions_3({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_4")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion3 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_4")                                                
+                            setRating(0);
                         }
                         
                     }

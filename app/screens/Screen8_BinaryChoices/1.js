@@ -14,10 +14,10 @@ export default function BinaryChoices1_1({navigation}) {
   tBeginBinaryChoicesV1Q1 = tBeginTimer.getHours() + ":" + tBeginTimer.getMinutes() + ":" + tBeginTimer.getSeconds() + ":" + tBeginTimer.getMilliseconds();
   
   let [rate, setRate] = useState(3);
-  rate1 = rate;
+  
   return (      
     <View style={globalStyles.container}>
-      <Text style = {globalStyles.header}>אנא דרגו כמה אהבתם את היצירה</Text>      
+      <Text style = {globalStyles.header}>אנא דרגו כמה אהבתם את היצירה</Text>
       <Image        
         source={artPieces[0].piece}
         style={{ width: 400, height: 600, resizeMode: 'contain' }}         
@@ -49,6 +49,7 @@ export default function BinaryChoices1_1({navigation}) {
 
           onValueChange={
             value => {             
+              rate1 = value;
               setRate(parseInt(value))
             }            
           }                

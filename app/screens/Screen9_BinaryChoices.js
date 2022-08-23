@@ -12,7 +12,7 @@ import { tExperimentBegin, tFinishWelcomeScreen }          from './Screen1_Welco
 import { tFinishFirstQuestionnaire }                       from './Screen2_Questionnaire';
 import { tBeginGuidelines, tFinishGuidelines }             from './Screen3_ResearchGuidelines';
 import { playPauseSefiExplanationAudio, tFinishSefiOverview }                             from './Screen3point5_Overview';
-import { tFinishArrivalInstructionsArray }                 from './Screen4_ArrivalInstructions';
+import { artPiecesData, tFinishArrivalInstructionsArray }                 from './Screen4_ArrivalInstructions';
 import { tFinishArtPiecesArray }                           from './Screen5_ArtPieces';
 
 import { tFinishSummaryQuestionnaireQ1 }                   from './Screen6_SummaryQuestionnaire/q1';
@@ -36,6 +36,23 @@ import { rate6, tBeginBinaryChoicesV1Q6, tFinishBinaryChoicesV1Q6 }             
 import { rate7, tBeginBinaryChoicesV1Q7, tFinishBinaryChoicesV1Q7 }                         from './Screen8_BinaryChoices/7';
 import { rate8, tBeginBinaryChoicesV1Q8, tFinishBinaryChoicesV1Q8 }                         from './Screen8_BinaryChoices/8';
 
+
+import { tStartSefiQuestion1 } from './Screen6.5_AdditionalQuestions/1';
+import { tStartSefiQuestion2 } from './Screen6.5_AdditionalQuestions/2';
+import { tStartSefiQuestion3 } from './Screen6.5_AdditionalQuestions/3';
+import { tStartSefiQuestion4 } from './Screen6.5_AdditionalQuestions/4';
+import { tStartSefiQuestion5 } from './Screen6.5_AdditionalQuestions/5';
+import { tStartSefiQuestion6 } from './Screen6.5_AdditionalQuestions/6';
+import { tStartSefiQuestion7 } from './Screen6.5_AdditionalQuestions/7';
+
+import { tFinishSefiQuestion1 } from './Screen6.5_AdditionalQuestions/1';
+import { tFinishSefiQuestion2 } from './Screen6.5_AdditionalQuestions/2';
+import { tFinishSefiQuestion3 } from './Screen6.5_AdditionalQuestions/3';
+import { tFinishSefiQuestion4 } from './Screen6.5_AdditionalQuestions/4';
+import { tFinishSefiQuestion5 } from './Screen6.5_AdditionalQuestions/5';
+import { tFinishSefiQuestion6 } from './Screen6.5_AdditionalQuestions/6';
+import { tFinishSefiQuestion7 } from './Screen6.5_AdditionalQuestions/7';
+
 /* ------------------------------------- Data -------------------------------------  */
 
 import { questionnaireData, tBeginFirstQuestionnaire }            from './Screen2_Questionnaire';
@@ -50,6 +67,14 @@ import { summaryQuestionnaireQ7Rating } from './Screen6_SummaryQuestionnaire/q7'
 import { summaryQuestionnaireQ8Rating } from './Screen6_SummaryQuestionnaire/q8';
 
 import { ratingArray } from './Screen6.5_SummaryQuestionnaireAdditional';
+import { rateQ1 } from './Screen6.5_AdditionalQuestions/1';
+import { rateQ2 } from './Screen6.5_AdditionalQuestions/2';
+import { rateQ3 } from './Screen6.5_AdditionalQuestions/3';
+import { rateQ4 } from './Screen6.5_AdditionalQuestions/4';
+import { rateQ5 } from './Screen6.5_AdditionalQuestions/5';
+import { rateQ6 } from './Screen6.5_AdditionalQuestions/6';
+import { rateQ7 } from './Screen6.5_AdditionalQuestions/7';
+
 import { sessionTimer } from './Screen1_WelcomeScreen';
 
 
@@ -84,10 +109,38 @@ class SessionData {
     this.tFinishSefiOverview = this.tFinishSefiOverview;
 
     // ------- Screens 4, 5 - Arrival Instructions & Art Pieces -------
-    this.tFinishArrivalInstructionsArray = tFinishArrivalInstructionsArray
+    this.artPiecesData = artPiecesData;
+    
 
     // ------- Screen 6.5 - Sefi's Summary Questionnaire -------
+    this.tBeginSefiQuestion1 = tStartSefiQuestion1
+    this.sefiQuestion1 = rateQ1.toFixed(2);
+    this.tFinishSefiQuestion1 = tFinishSefiQuestion1
     
+    this.tBeginSefiQuestion2 = tStartSefiQuestion2
+    this.sefiQuestion2 = rateQ2.toFixed(2);
+    this.tFinishSefiQuestion2 = tFinishSefiQuestion2
+    
+    this.tBeginSefiQuestion3 = tStartSefiQuestion3
+    this.sefiQuestion3 = rateQ3.toFixed(2);
+    this.tFinishSefiQuestion3 = tFinishSefiQuestion3
+    
+    this.tBeginSefiQuestion4 = tStartSefiQuestion4
+    this.sefiQuestion4 = rateQ4.toFixed(2);
+    this.tFinishSefiQuestion4 = tFinishSefiQuestion4
+    
+    this.tBeginSefiQuestion5 = tStartSefiQuestion5
+    this.sefiQuestion5 = rateQ5.toFixed(2);
+    this.tFinishSefiQuestion5 = tFinishSefiQuestion5
+    
+    this.tBeginSefiQuestion6 = tStartSefiQuestion6
+    this.sefiQuestion6 = rateQ6.toFixed(2);
+    this.tFinishSefiQuestion6 = tFinishSefiQuestion6
+    
+    this.tBeginSefiQuestion7 = tStartSefiQuestion7
+    this.sefiQuestion7 = rateQ7.toFixed(2);
+    this.tFinishSefiQuestion7 = tFinishSefiQuestion7
+
     // ------- Screen 7 - Binary choices explanation -------
     
     // ------- Screen 8 - Binary choices -------

@@ -15,7 +15,7 @@ export default function BinaryChoices1_3({navigation}) {
   tBeginBinaryChoicesV1Q3 = tBeginTimer.getHours() + ":" + tBeginTimer.getMinutes() + ":" + tBeginTimer.getSeconds() + ":" + tBeginTimer.getMilliseconds();
   
   let [rate, setRate] = useState(3)
-  rate3 = rate;
+
   return (      
     <View style={globalStyles.container}>
       <Text style = {globalStyles.header}>אנא דרגו כמה אהבתם את היצירה</Text>      
@@ -41,7 +41,7 @@ export default function BinaryChoices1_3({navigation}) {
       }}>
 
         <Slider
-          style = {{width:330, height:40, marginRight:20}}
+          style = {{width:525, height:40, marginRight:20}}
           minimumValue={1}
           maximumValue={5}
           minimumTrackTintColor="green"
@@ -49,7 +49,8 @@ export default function BinaryChoices1_3({navigation}) {
           thumbTintColor="green"
           value={3}
           onValueChange={
-            value => {          
+            value => {    
+              rate3 = value;      
               setRate(parseInt(value))
             }            
           }                  

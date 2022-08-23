@@ -5,9 +5,14 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate7 = -1;
+export let tStartSefiQuestion7 = -1
+export let tFinishSefiQuestion7 = -1
+export let rateQ7 = -1;
 
-export default function AdditionalQuestions_7({navigation}) {    
+export default function AdditionalQuestions_7({navigation}) {  
+    let tBegin = new Date();
+    tStartSefiQuestion7 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+    
     let question = "?האם תמליצו לחברים לבקר באוסף בליווי הדרכה קולית מסוג זה";
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
@@ -49,10 +54,12 @@ export default function AdditionalQuestions_7({navigation}) {
             value={4}
 
             onValueChange={
-                value => {             
-                setSliderRate(parseInt(value))
-                }            
-        }/>                             
+                value => {
+                    setRating(value);
+                    rateQ7 = value; 
+                    setSliderRate(parseInt(value))
+                }
+        }/>
 
         {
             debugMode ? (
@@ -65,8 +72,10 @@ export default function AdditionalQuestions_7({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("BinaryChoicesExplanation")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion7 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("BinaryChoicesExplanation")                                                
+                            setRating(0);
                         }
                         
                     }

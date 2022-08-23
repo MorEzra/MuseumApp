@@ -5,13 +5,19 @@ import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
 
-export let rate2 = -1;
+export let tStartSefiQuestion2 = -1
+export let tFinishSefiQuestion2 = -1
+export let rateQ2 = -1;
 
-export default function AdditionalQuestions_2({navigation}) {    
+export default function AdditionalQuestions_2({navigation}) { 
+    let tBegin = new Date();
+    tStartSefiQuestion2 = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
+    
     let question = "אנא דרגו את שביעות הרצון מן ההסברים אודות היצירות ";
+    
     let [rating, setRating]   = useState(0);       
     let [sliderRate, setSliderRate] = useState(4);
-
+    
     let ratings = [
         {label: "כלל לא שבע/ת רצון",   value:1},
         {label: "לא שבע/ת רצון",       value:2},
@@ -49,8 +55,11 @@ export default function AdditionalQuestions_2({navigation}) {
             value={4}
 
             onValueChange={
-                value => {             
-                setSliderRate(parseInt(value))
+                value => {  
+                    setRating(value); 
+                    rateQ2 = value; 
+             
+                    setSliderRate(parseInt(value))
                 }            
         }/>                             
 
@@ -65,8 +74,10 @@ export default function AdditionalQuestions_2({navigation}) {
             onPress={() =>
                     {   
                         if (debugMode || rating != 0) {
-                        navigation.navigate("AdditionalQuestions_3")                                                
-                        setRating(0);
+                            let tFinish = new Date();
+                            tFinishSefiQuestion2 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_3")                                                
+                            setRating(0);
                         }
                         
                     }
