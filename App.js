@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import WelcomeScreen, { debugMode } from   './app/screens/Screen1_WelcomeScreen';
 import Questionnaire from                  './app/screens/Screen2_Questionnaire';
@@ -84,8 +83,7 @@ function App() {
           
           const imageAssets = cacheImages(Images.slice(0,70));
           
-          const fontAssets = cacheFonts([MaterialCommunityIcons.font,
-            {'Hillel':
+          const fontAssets = cacheFonts([{'Hillel':
             require('./app/assets/fonts/hillelclm-medium-webfont.ttf')
             },
             {'simpleclm': 
