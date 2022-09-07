@@ -138,7 +138,7 @@ export default function ArtPieces({navigation}) {
           ) : null
           }
           {
-            (artPiecesCounterReference != 8) && ((finishedPlaying && active) || debugMode) ? (
+            (artPiecesCounterReference != 8) && active && (finishedPlaying || debugMode) ? (
             <View style={styles.attributesView}>          
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
             <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
