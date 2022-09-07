@@ -11,21 +11,8 @@ import { active, debugMode } from './Screen1_WelcomeScreen';
 import { tExperimentBegin, tFinishWelcomeScreen }          from './Screen1_WelcomeScreen';
 import { tFinishFirstQuestionnaire }                       from './Screen2_Questionnaire';
 import { tBeginGuidelines, tFinishGuidelines }             from './Screen3_ResearchGuidelines';
-import { playPauseSefiExplanationAudio, tFinishSefiOverview }                             from './Screen3point5_Overview';
-import { artPiecesData, tFinishArrivalInstructionsArray }                 from './Screen4_ArrivalInstructions';
-import { tFinishArtPiecesArray }                           from './Screen5_ArtPieces';
-
-import { tFinishSummaryQuestionnaireQ1 }                   from './Screen6_SummaryQuestionnaire/q1';
-import { tFinishSummaryQuestionnaireQ2 }                   from './Screen6_SummaryQuestionnaire/q2';
-import { tFinishSummaryQuestionnaireQ3 }                   from './Screen6_SummaryQuestionnaire/q3';
-import { tFinishSummaryQuestionnaireQ4 }                   from './Screen6_SummaryQuestionnaire/q4';
-import { tFinishSummaryQuestionnaireQ5 }                   from './Screen6_SummaryQuestionnaire/q5';
-import { tFinishSummaryQuestionnaireQ6 }                   from './Screen6_SummaryQuestionnaire/q6';
-import { tFinishSummaryQuestionnaireQ7 }                   from './Screen6_SummaryQuestionnaire/q7';
-import { tFinishSummaryQuestionnaireQ8 }                   from './Screen6_SummaryQuestionnaire/q8';
-
-import { tFinishQuestionnaireAdditionalArray }             from './Screen6.5_SummaryQuestionnaireAdditional';
-import { tFinishBinaryChoicesExplanation }                 from './Screen7_BinaryChoicesExplanation';
+import { playPauseSefiExplanationAudio }                             from './Screen3point5_Overview';
+import { artPiecesData }                 from './Screen4_ArrivalInstructions';
 
 import { rate1, tBeginBinaryChoicesV1Q1, tFinishBinaryChoicesV1Q1 }                         from './Screen8_BinaryChoices/1';
 import { rate2, tBeginBinaryChoicesV1Q2, tFinishBinaryChoicesV1Q2 }                         from './Screen8_BinaryChoices/2';
@@ -57,16 +44,6 @@ import { tFinishSefiQuestion7 } from './Screen6.5_AdditionalQuestions/7';
 
 import { questionnaireData, tBeginFirstQuestionnaire }            from './Screen2_Questionnaire';
 
-import { summaryQuestionnaireQ1Rating } from './Screen6_SummaryQuestionnaire/q1';
-import { summaryQuestionnaireQ2Rating } from './Screen6_SummaryQuestionnaire/q2';
-import { summaryQuestionnaireQ3Rating } from './Screen6_SummaryQuestionnaire/q3';
-import { summaryQuestionnaireQ4Rating } from './Screen6_SummaryQuestionnaire/q4';
-import { summaryQuestionnaireQ5Rating } from './Screen6_SummaryQuestionnaire/q5';
-import { summaryQuestionnaireQ6Rating } from './Screen6_SummaryQuestionnaire/q6';
-import { summaryQuestionnaireQ7Rating } from './Screen6_SummaryQuestionnaire/q7';
-import { summaryQuestionnaireQ8Rating } from './Screen6_SummaryQuestionnaire/q8';
-
-import { ratingArray } from './Screen6.5_SummaryQuestionnaireAdditional';
 import { rateQ1 } from './Screen6.5_AdditionalQuestions/1';
 import { rateQ2 } from './Screen6.5_AdditionalQuestions/2';
 import { rateQ3 } from './Screen6.5_AdditionalQuestions/3';
@@ -216,64 +193,6 @@ class SessionData {
   }
 }
 
-class TimingsData {
-  constructor() 
-  {
-    this.tExperimentBegin               = (tExperimentBegin/ 1000).toFixed(2);
-    this.tFinishWelcomeScreen           = (tFinishWelcomeScreen/ 1000).toFixed(2); 
-    this.tFinishFirstQuestionnaire      = (tFinishFirstQuestionnaire/ 1000).toFixed(2);  
-    this.tFinishGuidelines              = (tFinishGuidelines/ 1000).toFixed(2);   
-    this.tFinishSefiOverview            = (tFinishSefiOverview/ 1000).toFixed(2); 
-    this.tFinishArrivalInstructions     = tFinishArrivalInstructionsArray;
-    this.tFinishArtPieces               = tFinishArtPiecesArray;
-    this.tFinishSummaryQuestionnaire = [
-      (tFinishSummaryQuestionnaireQ1/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ2/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ3/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ4/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ5/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ6/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ7/ 1000).toFixed(2)    ,
-      (tFinishSummaryQuestionnaireQ8/ 1000).toFixed(2)    
-    ];
-    this.tFinishQuestionnaireAdditionalArray = tFinishQuestionnaireAdditionalArray;
-    this.tFinishBinaryChoicesExplanation     = (tFinishBinaryChoicesExplanation/ 1000).toFixed(2);
-    
-    this.tFinishBinaryChoices2Array = tFinishBinaryChoices2Array;
-  }
-}
-
-class Data {
-  constructor()
-    {
-      this.active = active;
-      this.questionnaireData = questionnaireData;   
-      this.summaryQuestionnaireRating = [
-        summaryQuestionnaireQ1Rating,
-        summaryQuestionnaireQ2Rating,
-        summaryQuestionnaireQ3Rating,
-        summaryQuestionnaireQ4Rating,
-        summaryQuestionnaireQ5Rating,
-        summaryQuestionnaireQ6Rating,
-        summaryQuestionnaireQ7Rating,
-        summaryQuestionnaireQ8Rating
-      ];
-      this.ratingArray = ratingArray;
-      this.binaryChoices1Ratings = [        
-        rate1,
-        rate2,
-        rate3,
-        rate4,
-        rate5,
-        rate6,
-        rate7,
-        rate8,
-      ];
-
-      this.binaryChoices2Ratings = binaryChoices2Ratings;
-    }
-}
-
 
 let pair1 = [require("../assets/images/pairs/1/1.png"),
 require("../assets/images/pairs/2/1.png"),
@@ -309,8 +228,6 @@ let binaryChoices2Ratings = new Array(pair1.length).fill(0);
 
 export default function BinaryChoices2({navigation}) {  
   let [artPiecesCounter, setArtPiecesCounter] = useState(0);
-  let timingData = new TimingsData();
-  let data = new Data();
   let sessionData = new SessionData();
   
   return (      
@@ -321,14 +238,7 @@ export default function BinaryChoices2({navigation}) {
           debugMode  && artPiecesCounter == pair1.length ? (
             <ScrollView>
               <Text>SessionData:</Text>
-              <Text>{JSON.stringify(sessionData, null, "\t")}</Text>
-
-              <Text>Data:</Text>
-              <Text>{JSON.stringify(data, null, "\t")}</Text>
-
-              <Text></Text>
-              <Text>Time:</Text>
-              <Text>{JSON.stringify(timingData, null, "\t")}</Text>              
+              <Text>{JSON.stringify(sessionData, null, "\t")}</Text>                      
             </ScrollView>
           ) : null
         }       
