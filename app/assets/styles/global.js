@@ -69,12 +69,13 @@ export const globalStyles = StyleSheet.create({
      width:80,
      height:30,
      alignItems:"center",
-     alignSelf:"center" 
+     alignSelf:"center",
+     backgroundColor:"dodgerblue"
     },
 
     buttonText: {
       fontSize:25,
-      color:"dodgerblue",      
+      color:"white",      
     }
 
 });

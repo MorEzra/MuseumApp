@@ -20,7 +20,7 @@ export default function ResearchGuidelines({navigation}) {
           <Text style={globalStyles.instructionsText}>לבסוף, תתבקשו לענות על מספר שאלות אודות הסיור והיצירות.</Text>                
         </View>
 
-        <View style={[globalStyles.buttonView, {width:230}]}>
+        <View style={[globalStyles.buttonView, {width:230, height:40}]}>
           <TouchableOpacity 
             title="הבנתי, אפשר להתחיל"
             onPress={() => {
