@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
 import { debugMode } from './Screen1_WelcomeScreen';
@@ -181,26 +181,26 @@ export default function Questionnaire({navigation}) {
                 אנא סיים למלא את השאלון</Text>
               ):null            
           }
-          <Button 
-            title="המשך"
-            onPress={() => 
-              { 
-                if (debugMode || finishedQuestionnaire(subjectName, age, gender, museumVisitsFrequency, lastMuseumVisit, telAvivMuseumVisit, thisExhibitionVisit)) {
-                  tFinishFirstQuestionnaireDate = new Date();
-                  tFinishFirstQuestionnaire = tFinishFirstQuestionnaireDate.getHours() + ":" + tFinishFirstQuestionnaireDate.getMinutes() + ":" + tFinishFirstQuestionnaireDate.getSeconds()  + ":" + tFinishFirstQuestionnaireDate.getMilliseconds();
+            <View style = {globalStyles.buttonView}>
+              <TouchableOpacity
+                onPress={() => 
+                  { 
+                    if (debugMode || finishedQuestionnaire(subjectName, age, gender, museumVisitsFrequency, lastMuseumVisit, telAvivMuseumVisit, thisExhibitionVisit)) {
+                      tFinishFirstQuestionnaireDate = new Date();
+                      tFinishFirstQuestionnaire = tFinishFirstQuestionnaireDate.getHours() + ":" + tFinishFirstQuestionnaireDate.getMinutes() + ":" + tFinishFirstQuestionnaireDate.getSeconds()  + ":" + tFinishFirstQuestionnaireDate.getMilliseconds();
 
-                  questionnaireData.tFinish = tFinishFirstQuestionnaire;              
-                  navigation.navigate("ResearchGuidelines")
-                } 
-                else {
-                  setFinishQuestionnaireMessage(true);
-                }
-                
-              }
-            }
-            style = {{}}
-            >
-          </Button>         
+                      questionnaireData.tFinish = tFinishFirstQuestionnaire;              
+                      navigation.navigate("ResearchGuidelines")
+                    } 
+                    else {
+                      setFinishQuestionnaireMessage(true);
+                    }                
+                  }
+                }            
+                >
+                  <Text style = {globalStyles.buttonText}>המשך</Text>
+              </TouchableOpacity>         
+            </View>
           <View
           style= {{height: 50}}>
             

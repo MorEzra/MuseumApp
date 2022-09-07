@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 
 
@@ -19,15 +19,19 @@ export default function ResearchGuidelines({navigation}) {
           <Text style={globalStyles.instructionsText}>בצורה זו תסיירו בין 8 יצירות באוסף.</Text>
           <Text style={globalStyles.instructionsText}>לבסוף, תתבקשו לענות על מספר שאלות אודות הסיור והיצירות.</Text>                
         </View>
-        <Button 
-          title="הבנתי, אפשר להתחיל"
-          onPress={() => {
-            let finishTimer = new Date();
-            tFinishGuidelines = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
-            navigation.navigate("OverviewScreen")
-            }
-          }>
-        </Button>
+
+        <View style={[globalStyles.buttonView, {width:230}]}>
+          <TouchableOpacity 
+            title="הבנתי, אפשר להתחיל"
+            onPress={() => {
+              let finishTimer = new Date();
+              tFinishGuidelines = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
+              navigation.navigate("OverviewScreen")
+              }
+            }>
+              <Text style={globalStyles.buttonText}>הבנתי, אפשר להתחיל</Text>
+          </TouchableOpacity>
+        </View>
 
         <StatusBar style="auto" />
       </View>

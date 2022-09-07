@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import { artPieces } from '../../components/ArtPiece';
 import { globalStyles } from '../../assets/styles/global';
 import Slider from '@react-native-community/slider'
@@ -58,15 +58,17 @@ export default function BinaryChoices1_7({navigation}) {
         />
       
       </View>
-      <Button 
-          title="המשך"
-          onPress={() => {              
-            let finishTimer = new Date();
-            tFinishBinaryChoicesV1Q7 = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
-            navigation.navigate("BinaryChoices1_8")            
-          }
-        }>
-      </Button>
+      <View style={globalStyles.buttonView}>
+        <TouchableOpacity 
+            onPress={() => {              
+              let finishTimer = new Date();
+              tFinishBinaryChoicesV1Q7 = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
+              navigation.navigate("BinaryChoices1_8")            
+            }
+          }>
+            <Text style={globalStyles.buttonText}>המשך</Text>
+        </TouchableOpacity>
+      </View>
       <StatusBar style="auto" />
     </View>
   );

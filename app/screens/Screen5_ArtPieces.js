@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Button, Image, Pressable} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable} from 'react-native';
 
 import { globalStyles } from '../assets/styles/global';
 
@@ -214,22 +214,25 @@ export default function ArtPieces({navigation}) {
 
           {
           finishedPlaying || debugMode ? (
-          <Button 
-              title={buttonName}
-              onPress={() => {
-                tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
-                if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
-                  let tFinish = new Date();
-                  artPiecesData[artPiecesCounterReference - 1].tFinishArtPiece = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();
-                  if (artPiecesCounterReference == artPieces.length) 
-                    navigation.navigate("AdditionalQuestions_1");
-                    
-                  else {                              
-                    navigation.navigate("ArrivalInstructions");
+          <View style={globalStyles.buttonView}>
+            <TouchableOpacity 
+                title={buttonName}
+                onPress={() => {
+                  tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
+                  if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
+                    let tFinish = new Date();
+                    artPiecesData[artPiecesCounterReference - 1].tFinishArtPiece = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();
+                    if (artPiecesCounterReference == artPieces.length) 
+                      navigation.navigate("AdditionalQuestions_1");
+                      
+                    else {                              
+                      navigation.navigate("ArrivalInstructions");
+                    }
                   }
-                }
-              }}>
-          </Button>      
+                }}>
+                <Text style={globalStyles.buttonText}>{buttonName}</Text>
+          </TouchableOpacity>      
+          </View>
           ) : null
           }
         </View>

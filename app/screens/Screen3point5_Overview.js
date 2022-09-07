@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { debugMode } from './Screen1_WelcomeScreen';
 import { Audio } from 'expo-av';
@@ -133,15 +133,18 @@ export default function OverviewScreen({navigation}) {
                 flexShrink: 0
               }
             }>
-              <Button 
-            title='המשך'
-            onPress={() => {
-                  let finishTimer = new Date();
-                  tFinishSefiOverview = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
-                  navigation.navigate("ArrivalInstructions")
-                }
-              }>
-              </Button>
+              <View style={globalStyles.buttonView}>
+                <TouchableOpacity 
+                onPress={() => {
+                      let finishTimer = new Date();
+                      tFinishSefiOverview = finishTimer.getHours() + ":" + finishTimer.getMinutes() + ":" + finishTimer.getSeconds() + ":" + finishTimer.getMilliseconds();
+                      navigation.navigate("ArrivalInstructions")
+                    }
+                  }>
+                  <Text style={globalStyles.buttonText}>המשך</Text>
+                </TouchableOpacity>
+              </View>
+
             </View>
           ) : null
           }

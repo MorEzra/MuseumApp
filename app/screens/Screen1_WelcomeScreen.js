@@ -1,8 +1,9 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { RadioButton } from 'react-native-paper';
+
 
 export let tExperimentBegin = performance.now(); // TODO: remove
 export let tFinishWelcomeScreen;
@@ -61,22 +62,21 @@ export default function WelcomeScreen({navigation}) {
             }
           }
         />
-
-        <Button           
-            title="המשך"            
+      <View style = {globalStyles.buttonView}>
+        <TouchableOpacity
+            style = {globalStyles.button}        
             disabled = { checked === 'checked' || debugMode ? false : true }
             onPress={() => {        
-              tFinishWelcomeScreenDate = new Date();
+              let tFinishWelcomeScreenDate = new Date();
               tFinishWelcomeScreen = tFinishWelcomeScreenDate.getHours() + ":" + tFinishWelcomeScreenDate.getMinutes() + ":" + tFinishWelcomeScreenDate.getSeconds() + ":" + tFinishWelcomeScreenDate.getMilliseconds();
               navigation.navigate("Questionnaire");
             }
             }>
-        </Button>
-
+              <Text style = {globalStyles.buttonText}>המשך</Text>
+        </TouchableOpacity>
+      </View>        
         <StatusBar style="auto" />
      
     </View>
   );
 }
-
-

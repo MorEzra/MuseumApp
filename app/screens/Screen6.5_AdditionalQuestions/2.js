@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { globalStyles } from '../../assets/styles/global';
 import { debugMode } from '../Screen1_WelcomeScreen';
 import Slider from '@react-native-community/slider'
@@ -63,19 +63,19 @@ export default function AdditionalQuestions_2({navigation}) {
                 }            
         }/>                             
 
-
-        <Button 
-            title="המשך"
-            onPress={() =>
-                    {   
-                        let tFinish = new Date();
-                        tFinishSefiQuestion2 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
-                        navigation.navigate("AdditionalQuestions_3")                                                
-                        setRating(0);
-                    }
-                }>
-        </Button>     
-        
+        <View style={globalStyles.buttonView}>
+            <TouchableOpacity 
+                onPress={() =>
+                        {   
+                            let tFinish = new Date();
+                            tFinishSefiQuestion2 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                            navigation.navigate("AdditionalQuestions_3")                                                
+                            setRating(0);
+                        }
+                    }>
+                    <Text style={globalStyles.buttonText}>המשך</Text>
+            </TouchableOpacity>     
+        </View>
         <StatusBar style="auto" />
     </View>
   );

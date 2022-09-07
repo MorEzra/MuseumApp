@@ -60,5 +60,21 @@ export const globalStyles = StyleSheet.create({
       width:80, 
       height:80,
       alignSelf: 'center'
+    },
+
+    buttonView: {
+     borderColor:"dodgerblue",
+     borderWidth:2,
+     borderRadius:4,
+     width:80,
+     height:30,
+     alignItems:"center",
+     alignSelf:"center" 
+    },
+
+    buttonText: {
+      fontSize:25,
+      color:"dodgerblue",      
     }
+
 });

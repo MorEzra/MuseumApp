@@ -1,6 +1,6 @@
 import React  from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { globalStyles } from '../assets/styles/global';
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
 
@@ -18,14 +18,16 @@ export default function BinaryChoicesExplanation({navigation}) {
       >במסך הבא, תתבקשו לסמן העדפות של יצירות.
           אנא דרגו מ 1 עד 7 כמה אהבתם כל יצירה.
       </Text>
-      <Button 
-          title="המשך"
-          onPress={() => {
-            tFinishBinaryChoicesExplanation = performance.now() - tExperimentBegin
-            navigation.navigate("BinaryChoices1_1")
-          }
-        }>
-      </Button>          
+      <View style={globalStyles.buttonView}>
+        <TouchableOpacity           
+            onPress={() => {
+              tFinishBinaryChoicesExplanation = performance.now() - tExperimentBegin
+              navigation.navigate("BinaryChoices1_1")
+            }
+          }>
+            <Text style={globalStyles.buttonText}>המשך</Text>
+        </TouchableOpacity>          
+      </View>
       <StatusBar style="auto" />
     </View>
   );
