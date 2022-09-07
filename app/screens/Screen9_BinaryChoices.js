@@ -92,11 +92,47 @@ class SessionData {
     this.tBeginFirstQuestionnaire = tBeginFirstQuestionnaire;    
     this.name = questionnaireData.name;
     this.age = questionnaireData.age;
-    this.gender = questionnaireData.gender;
-    this.museumVisitsFrequency = questionnaireData.museumVisitsFrequency;
-    this.lastMuseumVisit = questionnaireData.lastMuseumVisit;
-    this.telAvivMuseumVisit = questionnaireData.telAvivMuseumVisit;
-    this.thisExhibitionVisit = questionnaireData.exhibitionVisit; // TODO: add description
+    this.gender = (questionnaireData.gender == "זכר") ? "male" : "female";
+    
+    let finalMuseumFrequency = "not filled"
+    switch(questionnaireData.museumVisitsFrequency) {
+      case 0:
+        finalMuseumFrequency = "Few times a month"
+      break;
+      case 1:
+        finalMuseumFrequency = "Few times a years"
+      break;
+      case 2:
+        finalMuseumFrequency = "Few times generally"
+      break;
+      case 3:
+        finalMuseumFrequency = "Dont visit at all"
+      break;
+      /*default:
+        finalMuseumFrequency = "not filled - default"*/
+    }
+    this.museumVisitsFrequency = finalMuseumFrequency;
+
+    let finalLastMuseumVisit = "not filled"        
+    switch(questionnaireData.lastMuseumVisit) {
+      case 0:
+        finalLastMuseumVisit = "Last month"
+      break;
+      case 1:
+        finalLastMuseumVisit = "In the past half year"
+      break;
+      case 2:
+        finalLastMuseumVisit = "Last year"
+      break;
+      case 3:
+        finalLastMuseumVisit = "A few years ago"
+      break;
+      /*default:
+        finalLastMuseumVisit = "not filled - default"*/
+    }
+    this.lastMuseumVisit = finalLastMuseumVisit
+    this.telAvivMuseumVisit = questionnaireData.telAvivMuseumVisit == 0 ? "yes" : "no";
+    this.thisExhibitionVisit = questionnaireData.exhibitionVisit == 0 ? "yes" : "no";
     this.tFinishFirstQuestionnaire = tFinishFirstQuestionnaire;
 
     // ------- Screen 3 - Research Guidelines -------
@@ -145,35 +181,35 @@ class SessionData {
     
     // ------- Screen 8 - Binary choices -------
     this.tBeginBinaryChoicesV1Q1  = tBeginBinaryChoicesV1Q1;
-    this.rate1  = rate1;
+    this.rate1  = rate1.toFixed(2);
     this.tFinishBinaryChoicesV1Q1 = tFinishBinaryChoicesV1Q1;
 
     this.tBeginBinaryChoicesV1Q2  = tBeginBinaryChoicesV1Q2;
-    this.rate2  = rate2;
+    this.rate2  = rate2.toFixed(2);
     this.tFinishBinaryChoicesV1Q2 = tFinishBinaryChoicesV1Q2;
 
     this.tBeginBinaryChoicesV1Q3  = tBeginBinaryChoicesV1Q3;
-    this.rate3  = rate3;
+    this.rate3  = rate3.toFixed(2);
     this.tFinishBinaryChoicesV1Q3 = tFinishBinaryChoicesV1Q3;
 
     this.tBeginBinaryChoicesV1Q4  = tBeginBinaryChoicesV1Q4;
-    this.rate4  = rate4;
+    this.rate4  = rate4.toFixed(2);
     this.tFinishBinaryChoicesV1Q4 = tFinishBinaryChoicesV1Q4;
 
     this.tBeginBinaryChoicesV1Q5  = tBeginBinaryChoicesV1Q5;
-    this.rate5  = rate5;
+    this.rate5  = rate5.toFixed(2);
     this.tFinishBinaryChoicesV1Q5 = tFinishBinaryChoicesV1Q5;
 
     this.tBeginBinaryChoicesV1Q6  = tBeginBinaryChoicesV1Q6;
-    this.rate6  = rate6;
+    this.rate6  = rate6.toFixed(2);
     this.tFinishBinaryChoicesV1Q6 = tFinishBinaryChoicesV1Q6;
 
     this.tBeginBinaryChoicesV1Q7  = tBeginBinaryChoicesV1Q7;
-    this.rate7  = rate7;
+    this.rate7  = rate7.toFixed(2);
     this.tFinishBinaryChoicesV1Q7 = tFinishBinaryChoicesV1Q7;
 
     this.tBeginBinaryChoicesV1Q8  = tBeginBinaryChoicesV1Q8;
-    this.rate8  = rate8;
+    this.rate8  = rate8.toFixed(2);
     this.tFinishBinaryChoicesV1Q8 = tFinishBinaryChoicesV1Q8;
 
     // ------- Screen 9 - Binary choices version 2-------

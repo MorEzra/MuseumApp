@@ -7,7 +7,7 @@ import Slider from '@react-native-community/slider'
 
 export let tBeginBinaryChoicesV1Q1  = -1;
 export let tFinishBinaryChoicesV1Q1 = -1;
-export let rate1;
+export let rate1 = 4;
 
 export default function BinaryChoices1_1({navigation}) {    
   let tBeginTimer = new Date();
@@ -41,11 +41,11 @@ export default function BinaryChoices1_1({navigation}) {
         <Slider
           style = {{width:525, height:50, marginRight:20}}
           minimumValue={1}
-          maximumValue={5}
+          maximumValue={7}
           minimumTrackTintColor="green"
           maximumTrackTintColor="black"
           thumbTintColor="green"
-          value={3}
+          value={4}
 
           onValueChange={
             value => {             

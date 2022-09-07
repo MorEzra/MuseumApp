@@ -73,11 +73,12 @@ export default function Questionnaire({navigation}) {
 
     questionnaireData.name                  = subjectName;
     questionnaireData.age                   = age;
-    questionnaireData.gender                = genderArray[gender].label;
-    questionnaireData.museumVisitsFrequency = museumVisitsFrequencyArray[museumVisitsFrequency];
-    questionnaireData.lastMuseumVisit       = lastMuseumVisitArray[lastMuseumVisit];
-    questionnaireData.telAvivMuseumVisit    = telAvivMuseumVisitArray[telAvivMuseumVisit];
-    questionnaireData.thisExhibitionVisit   = thisExhibitionVisitArray[thisExhibitionVisit];
+    questionnaireData.gender                = genderArray[gender].label;    
+    questionnaireData.museumVisitsFrequency = museumVisitsFrequency;
+    questionnaireData.lastMuseumVisit       = lastMuseumVisit;
+    
+    questionnaireData.telAvivMuseumVisit    = telAvivMuseumVisit;
+    questionnaireData.thisExhibitionVisit   = thisExhibitionVisit;
     
     let [finishQuestionnaireMessage, setFinishQuestionnaireMessage] = useState(false);
     questionnaireData.tBeginFirstQuestionnaire = 0;

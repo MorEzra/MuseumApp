@@ -55,12 +55,13 @@ const takePicture = async () => {
 
       <Camera style={styles.camera} type={type} ref={cameraRef}>
       </Camera>
-      <View>
+      {/*<View>
         <Text>time:{artPiecesData[artPiecesCounterReference-1].tBeginCameraScreen}</Text>
         <Text>{artPiecesCounterReference-1}</Text>
         </View>
+      */}
       <View style={styles.buttonContainer}>
-        
+      
         
         <Button
                   style={[styles.button]}

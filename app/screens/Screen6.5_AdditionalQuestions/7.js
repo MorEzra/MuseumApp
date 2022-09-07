@@ -7,7 +7,7 @@ import Slider from '@react-native-community/slider'
 
 export let tStartSefiQuestion7 = -1
 export let tFinishSefiQuestion7 = -1
-export let rateQ7 = -1;
+export let rateQ7 = 4;
 
 export default function AdditionalQuestions_7({navigation}) {  
     let tBegin = new Date();
@@ -61,23 +61,14 @@ export default function AdditionalQuestions_7({navigation}) {
                 }
         }/>
 
-        {
-            debugMode ? (
-                <Text>{sliderRate}</Text>
-            ) : null            
-        }
-
         <Button 
             title="המשך"
             onPress={() =>
-                    {   
-                        if (debugMode || rating != 0) {
-                            let tFinish = new Date();
-                            tFinishSefiQuestion7 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
-                            navigation.navigate("BinaryChoicesExplanation")                                                
-                            setRating(0);
-                        }
-                        
+                    {                       
+                        let tFinish = new Date();
+                        tFinishSefiQuestion7 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                        navigation.navigate("BinaryChoicesExplanation")                                                
+                        setRating(0);                        
                     }
                 }>
         </Button>     

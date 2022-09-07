@@ -7,7 +7,7 @@ import Slider from '@react-native-community/slider'
 
 export let tStartSefiQuestion1 = -1
 export let tFinishSefiQuestion1 = -1
-export let rateQ1 = -1;
+export let rateQ1 = 4;
 
 export default function AdditionalQuestions_1({navigation}) {
     let tBegin = new Date();
@@ -60,25 +60,16 @@ export default function AdditionalQuestions_1({navigation}) {
                     rateQ1 = value;  
                     setSliderRate(parseInt(value))
                 }            
-        }/>                             
-
-        {
-            debugMode ? (
-                <Text>{sliderRate}</Text>
-            ) : null            
-        }
+        }/>                                     
 
         <Button 
             title="המשך"
             onPress={() =>
                     {   
-                        if (debugMode || rating != 0) {
-                            let tFinish = new Date();
-                            tFinishSefiQuestion1 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
-                            navigation.navigate("AdditionalQuestions_2")                                                
-                            setRating(0);
-                        }
-                        
+                        let tFinish = new Date();
+                        tFinishSefiQuestion1 = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();                    
+                        navigation.navigate("AdditionalQuestions_2")                                                
+                        setRating(0);                        
                     }
                 }>
         </Button>     

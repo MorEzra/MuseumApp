@@ -138,7 +138,7 @@ export default function ArtPieces({navigation}) {
           ) : null
           }
           {
-            (artPiecesCounterReference != 8) && (finishedPlaying || debugMode) ? (
+            (artPiecesCounterReference != 8) && ((finishedPlaying && active) || debugMode) ? (
             <View style={styles.attributesView}>          
             {/* ------------------------------------------------ choices ------------------------------------------------ */}
             <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
@@ -200,8 +200,18 @@ export default function ArtPieces({navigation}) {
             </Pressable>        
 
             </View> 
-            ) : null 
+            )
+             : null
           }
+          {
+            artPiecesCounterReference != 8 &&!active && finishedPlaying ?  (
+              <View>                
+                <Text style={styles.attributesText}>המאפיין של היצירה הבאה בסיור:</Text>
+                <Text style={styles.chosenAttributesText}>- {artPieces[artPiecesCounterReference - 1].attributes[artPieces[artPiecesCounterReference - 1].chosenAttributeIndex]}</Text>
+              </View>
+            ) : null
+          }
+
           {
           finishedPlaying || debugMode ? (
           <Button 
@@ -248,6 +258,13 @@ const styles = StyleSheet.create({
     attributesText: {
       marginRight:20,
       fontSize:30,
+      fontWeight: 'bold',
+      textAlign: 'right'
+    },
+
+    chosenAttributesText: {
+      marginRight:20,
+      fontSize:20,
       fontWeight: 'bold',
       textAlign: 'right'
     },
