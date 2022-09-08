@@ -57,7 +57,7 @@ import { sessionTimer } from './Screen1_WelcomeScreen';
 
 class SessionData {
   constructor() {
-    today = new Date();
+    let today = new Date();
     
     // ------- Screen 1 - Welcome Screen Data -------
     this.date = today.getDay() + "-" + today.getMonth() + "-" + today.getFullYear();
@@ -249,14 +249,14 @@ export default function BinaryChoices2({navigation}) {
             onPress={() => {                
                     binaryChoices2Ratings[artPiecesCounter] = 0;
                     tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
-                    if (artPiecesCounter == pair1.length - 1) {                        
-                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
+                    if (artPiecesCounter == pair1.length - 1) {                       
+                      fetch("https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
                           method: "POST",
                           mode: 'cors',
                           headers: {
                             "Content-Type": "application/json"
                           },
-                          body: JSON.stringify(sessionData, null, "\t"),
+                          body: JSON.stringify({"sessionsData":sessionData}),
                         }
                       )
                       navigation.navigate("ThanksForParticipating");
@@ -276,14 +276,14 @@ export default function BinaryChoices2({navigation}) {
               onPress={() => {                
                     binaryChoices2Ratings[artPiecesCounter] = 1; 
                     tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2)    ;   
-                    if (artPiecesCounter == pair1.length - 1) {                        
-                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
+                    if (artPiecesCounter == pair1.length - 1) {                              
+                      fetch("https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
                           method: "POST",
                           mode: 'cors',
                           headers: {
                             "Content-Type": "application/json"
                           },
-                          body: JSON.stringify(sessionData, null, "\t"),
+                          body: JSON.stringify({"sessionsData":sessionData}),
                         }
                       )
                       navigation.navigate("ThanksForParticipating");
