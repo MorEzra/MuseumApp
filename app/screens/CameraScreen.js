@@ -4,7 +4,8 @@ import { StyleSheet, Text, View, Button} from 'react-native';
 import { Camera } from 'expo-camera';
 import { artPiecesData } from './Screen4_ArrivalInstructions';
 import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
-
+import * as MediaLibrary from 'expo-media-library';
+import { questionnaireData }            from './Screen2_Questionnaire';
 
 export default function CameraScreen({navigation}) {
   let tBegin = new Date();
@@ -32,20 +33,41 @@ export default function CameraScreen({navigation}) {
   return <Text>No access to camera</Text>;
   }	
 
-const takePicture = async () => {
-  if (cameraRef) {
-    console.log('in take picture');
-    try {
-    let photo = await cameraRef.current.takePictureAsync({
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    return photo;
-    } catch (e) {
-    console.log(e);
+  const takePicture = async () => {
+    if (cameraRef) {
+      console.log('in take picture');
+      try {
+      let photo = await cameraRef.current.takePictureAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      return photo;
+      } catch (e) {
+      console.log(e);
+      }
     }
-  }
+    };
+
+    const SaveToiPad = async (item) => {
+    // Remember, here item is a file uri which looks like this. file://..
+    const permission = await MediaLibrary.requestPermissionsAsync();
+    if (permission.granted) {
+      try {
+        const asset = await MediaLibrary.createAssetAsync(item);
+        MediaLibrary.createAlbumAsync('MuseumAppImages' + questionnaireData.name + artPiecesCounterReference, asset, false)
+          .then(() => {
+            console.log('File Saved Successfully!');
+          })
+          .catch(() => {
+            console.log('Error In Saving File!');
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log('Need Storage permission to save file');
+    }
   };
 
   return (
@@ -74,7 +96,8 @@ const takePicture = async () => {
                     if (!r.cancelled) {
                       setImage(r.uri);
                     }
-                    console.log('response', JSON.stringify(r));				          
+                    console.log('response', JSON.stringify(r));
+                    SaveToiPad(r.uri)
                     navigation.navigate("ArtPieces")
                   }}
           title={"צלמ/י"}
