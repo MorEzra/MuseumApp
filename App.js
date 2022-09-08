@@ -91,7 +91,7 @@ function App() {
             }
             ]);
 
-          await Promise.all([...imageAssets, ...fontAssets]);
+          await Promise.all([...imageAssets, ...fontAssets]);          
         } catch (e) {
           console.warn(e);
         } finally {
