@@ -149,7 +149,7 @@ export default function ArtPieces({navigation}) {
                         if (active) {
                           let timer = new Date();
                           artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[0]);
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[0]);
                           setAttribute1BackgroundColor("dodgerblue");
                           setAttribute2BackgroundColor("white");
                           setAttribute3BackgroundColor("aliceblue");
@@ -168,7 +168,7 @@ export default function ArtPieces({navigation}) {
                         if (active) {
                           let timer = new Date();
                           artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[1]);
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[1]);
                           setAttribute1BackgroundColor("aliceblue");
                           setAttribute2BackgroundColor("dodgerblue");
                           setAttribute3BackgroundColor("aliceblue");
@@ -187,7 +187,7 @@ export default function ArtPieces({navigation}) {
                         if (active) {
                           let timer = new Date();
                           artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].attributes[2]);
+                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[2]);
                           setAttribute1BackgroundColor("aliceblue");
                           setAttribute2BackgroundColor("white");
                           setAttribute3BackgroundColor("dodgerblue");
