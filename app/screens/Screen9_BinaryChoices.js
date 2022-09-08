@@ -249,12 +249,21 @@ export default function BinaryChoices2({navigation}) {
             onPress={() => {                
                     binaryChoices2Ratings[artPiecesCounter] = 0;
                     tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
-                    if (artPiecesCounter == pair1.length - 1 && !debugMode) {                  
-                      navigation.navigate("ThanksForParticipating");                    
-                    }
-                    else {
-                        setArtPiecesCounter(artPiecesCounter+1)
-                    }
+                    if (artPiecesCounter == pair1.length - 1) {                        
+                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=631a28e901f38568e4d7d514", {
+                          method: "POST",
+                          mode: 'cors',
+                          headers: {
+                            "Content-Type": "application/json"
+                          },
+                          body: JSON.stringify(sessionData, null, "\t"),
+                        }
+                      )
+                      navigation.navigate("ThanksForParticipating");
+                  }
+                  else {
+                      setArtPiecesCounter(artPiecesCounter+1)
+                  }                                   
                   }
                 }>
                 <Image
@@ -274,7 +283,7 @@ export default function BinaryChoices2({navigation}) {
                           headers: {
                             "Content-Type": "application/json"
                           },
-                          body: JSON.stringify({"timingsData": timingsData, "otherData": otherData}),
+                          body: JSON.stringify(sessionData, null, "\t"),
                         }
                       )
                       navigation.navigate("ThanksForParticipating");

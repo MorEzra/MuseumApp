@@ -11,7 +11,7 @@ curl "https://experiments.schonberglab.org/v2/workers-api/sessions?key=<your-wor
 [{"_id":"628626525c62c1118d09136d","test":2,"some-prop":34,"subId":"62861eeed2c57bfc640fe6af"}]
 
 # add new session
-curl "localhost:3000/v2/workers-api/sessions?key=<your-worker-key>" -X POST --header "Content-Type: application/json" -d '{"hello": "world"}'
+curl "https://experiments.schonberglab.org/v2/workers-api/sessions?key=<your-worker-key>" -X POST --header "Content-Type: application/json" -d '{"hello": "world"}'
 {"_id":"6286acfecef8f6bc6b84c095","hello":"world","subId":"62861eeed2c57bfc640fe6af"}
 
 # get session with id (using id 6286acfecef8f6bc6b84c095 from previous response)
