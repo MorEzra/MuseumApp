@@ -250,7 +250,7 @@ export default function BinaryChoices2({navigation}) {
                     binaryChoices2Ratings[artPiecesCounter] = 0;
                     tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin ) / 1000).toFixed(2);
                     if (artPiecesCounter == pair1.length - 1) {                        
-                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=631a28e901f38568e4d7d514", {
+                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
                           method: "POST",
                           mode: 'cors',
                           headers: {
@@ -277,7 +277,7 @@ export default function BinaryChoices2({navigation}) {
                     binaryChoices2Ratings[artPiecesCounter] = 1; 
                     tFinishBinaryChoices2Array[artPiecesCounter] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2)    ;   
                     if (artPiecesCounter == pair1.length - 1) {                        
-                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=631a28e901f38568e4d7d514", {
+                      fetch("https://secure-tor-66457.herokuapp.com/https://experiments.schonberglab.org/v2/workers-api/sessions?key=ef7aa5b5d2568f69488169a322aeeb0a407f9740a1b5fc0bf83bf3c4efb21ffae6ede40343a17748621118857e5822a4d174148d04a432d3b8cb85f2bd2c4188", {
                           method: "POST",
                           mode: 'cors',
                           headers: {
