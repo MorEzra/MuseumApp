@@ -23,6 +23,16 @@ export const globalStyles = StyleSheet.create({
         fontFamily: "simpleclm"      
       },
 
+      header_feedback: {
+        fontSize:20,
+        fontWeight:"bold",
+        color: "darkblue", 
+        alignSelf: "center",             
+        marginBottom:20,
+        textAlign: 'center',
+        fontFamily: "simpleclm"      
+      },
+
      questionnaireHeader: {
       fontWeight:"bold",
       alignSelf: "center",

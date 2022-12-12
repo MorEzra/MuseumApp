@@ -27,7 +27,7 @@ export default function SummaryQuestionnaire6({navigation}) {
     return (      
       <View style={styles.container}>   
         <ScrollView>
-            <Text style = {globalStyles.header}>שאלון סיכום ניסוי</Text>
+            <Text style = {globalStyles.header_feedback}>שאלון סיכום ניסוי</Text>
             <Text style = {globalStyles.questionnaireHeader}> אנא דרגו את מידת ההנאה מכל אחת מהיצירות שראיתם במהלך הסיור (כאשר 5 זהו הציון הגבוה)</Text>
             
             <View style={styles.evenViewWrapper}>       

@@ -30,17 +30,17 @@ export default function AdditionalQuestions_3({navigation}) {
 
     return (      
     <View style={styles.container}>
-        <Text style = {globalStyles.header}>שאלון סיכום ניסוי</Text>
+        <Text style = {globalStyles.header_feedback}>שאלון סיכום ניסוי</Text>
         <Text style = {globalStyles.questionnaireHeader}>{question}</Text>
         
         <View style ={{flexDirection:"row", alignSelf:"center"}}>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[0].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[1].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[2].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[3].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[4].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[5].label}</Text></View>
-            <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[6].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[0].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[1].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[2].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[3].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[4].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[5].label}</Text></View>
+            <View style={{width:75}}><Text style={{fontSize: 18, fontWeight:"bold", marginRight:5, textAlign:"center"}}>{ratings[6].label}</Text></View>
         </View>
         
         

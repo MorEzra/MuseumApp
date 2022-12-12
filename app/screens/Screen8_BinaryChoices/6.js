@@ -18,7 +18,7 @@ export default function BinaryChoices1_6({navigation}) {
 
   return (      
     <View style={globalStyles.container}>
-      <Text style = {globalStyles.header}>אנא דרגו כמה אהבתם את היצירה</Text>
+      <Text style = {globalStyles.header_feedback}>אנא דרגו כמה אהבתם את היצירה</Text>
       
       <Image        
         source={artPieces[5].piece}
@@ -26,13 +26,13 @@ export default function BinaryChoices1_6({navigation}) {
       />
       
       <View style= {{flexDirection:"row"}}>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>לא אהבתי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>בכלל לא אהבתי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>די לא אהבתי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>ניטרלי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>די אהבתי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>אהבתי</Text></View>
-        <View style={{width:75}}><Text style={{fontWeight:"bold", marginRight:5, textAlign:"center"}}>מאוד אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>לא אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>בכלל לא אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>די לא אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>ניטרלי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>די אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>אהבתי</Text></View>
+        <View style={{width:75}}><Text style={{fontSize: 20, fontWeight:"bold", marginRight:5, textAlign:"center"}}>מאוד אהבתי</Text></View>
       </View>
 
       <View style = {{

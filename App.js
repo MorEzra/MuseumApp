@@ -122,7 +122,7 @@ function App() {
         <Stack.Screen
         name="Questionnaire"
         component={Questionnaire}        
-        options={{ title: "שאלון פרטים אישיים", headerBackVisible : debugMode }}
+        options={{ title: 'שאלון פרטים אישיים', headerBackVisible:false}}
         
         />
 
@@ -130,28 +130,28 @@ function App() {
         <Stack.Screen
          name="ResearchGuidelines"
          component={ResearchGuidelines}
-         options={{ title: 'הנחיות לסיור', headerBackVisible : debugMode}}
+         options={{ title: 'הנחיות לסיור', headerBackVisible:false}}
         />
         
         {/*----------------- Screen3point5? ----------------- */}
         <Stack.Screen
          name="OverviewScreen"
          component={OverviewScreen}
-         options={{ title: 'הנחיות לסיור', headerBackVisible : debugMode}}
+         options={{ title: 'הנחיות לסיור', headerBackVisible:false}}
         />
 
         {/*----------------- Screen4 ----------------- */}
         <Stack.Screen
         name="ArrivalInstructions"
         component={ArrivalInstructions}        
-        options={{ title: "הוראות הגעה", headerBackVisible : debugMode}}
+        options={{ title: "הוראות הגעה", headerBackVisible:false}}
         />
 
         {/*----------------- Screen5 ----------------- */}
         <Stack.Screen
         name="ArtPieces"
         component={ArtPieces}        
-        options={{ title: "יצירות", headerBackVisible : debugMode}}
+        options={{ title: "יצירות", headerBackVisible:false}}
         />                      
 
         {/* "Additional" questions (sefi's)  */}
@@ -159,112 +159,112 @@ function App() {
         <Stack.Screen
          name="AdditionalQuestions_1"
          component= {AdditionalQuestions_1}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.2 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_2"
          component= {AdditionalQuestions_2}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.3 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_3"
          component= {AdditionalQuestions_3}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.4 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_4"
          component= {AdditionalQuestions_4}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.5 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_5"
          component= {AdditionalQuestions_5}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.6 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_6"
          component= {AdditionalQuestions_6}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen 6.5.7 ----------------- */}
         <Stack.Screen
          name="AdditionalQuestions_7"
          component= {AdditionalQuestions_7}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.2 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire2"
          component= {SummaryQuestionnaire2}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.3 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire3"
          component= {SummaryQuestionnaire3}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.4 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire4"
          component= {SummaryQuestionnaire4}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen5 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire5"
          component= {SummaryQuestionnaire5}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.6 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire6"
          component= {SummaryQuestionnaire6}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.7 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire7"
          component= {SummaryQuestionnaire7}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.8 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaire8"
          component= {SummaryQuestionnaire8}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen6.5 ----------------- */}
         <Stack.Screen
          name="SummaryQuestionnaireAdditional"
          component= {SummaryQuestionnaireAdditional}
-         options={{ title: "שאלון סיכום", headerBackVisible : debugMode}}
+         options={{ title: "שאלון סיכום", headerBackVisible:false}}
         />
 
         {/*----------------- Screen7 ----------------- */}
         <Stack.Screen
         name="BinaryChoicesExplanation"
         component={BinaryChoicesExplanation}        
-        options={{ title: 'שלב אחרון בניסוי!', headerBackVisible : debugMode}}
+        options={{ title: 'שלב אחרון בניסוי!', headerBackVisible:false}}
         />
 
         {/*----------------- Screen8.1 ----------------- */}
@@ -272,7 +272,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_1"
         component={BinaryChoices1_1}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
         />
 
         {/*----------------- Screen8.2 ----------------- */}
@@ -280,7 +280,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_2"
         component={BinaryChoices1_2}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
 
@@ -289,7 +289,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_3"
         component={BinaryChoices1_3}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
 
@@ -298,7 +298,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_4"
         component={BinaryChoices1_4}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
 
@@ -307,7 +307,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_5"
         component={BinaryChoices1_5}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
 
@@ -316,7 +316,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_6"
         component={BinaryChoices1_6}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
         
@@ -325,7 +325,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_7"
         component={BinaryChoices1_7}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />
 
@@ -334,7 +334,7 @@ function App() {
         <Stack.Screen
         name="BinaryChoices1_8"
         component={BinaryChoices1_8}
-        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible : debugMode}}
+        options={{ title: "דרגו כמה אהבתם את היצירה", headerBackVisible:false}}
 
         />       
         
@@ -342,21 +342,22 @@ function App() {
         <Stack.Screen
         name="BinaryChoices2"
         component={BinaryChoices2}
-        options={{ title: 'לחצו על התמונה שאתם מעדיפים', headerBackVisible : debugMode}}
+        options={{ title: 'לחצו על התמונה שאתם מעדיפים', headerBackVisible:false}}
         />
 
         {/*----------------- Screen10 ----------------- */}
         <Stack.Screen
          name="ThanksForParticipating"
          component= {ThanksForParticipating}
-         options={{ title: 'סיימנו!', headerBackVisible : debugMode}}
+         options={{ title: 'סיימנו!', headerBackVisible:false}}
         />
         
         {/*-------------- Other Screens -------------- */}
         {/*----------------- Screen ----------------- */}
         <Stack.Screen
         name="CameraScreen"
-        component={CameraScreen}        
+        component={CameraScreen}
+        options={{ headerBackVisible:false}}        
         />    
       </Stack.Navigator>
     </NavigationContainer>
