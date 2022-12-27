@@ -67,7 +67,7 @@ class SessionData {
 
     // ------- Screen 2 - First Questionaire Data -------
     this.tBeginFirstQuestionnaire = tBeginFirstQuestionnaire;    
-    this.name = questionnaireData.name;
+    this.examineeNum = questionnaireData.examineeNum;
     this.age = questionnaireData.age;
     this.gender = (questionnaireData.gender == "זכר") ? "male" : "female";
     
