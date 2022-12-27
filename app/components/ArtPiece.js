@@ -1,7 +1,7 @@
 class ArtPiece {
-    constructor(index, name, attributes, chosenAttributeIndex, piece, mapPath, arrivalInstructions, audio_explanation, englishAttributes) {
+    constructor(index, examineeNum, attributes, chosenAttributeIndex, piece, mapPath, arrivalInstructions, audio_explanation, englishAttributes) {
       this.index = index;
-      this.name = name;
+      this.examineeNum = examineeNum;
       this.attributes = attributes;
       this.chosenAttributeIndex = chosenAttributeIndex;
       this.piece = piece;      
