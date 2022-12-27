@@ -9,7 +9,7 @@ import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import { Audio } from 'expo-av';
 
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
-import { debugMode, active, setActive } from './Screen1_WelcomeScreen';
+import { debugMode, active, setActive, activePassiveCombined } from './Screen1_WelcomeScreen';
 
 import { artPiecesData } from './Screen4_ArrivalInstructions';
 
@@ -21,10 +21,12 @@ export default function ArtPieces({ navigation }) {
   // Multiple choice and art pieces
   let artPiecesNames = artPieces.map(({ name }) => name);
 
-  if (artPiecesCounterReference >= 0 && artPiecesCounterReference <= 3) {
-    setActive(1);
-  } else {
-    setActive(0);
+  if (activePassiveCombined) {
+    if (artPiecesCounterReference >= 1 && artPiecesCounterReference <= 4) {
+      setActive(1);
+    } else {
+      setActive(0);
+    }
   }
 
   let buttonName = (active) ? "בחרתי" : "המשך";
