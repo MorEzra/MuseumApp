@@ -55,7 +55,7 @@ export default function CameraScreen({navigation}) {
     if (permission.granted) {
       try {
         const asset = await MediaLibrary.createAssetAsync(item);
-        MediaLibrary.createAlbumAsync('MuseumAppImages' + questionnaireData.name + artPiecesCounterReference, asset, false)
+        MediaLibrary.createAlbumAsync('MuseumAppImages' + questionnaireData.examineeNum + artPiecesCounterReference, asset, false)
           .then(() => {
             console.log('File Saved Successfully!');
           })
