@@ -1,6 +1,6 @@
-import React, {useState}  from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable } from 'react-native';
 
 import { globalStyles } from '../assets/styles/global';
 
@@ -9,24 +9,31 @@ import { artPiecesCounterReference } from './Screen4_ArrivalInstructions';
 import { Audio } from 'expo-av';
 
 import { tExperimentBegin } from './Screen1_WelcomeScreen';
-import { debugMode, active } from './Screen1_WelcomeScreen';
+import { debugMode, active, setActive } from './Screen1_WelcomeScreen';
 
 import { artPiecesData } from './Screen4_ArrivalInstructions';
 
 export let tFinishArtPiecesArray = new Array(artPieces.length).fill(0);
 
-export default function ArtPieces({navigation}) { 
+export default function ArtPieces({ navigation }) {
   let tBegin = new Date();
   artPiecesData[artPiecesCounterReference - 1].tBeginArtPiece = tBegin.getHours() + ":" + tBegin.getMinutes() + ":" + tBegin.getSeconds() + ":" + tBegin.getMilliseconds();
   // Multiple choice and art pieces
-  let artPiecesNames = artPieces.map(({name}) => name);
-  let buttonName = (active) ? "בחרתי" : "המשך";  
-  let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?": "מאפיין היצירה הבאה באוסף יהיה:"
+  let artPiecesNames = artPieces.map(({ name }) => name);
+
+  if (artPiecesCounterReference >= 0 && artPiecesCounterReference <= 3) {
+    setActive(1);
+  } else {
+    setActive(0);
+  }
+
+  let buttonName = (active) ? "בחרתי" : "המשך";
+  let ChoicesText = (active) ? "איזה מאפיין תרצו שיהיה ליצירה הבאה?" : "מאפיין היצירה הבאה באוסף יהיה:"
 
   let attribute1DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
   let attribute2DefaultBackgroundColor = (active) ? "white" : "white";
   let attribute3DefaultBackgroundColor = (active) ? "aliceblue" : "aliceblue";
-  
+
   if (!active) {
     let passiveChosenAttribute = artPieces[artPiecesCounterReference - 1].chosenAttributeIndex
     switch (passiveChosenAttribute) {
@@ -49,163 +56,164 @@ export default function ArtPieces({navigation}) {
   let [chosenAttribute, setChosenAttribute] = useState(false);
 
   // Audio 
-  const [sound, setSound] = React.useState(undefined);	  
-	const [status, setStatus] = React.useState(false);	
-	const [finishedPlaying, setFinishedPlaying] = useState(false);	
+  const [sound, setSound] = React.useState(undefined);
+  const [status, setStatus] = React.useState(false);
+  const [finishedPlaying, setFinishedPlaying] = useState(false);
 
 
-	async function playSound(soundfile) {
-		if(sound) {
-			if(status) {
-				console.log('Pausing');
-				sound.pauseAsync();
-				setStatus(false);
-			} else {
-				console.log('Playing Sound');
-				setStatus(true);
-				await sound.playAsync()
-			}
-		} else {
-			console.log('Loading Sound');
-			
-			const { sound : sound} = await Audio.Sound.createAsync(
-				soundfile
-			);
-			
-			setSound(sound);
-			setStatus(true);
-			
-			await sound.playAsync();
-			sound.setOnPlaybackStatusUpdate((playbackStatus) => {
+  async function playSound(soundfile) {
+    if (sound) {
+      if (status) {
+        console.log('Pausing');
+        sound.pauseAsync();
+        setStatus(false);
+      } else {
+        console.log('Playing Sound');
+        setStatus(true);
+        await sound.playAsync()
+      }
+    } else {
+      console.log('Loading Sound');
+
+      const { sound: sound } = await Audio.Sound.createAsync(
+        soundfile
+      );
+
+      setSound(sound);
+      setStatus(true);
+
+      await sound.playAsync();
+      sound.setOnPlaybackStatusUpdate((playbackStatus) => {
         if (!playbackStatus.didJustFinish) {
-        console.log(playbackStatus.positionMillis)
+          console.log(playbackStatus.positionMillis)
         }
         else {
           console.log('finished');
           let timer = new Date();
-          artPiecesData[artPiecesCounterReference-1].tFinishAudio = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds(); 
+          artPiecesData[artPiecesCounterReference - 1].tFinishAudio = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds();
           setFinishedPlaying(true)
         }
-			})
-		}
-	}
-	React.useEffect(() => {
-		return sound
-			? () => {
-				console.log('Unloading Sound');
-				sound.unloadAsync(); }
-		: undefined;
-	}, [sound]);
+      })
+    }
+  }
+  React.useEffect(() => {
+    return sound
+      ? () => {
+        console.log('Unloading Sound');
+        sound.unloadAsync();
+      }
+      : undefined;
+  }, [sound]);
 
 
 
-  return (      
-    <View style={globalStyles.container}>            
+  return (
+    <View style={globalStyles.container}>
       <ScrollView>
         <View
-          style= {
+          style={
             {
               alignItems: 'center',
-              justifyContent: 'center',    
+              justifyContent: 'center',
             }
-          }>        
-          <Text style = {globalStyles.header}>יצירה מספר {artPiecesCounterReference}: {artPiecesNames[artPiecesCounterReference - 1]}</Text>     
-          
+          }>
+          <Text style={globalStyles.header}>יצירה מספר {artPiecesCounterReference}: {artPiecesNames[artPiecesCounterReference - 1]}</Text>
+
 
           {/* ------------------------------------------------ art piece ------------------------------------------------ */}
-          <Image        
-            source={artPieces[artPiecesCounterReference-1].piece}
-            style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom:20 }} 
+          <Image
+            source={artPieces[artPiecesCounterReference - 1].piece}
+            style={{ resizeMode: 'contain', width: 400, height: 400, marginBottom: 20 }}
           />
           {/* ------------------------------------------------ audio ------------------------------------------------ */}
           {
-          !finishedPlaying? (
-            <View style={globalStyles.audio} >
-              <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
-			        <TouchableOpacity onPress={
-                () => {
+            !finishedPlaying ? (
+              <View style={globalStyles.audio} >
+                <Text style={globalStyles.questionnaireHeader}>לחצו כדי לשמוע הסבר</Text>
+                <TouchableOpacity onPress={
+                  () => {
                     let timer = new Date();
-                    artPiecesData[artPiecesCounterReference-1].tPlayPauseAudio.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                    playSound(artPieces[artPiecesCounterReference-1].audio_explanation)
+                    artPiecesData[artPiecesCounterReference - 1].tPlayPauseAudio.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                    playSound(artPieces[artPiecesCounterReference - 1].audio_explanation)
                   }
                 }>
-                <Image
-                  source={require("../assets/images/buttons/playpause_button.png")}
-                  style={globalStyles.audioButtons} 
-                />
-			        </TouchableOpacity>
-		        </View>
-          ) : null
+                  <Image
+                    source={require("../assets/images/buttons/playpause_button.png")}
+                    style={globalStyles.audioButtons}
+                  />
+                </TouchableOpacity>
+              </View>
+            ) : null
           }
           {
             (artPiecesCounterReference != 8) && active && (finishedPlaying || debugMode) ? (
-            <View style={styles.attributesView}>          
-            {/* ------------------------------------------------ choices ------------------------------------------------ */}
-            <Text style={{fontWeight:"bold", fontSize:33, marginBottom:10}}>{ChoicesText}</Text>  
-            {/* ------------------------------------------------ attribute1 ------------------------------------------------ */}
-              <Pressable
-                style={{backgroundColor:attribute1BackgroundColor, borderWidth:1, marginBottom:10}}
-                onPress={() => {
-                        if (active) {
-                          let timer = new Date();
-                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[0]);
-                          setAttribute1BackgroundColor("dodgerblue");
-                          setAttribute2BackgroundColor("white");
-                          setAttribute3BackgroundColor("aliceblue");
-                          setChosenAttribute(true);
-                        }
+              <View style={styles.attributesView}>
+                {/* ------------------------------------------------ choices ------------------------------------------------ */}
+                <Text style={{ fontWeight: "bold", fontSize: 33, marginBottom: 10 }}>{ChoicesText}</Text>
+                {/* ------------------------------------------------ attribute1 ------------------------------------------------ */}
+                <Pressable
+                  style={{ backgroundColor: attribute1BackgroundColor, borderWidth: 1, marginBottom: 10 }}
+                  onPress={() => {
+                    if (active) {
+                      let timer = new Date();
+                      artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                      artPiecesData[artPiecesCounterReference - 1].attributesChoices.push(artPieces[artPiecesCounterReference - 1].englishAttributes[0]);
+                      setAttribute1BackgroundColor("dodgerblue");
+                      setAttribute2BackgroundColor("white");
+                      setAttribute3BackgroundColor("aliceblue");
+                      setChosenAttribute(true);
                     }
-                }>
+                  }
+                  }>
 
-                <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[0]}</Text>            
-              </Pressable>    
-              
-            {/* ------------------------------------------------ attribute2 ------------------------------------------------ */}
-              <Pressable
-                style={{backgroundColor:attribute2BackgroundColor, borderWidth:1, marginBottom:10}}
-                onPress={() => {
-                        if (active) {
-                          let timer = new Date();
-                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[1]);
-                          setAttribute1BackgroundColor("aliceblue");
-                          setAttribute2BackgroundColor("dodgerblue");
-                          setAttribute3BackgroundColor("aliceblue");
-                          setChosenAttribute(true);              
-                        }
-                      }
-                }>
+                  <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[0]}</Text>
+                </Pressable>
 
-                <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[1]}</Text>            
-              </Pressable>   
+                {/* ------------------------------------------------ attribute2 ------------------------------------------------ */}
+                <Pressable
+                  style={{ backgroundColor: attribute2BackgroundColor, borderWidth: 1, marginBottom: 10 }}
+                  onPress={() => {
+                    if (active) {
+                      let timer = new Date();
+                      artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                      artPiecesData[artPiecesCounterReference - 1].attributesChoices.push(artPieces[artPiecesCounterReference - 1].englishAttributes[1]);
+                      setAttribute1BackgroundColor("aliceblue");
+                      setAttribute2BackgroundColor("dodgerblue");
+                      setAttribute3BackgroundColor("aliceblue");
+                      setChosenAttribute(true);
+                    }
+                  }
+                  }>
 
-            {/* ------------------------------------------------ attribute3 ------------------------------------------------ */}
-              <Pressable
-                style={{backgroundColor:attribute3BackgroundColor, borderWidth:1, marginBottom:10}}
-                onPress={() => {
-                        if (active) {
-                          let timer = new Date();
-                          artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
-                          artPiecesData[artPiecesCounterReference-1].attributesChoices.push(artPieces[artPiecesCounterReference-1].englishAttributes[2]);
-                          setAttribute1BackgroundColor("aliceblue");
-                          setAttribute2BackgroundColor("white");
-                          setAttribute3BackgroundColor("dodgerblue");
-                          setChosenAttribute(true); 
-                        }
-                      }
-                }>
+                  <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[1]}</Text>
+                </Pressable>
 
-                <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[2]}</Text>            
-            </Pressable>        
+                {/* ------------------------------------------------ attribute3 ------------------------------------------------ */}
+                <Pressable
+                  style={{ backgroundColor: attribute3BackgroundColor, borderWidth: 1, marginBottom: 10 }}
+                  onPress={() => {
+                    if (active) {
+                      let timer = new Date();
+                      artPiecesData[artPiecesCounterReference - 1].tAttributesChoices.push(timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds());
+                      artPiecesData[artPiecesCounterReference - 1].attributesChoices.push(artPieces[artPiecesCounterReference - 1].englishAttributes[2]);
+                      setAttribute1BackgroundColor("aliceblue");
+                      setAttribute2BackgroundColor("white");
+                      setAttribute3BackgroundColor("dodgerblue");
+                      setChosenAttribute(true);
+                    }
+                  }
+                  }>
 
-            </View> 
+                  <Text style={styles.attributesText}>{artPieces[artPiecesCounterReference - 1].attributes[2]}</Text>
+                </Pressable>
+
+              </View>
             )
-             : null
+              : null
           }
           {
-            artPiecesCounterReference != 8 &&!active && finishedPlaying ?  (
-              <View>                
+            artPiecesCounterReference != 8 && !active && finishedPlaying ? (
+              <View>
                 <Text style={styles.attributesText}>המאפיין של היצירה הבאה בסיור:</Text>
                 <Text style={styles.chosenAttributesText}>- {artPieces[artPiecesCounterReference - 1].attributes[artPieces[artPiecesCounterReference - 1].chosenAttributeIndex]}</Text>
               </View>
@@ -213,27 +221,27 @@ export default function ArtPieces({navigation}) {
           }
 
           {
-          finishedPlaying || debugMode ? (
-          <View style={globalStyles.buttonView}>
-            <TouchableOpacity 
-                title={buttonName}
-                onPress={() => {
-                  tFinishArtPiecesArray[artPiecesCounterReference-1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
-                  if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {                                              
-                    let tFinish = new Date();
-                    artPiecesData[artPiecesCounterReference - 1].tFinishArtPiece = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();
-                    if (artPiecesCounterReference == artPieces.length) 
-                      navigation.navigate("AdditionalQuestions_1");
-                      
-                    else {                              
-                      navigation.navigate("ArrivalInstructions");
+            finishedPlaying || debugMode ? (
+              <View style={globalStyles.buttonView}>
+                <TouchableOpacity
+                  title={buttonName}
+                  onPress={() => {
+                    tFinishArtPiecesArray[artPiecesCounterReference - 1] = ((performance.now() - tExperimentBegin) / 1000).toFixed(2);
+                    if (!active || (chosenAttribute && active) || (active && artPiecesCounterReference == artPieces.length) || debugMode) {
+                      let tFinish = new Date();
+                      artPiecesData[artPiecesCounterReference - 1].tFinishArtPiece = tFinish.getHours() + ":" + tFinish.getMinutes() + ":" + tFinish.getSeconds() + ":" + tFinish.getMilliseconds();
+                      if (artPiecesCounterReference == artPieces.length)
+                        navigation.navigate("AdditionalQuestions_1");
+
+                      else {
+                        navigation.navigate("ArrivalInstructions");
+                      }
                     }
-                  }
-                }}>
-                <Text style={globalStyles.buttonText}>{buttonName}</Text>
-          </TouchableOpacity>      
-          </View>
-          ) : null
+                  }}>
+                  <Text style={globalStyles.buttonText}>{buttonName}</Text>
+                </TouchableOpacity>
+              </View>
+            ) : null
           }
         </View>
       </ScrollView>
@@ -244,34 +252,33 @@ export default function ArtPieces({navigation}) {
 
 
 const styles = StyleSheet.create({
-    text: {
-        fontWeight:'bold',
-        fontSize:30,
-        marginBottom:25,
-        textDecorationLine: 'underline',
-        textAlign: "right"
-    },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginBottom: 25,
+    textDecorationLine: 'underline',
+    textAlign: "right"
+  },
 
-    attributesView: {       
-        marginTop:20,      
-        borderColor: "black",      
-        
-    },    
+  attributesView: {
+    marginTop: 20,
+    borderColor: "black",
 
-    attributesText: {
-      marginRight:20,
-      fontSize:30,
-      fontWeight: 'bold',
-      textAlign: 'right'
-    },
+  },
 
-    chosenAttributesText: {
-      marginRight:20,
-      fontSize:20,
-      fontWeight: 'bold',
-      textAlign: 'right'
-    },
+  attributesText: {
+    marginRight: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'right'
+  },
+
+  chosenAttributesText: {
+    marginRight: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'right'
+  },
 });
 
-  
-  
+
