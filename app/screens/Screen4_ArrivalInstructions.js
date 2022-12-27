@@ -96,8 +96,8 @@ export default function ArrivalInstructions({navigation}) {
                 tFinishArrivalInstructionsArray[artPiecesCounter] = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds() + ":" + timer.getMilliseconds();
                 setArtPiecesCounter(artPiecesCounter+1);
                 if (!noPictureMode) {              
-                navigation.navigate("CameraScreen")}
-                else {navigation.navigate("ArtPieces")}
+                  navigation.navigate("CameraScreen") }
+                else { navigation.navigate("ArtPieces") }
               }}
               >
                 <Image
