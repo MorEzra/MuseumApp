@@ -19,17 +19,34 @@ function setActivePassiveCombined(value) {
   activePassiveCombined = value;
 }
 
-export { active, activePassiveCombined, setActive, setActivePassiveCombined };
+export { active, activePassiveCombined, setActive, setActivePassiveCombined, setDebugMode };
 
 export let debugMode = 1;
+
+function setDebugMode(value) {
+  debugMode = value;
+}
+
 export let noPictureMode = false;
 export let sessionTimer = new Date();
 
 export default function WelcomeScreen({ navigation }) {
   const [checked, setChecked] = React.useState('unchecked');
+  // const [isDebugMode, setIsDebugMode] = React.useState(debugMode);
 
   return (
     <View style={globalStyles.container}>
+      {/* <RadioButton.Item
+        value={isDebugMode === 1 ? 'checked' : 'unchecked'}
+        label="Enable debug mode"
+        status={isDebugMode === 1 ? 'checked' : 'unchecked'}
+        onPress={() => {
+          if (isDebugMode === 0) { setIsDebugMode(1); setDebugMode(1); }
+          else { setIsDebugMode(0); setDebugMode(0); }
+        }
+        }
+      /> */}
+
       <Text style={globalStyles.header}>ביקור באוסף מינזה בלומנטל במוזיאון תל אביב</Text>
 
       <Text style={globalStyles.instructionsText}>

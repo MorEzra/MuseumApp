@@ -75,10 +75,16 @@ export default function Questionnaire({ navigation }) {
 
   if (examineeNum >= 100 && examineeNum <= 199) {
     setActive(1);
-  } else if (examineeNum >= 200 && examineeNum <= 299 || examineeNum == 0) {
+  } else if (examineeNum >= 200 && examineeNum <= 299 || examineeNum === 0) {
     setActive(0);
   } else if (examineeNum >= 300 && examineeNum <= 399){
     setActivePassiveCombined(1);
+  }
+
+  if (examineeNum > 990){
+    setDebugMode(1);
+  } else {
+    setDebugMode(0);
   }
 
   questionnaireData.age = age;
