@@ -74,19 +74,30 @@ export default function Questionnaire({ navigation }) {
   questionnaireData.examineeNum = examineeNum;
 
 
-  function setQuestionnaireModeByExamineeNum(value){
+  function setQuestionnaireModeByExamineeNum(value) {
     setExamineeNum(value);
+
+    setActivePassiveCombined(0);
     
-    if(examineeNum < 990){
-      setDebugMode(0);
-      if (examineeNum >= 100 && examineeNum <= 199) {
+    if (value < 990) {
+      if (value >= 100 && value <= 199) {
         setActive(1);
-      } else if (examineeNum >= 200 && examineeNum <= 299 || examineeNum === 0) {
+      } else if (value >= 200 && value <= 299 || value === 0) {
         setActive(0);
-      } else if (examineeNum >= 300 && examineeNum <= 399){
+      } else if (value >= 300 && value <= 399) {
+        setActive(0);
         setActivePassiveCombined(1);
       }
+      setDebugMode(0);
     } else {
+      if (value == 991) {
+        setActive(1);
+      } else if (value == 992) {
+        setActive(0);
+      } else if (value == 993) {
+        setActive(0);
+        setActivePassiveCombined(1);
+      }
       setDebugMode(1);
     }
   }
