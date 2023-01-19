@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { globalStyles } from '../assets/styles/global';
-import { debugMode, setActive, setActivePassiveCombined } from './Screen1_WelcomeScreen';
+import { debugMode, setActive, setActivePassiveCombined, setDebugMode } from './Screen1_WelcomeScreen';
 
 class QuestionnaireData {
   constructor(examineeNum = 0, age = 0, gender = 0, museumVisitsFrequency = 0, lastMuseumVisit = 0, telAvivMuseumVisit = 0, thisExhibitionVisit = 0) {
